@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 学习教程 - 前端三件套学习项目</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/learn.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="learn-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="back-btn">← 返回首页</a>
+            <h1>HTML5 学习教程</h1>
+            <div class="progress-indicator">
+                <span id="progress-text">进度: 0%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+        <nav class="chapter-nav">
+            <h3>学习目录</h3>
+            <ul>
+                <li><a href="#basic" data-chapter="1">HTML基础</a></li>
+                <li><a href="#semantic" data-chapter="2">语义化标签</a></li>
+                <li><a href="#forms" data-chapter="3">表单与验证</a></li>
+                <li><a href="#multimedia" data-chapter="4">多媒体元素</a></li>
+                <li><a href="#seo-meta" data-chapter="5">SEO与Meta</a></li>
+                <li><a href="#performance" data-chapter="6">性能优化</a></li>
+                <li><a href="#accessibility" data-chapter="7">可访问性</a></li>
+                <li><a href="#web-components" data-chapter="8">Web Components</a></li>
+                <li><a href="#pwa" data-chapter="9">PWA基础</a></li>
+                <li><a href="#canvas-svg" data-chapter="10">Canvas与SVG</a></li>
+                <li><a href="#websocket" data-chapter="11">WebSocket通信</a></li>
+                <li><a href="#storage" data-chapter="12">本地存储技术</a></li>
+                <li><a href="#geolocation" data-chapter="13">地理位置API</a></li>
+                <li><a href="#drag-drop" data-chapter="14">拖拽API</a></li>
+                <li><a href="#file-api" data-chapter="15">File API</a></li>
+                <li><a href="#intersection-observer" data-chapter="16">Intersection Observer</a></li>
+                <li><a href="#web-workers" data-chapter="17">Web Workers</a></li>
+                <li><a href="#security" data-chapter="18">Web安全</a></li>
+                <li><a href="#projects" data-chapter="19">综合项目</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="learn-content">
+        <!-- HTML基础 -->
+        <section id="basic" class="chapter">
+            <h2>第1章：HTML基础</h2>
+            
+            <div class="lesson">
+                <h3>1.1 什么是HTML？</h3>
+                <p>HTML（HyperText Markup Language）是构建网页的标准标记语言。它使用标签来描述网页的结构和内容。</p>
+                
+                <div class="code-example">
+                    <h4>基本HTML结构：</h4>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;我的第一个网页&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;欢迎来到我的网站&lt;/h1&gt;
+    &lt;p&gt;这是我的第一个段落。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="practice-area">
+                    <h4>实践练习：</h4>
+                    <p>在下面的编辑器中创建一个简单的HTML页面：</p>
+                    <textarea id="html-editor1" class="code-editor" rows="10"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>请修改这个标题</title>
+</head>
+<body>
+    <!-- 在这里添加你的内容 -->
+</body>
+</html></textarea>
+                    <div class="editor-controls">
+                        <button onclick="runHTML('html-editor1', 'preview1')" class="btn-primary">运行代码</button>
+                        <button onclick="resetEditor('html-editor1')" class="btn-secondary">重置</button>
+                    </div>
+                    <div id="preview1" class="preview-area">
+                        <p>预览将在这里显示...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.2 常用HTML标签</h3>
+                
+                <div class="tag-grid">
+                    <div class="tag-card">
+                        <h4>&lt;h1&gt; - &lt;h6&gt;</h4>
+                        <p>标题标签，从h1到h6级别递减</p>
+                        <code>&lt;h1&gt;主标题&lt;/h1&gt;</code>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <h4>&lt;p&gt;</h4>
+                        <p>段落标签，用于包装文本内容</p>
+                        <code>&lt;p&gt;这是一个段落&lt;/p&gt;</code>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <h4>&lt;a&gt;</h4>
+                        <p>链接标签，用于创建超链接</p>
+                        <code>&lt;a href="url"&gt;链接文本&lt;/a&gt;</code>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <h4>&lt;img&gt;</h4>
+                        <p>图片标签，用于插入图像</p>
+                        <code>&lt;img src="image.jpg" alt="描述"&gt;</code>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <h4>&lt;div&gt;</h4>
+                        <p>通用容器标签，用于布局</p>
+                        <code>&lt;div&gt;内容&lt;/div&gt;</code>
+                    </div>
+                    
+                    <div class="tag-card">
+                        <h4>&lt;span&gt;</h4>
+                        <p>内联容器标签</p>
+                        <code>&lt;span&gt;内联内容&lt;/span&gt;</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.3 面试考点 💡</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ HTML5相比HTML4有哪些新特性？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <ul>
+                                <li><strong>语义化标签</strong>：header、nav、main、section、article、aside、footer等</li>
+                                <li><strong>表单增强</strong>：新的input类型（email、tel、date、color等）、placeholder、required等属性</li>
+                                <li><strong>多媒体支持</strong>：video、audio标签，无需插件播放</li>
+                                <li><strong>Canvas绘图</strong>：支持2D和3D图形绘制</li>
+                                <li><strong>本地存储</strong>：localStorage、sessionStorage</li>
+                                <li><strong>离线应用</strong>：Application Cache、Service Worker</li>
+                                <li><strong>地理定位</strong>：Geolocation API</li>
+                                <li><strong>拖拽API</strong>：原生拖拽支持</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="interview-item">
+                        <h4>❓ DOCTYPE的作用是什么？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <p>DOCTYPE（文档类型声明）的作用是告诉浏览器使用哪种HTML版本来解析文档：</p>
+                            <ul>
+                                <li><strong>标准模式</strong>：浏览器按照W3C标准解析和渲染页面</li>
+                                <li><strong>怪异模式</strong>：浏览器按照历史遗留的非标准方式解析</li>
+                                <li><strong>HTML5声明</strong>：<code>&lt;!DOCTYPE html&gt;</code> 简洁且向后兼容</li>
+                            </ul>
+                            <p>不写DOCTYPE会导致浏览器进入怪异模式，可能出现样式兼容性问题。</p>
+                        </div>
+                    </div>
+
+                    <div class="interview-item">
+                        <h4>❓ HTML中的块级元素和内联元素有什么区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特性</th>
+                                            <th>块级元素</th>
+                                            <th>内联元素</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>换行</td>
+                                            <td>独占一行</td>
+                                            <td>不换行，在同一行显示</td>
+                                        </tr>
+                                        <tr>
+                                            <td>宽度</td>
+                                            <td>默认100%宽度</td>
+                                            <td>宽度由内容决定</td>
+                                        </tr>
+                                        <tr>
+                                            <td>高度设置</td>
+                                            <td>可以设置width/height</td>
+                                            <td>无法设置width/height</td>
+                                        </tr>
+                                        <tr>
+                                            <td>padding/margin</td>
+                                            <td>四个方向都有效</td>
+                                            <td>只有左右有效，上下无效</td>
+                                        </tr>
+                                        <tr>
+                                            <td>常见元素</td>
+                                            <td>div、p、h1-h6、ul、li</td>
+                                            <td>span、a、img、input、strong</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interview-item">
+                        <h4>❓ img标签的alt属性和title属性有什么区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <ul>
+                                <li><strong>alt属性</strong>：
+                                    <ul>
+                                        <li>图片无法显示时的替代文本</li>
+                                        <li>提供给屏幕阅读器，增强可访问性</li>
+                                        <li>搜索引擎优化（SEO）重要属性</li>
+                                        <li>必填属性，符合HTML规范</li>
+                                    </ul>
+                                </li>
+                                <li><strong>title属性</strong>：
+                                    <ul>
+                                        <li>鼠标悬停时显示的提示文本</li>
+                                        <li>提供额外的描述信息</li>
+                                        <li>可选属性</li>
+                                        <li>不仅img标签，几乎所有标签都可以使用</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 语义化标签 -->
+        <section id="semantic" class="chapter">
+            <h2>第2章：语义化标签</h2>
+            
+            <div class="lesson">
+                <h3>2.1 为什么要使用语义化标签？</h3>
+                <ul>
+                    <li>提高代码可读性和可维护性</li>
+                    <li>增强搜索引擎优化(SEO)</li>
+                    <li>提升网站的可访问性</li>
+                    <li>便于团队协作开发</li>
+                </ul>
+
+                <div class="semantic-demo">
+                    <h4>HTML5语义化标签示例：</h4>
+                    <div class="layout-demo">
+                        <div class="demo-header">header - 页面头部</div>
+                        <div class="demo-nav">nav - 导航区域</div>
+                        <div class="demo-main">
+                            <div class="demo-article">article - 主要内容</div>
+                            <div class="demo-aside">aside - 侧边栏</div>
+                        </div>
+                        <div class="demo-footer">footer - 页面底部</div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <pre><code>&lt;!-- 语义化HTML结构 --&gt;
+&lt;header&gt;
+    &lt;h1&gt;网站标题&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#home"&gt;首页&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#about"&gt;关于&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h2&gt;文章标题&lt;/h2&gt;
+        &lt;p&gt;文章内容...&lt;/p&gt;
+    &lt;/article&gt;
+    
+    &lt;aside&gt;
+        &lt;h3&gt;相关链接&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;链接1&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;&copy; 2025 版权信息&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.2 实践练习：创建语义化页面</h3>
+                <div class="practice-area">
+                    <textarea id="html-editor2" class="code-editor" rows="15"><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>语义化页面练习</title>
+    <style>
+        header { background: #3498db; color: white; padding: 1rem; }
+        nav ul { list-style: none; display: flex; gap: 1rem; }
+        main { display: flex; gap: 1rem; padding: 1rem; }
+        article { flex: 2; background: #ecf0f1; padding: 1rem; }
+        aside { flex: 1; background: #bdc3c7; padding: 1rem; }
+        footer { background: #34495e; color: white; padding: 1rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <!-- 请使用语义化标签重构这个页面 -->
+    <div>
+        <h1>我的博客</h1>
+        <div>
+            <a href="#home">首页</a>
+            <a href="#about">关于</a>
+            <a href="#contact">联系</a>
+        </div>
+    </div>
+    
+    <div>
+        <div>
+            <h2>今天学习了HTML5</h2>
+            <p>HTML5带来了很多新的语义化标签...</p>
+        </div>
+        
+        <div>
+            <h3>最新文章</h3>
+            <ul>
+                <li><a href="#">CSS Grid布局</a></li>
+                <li><a href="#">JavaScript基础</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div>
+        <p>&copy; 2025 我的博客</p>
+    </div>
+</body>
+</html></textarea>
+                    <div class="editor-controls">
+                        <button onclick="runHTML('html-editor2', 'preview2')" class="btn-primary">运行代码</button>
+                    </div>
+                    <div id="preview2" class="preview-area"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表单与验证 -->
+        <section id="forms" class="chapter">
+            <h2>第3章：表单与验证</h2>
+            
+            <div class="lesson">
+                <h3>3.1 HTML5表单新特性</h3>
+                
+                <div class="form-types">
+                    <h4>新的输入类型：</h4>
+                    <div class="input-grid">
+                        <div class="input-demo">
+                            <label>电子邮件：</label>
+                            <input type="email" placeholder="user@example.com">
+                            <code>type="email"</code>
+                        </div>
+                        
+                        <div class="input-demo">
+                            <label>电话号码：</label>
+                            <input type="tel" placeholder="1234567890">
+                            <code>type="tel"</code>
+                        </div>
+                        
+                        <div class="input-demo">
+                            <label>日期：</label>
+                            <input type="date">
+                            <code>type="date"</code>
+                        </div>
+                        
+                        <div class="input-demo">
+                            <label>颜色：</label>
+                            <input type="color">
+                            <code>type="color"</code>
+                        </div>
+                        
+                        <div class="input-demo">
+                            <label>范围：</label>
+                            <input type="range" min="0" max="100">
+                            <code>type="range"</code>
+                        </div>
+                        
+                        <div class="input-demo">
+                            <label>数字：</label>
+                            <input type="number" min="1" max="10">
+                            <code>type="number"</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>完整的表单示例：</h4>
+                    <pre><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;个人信息&lt;/legend&gt;
+        
+        &lt;label for="name"&gt;姓名：&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+        
+        &lt;label for="email"&gt;邮箱：&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+        
+        &lt;label for="age"&gt;年龄：&lt;/label&gt;
+        &lt;input type="number" id="age" name="age" min="1" max="120"&gt;
+        
+        &lt;label for="bio"&gt;个人简介：&lt;/label&gt;
+        &lt;textarea id="bio" name="bio" rows="4"&gt;&lt;/textarea&gt;
+        
+        &lt;button type="submit"&gt;提交&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 多媒体元素 -->
+        <section id="multimedia" class="chapter">
+            <h2>第4章：多媒体元素</h2>
+            
+            <div class="lesson">
+                <h3>4.1 图片和视频</h3>
+                
+                <div class="media-examples">
+                    <div class="media-item">
+                        <h4>响应式图片：</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;img src="small.jpg" 
+     srcset="small.jpg 480w, 
+             medium.jpg 768w, 
+             large.jpg 1200w"
+     sizes="(max-width: 600px) 480px,
+            (max-width: 900px) 768px,
+            1200px"
+     alt="响应式图片示例"&gt;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="media-item">
+                        <h4>HTML5视频：</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;video width="400" height="300" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    &lt;source src="movie.webm" type="video/webm"&gt;
+    &lt;p&gt;您的浏览器不支持视频标签。&lt;/p&gt;
+&lt;/video&gt;</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="media-item">
+                        <h4>HTML5音频：</h4>
+                        <div class="code-example">
+                            <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;您的浏览器不支持音频标签。&lt;/p&gt;
+&lt;/audio&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO与Meta -->
+        <section id="seo-meta" class="chapter">
+            <h2>第5章：SEO与Meta优化</h2>
+            
+            <div class="lesson">
+                <h3>5.1 Meta标签详解</h3>
+                <p>Meta标签是HTML文档头部的重要元素，对SEO和用户体验至关重要。</p>
+                
+                <div class="code-example">
+                    <h4>常用Meta标签：</h4>
+                    <pre><code>&lt;!-- 页面标题 --&gt;
+&lt;title&gt;页面标题 - 网站名称&lt;/title&gt;
+
+&lt;!-- 页面描述 --&gt;
+&lt;meta name="description" content="页面描述，显示在搜索结果中，建议120-160字符"&gt;
+
+&lt;!-- 关键词 --&gt;
+&lt;meta name="keywords" content="关键词1,关键词2,关键词3"&gt;
+
+&lt;!-- 作者信息 --&gt;
+&lt;meta name="author" content="作者姓名"&gt;
+
+&lt;!-- 视口设置 --&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+&lt;!-- 字符编码 --&gt;
+&lt;meta charset="UTF-8"&gt;
+
+&lt;!-- 搜索引擎指令 --&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+
+&lt;!-- 页面刷新 --&gt;
+&lt;meta http-equiv="refresh" content="30"&gt;</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ Meta标签对SEO的作用是什么？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <ul>
+                                <li><strong>title标签</strong>：搜索引擎结果页面的标题，影响点击率</li>
+                                <li><strong>description</strong>：搜索结果摘要，影响用户点击决策</li>
+                                <li><strong>keywords</strong>：关键词标签（现在SEO权重较低）</li>
+                                <li><strong>robots</strong>：控制搜索引擎爬虫行为</li>
+                                <li><strong>viewport</strong>：移动端适配，影响移动搜索排名</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>5.2 Open Graph协议</h3>
+                <p>Open Graph协议让网页在社交媒体分享时显示丰富的预览信息。</p>
+                
+                <div class="code-example">
+                    <h4>Open Graph标签：</h4>
+                    <pre><code>&lt;!-- 基础Open Graph标签 --&gt;
+&lt;meta property="og:title" content="页面标题"&gt;
+&lt;meta property="og:description" content="页面描述"&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:url" content="https://example.com/page"&gt;
+&lt;meta property="og:image" content="https://example.com/image.jpg"&gt;
+
+&lt;!-- 可选标签 --&gt;
+&lt;meta property="og:site_name" content="网站名称"&gt;
+&lt;meta property="og:locale" content="zh_CN"&gt;
+
+&lt;!-- Twitter卡片 --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:title" content="页面标题"&gt;
+&lt;meta name="twitter:description" content="页面描述"&gt;
+&lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>5.3 结构化数据</h3>
+                <p>结构化数据帮助搜索引擎更好地理解页面内容，显示富摘要。</p>
+                
+                <div class="code-example">
+                    <h4>JSON-LD结构化数据：</h4>
+                    <pre><code>&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "文章标题",
+  "author": {
+    "@type": "Person",
+    "name": "作者姓名"
+  },
+  "datePublished": "2025-01-01",
+  "dateModified": "2025-01-01",
+  "description": "文章描述",
+  "image": "https://example.com/image.jpg",
+  "publisher": {
+    "@type": "Organization",
+    "name": "网站名称",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://example.com/logo.jpg"
+    }
+  }
+}
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 性能优化 -->
+        <section id="performance" class="chapter">
+            <h2>第6章：HTML性能优化</h2>
+            
+            <div class="lesson">
+                <h3>6.1 资源加载优化</h3>
+                <p>优化HTML中的资源加载可以显著提升页面性能。</p>
+                
+                <div class="code-example">
+                    <h4>预加载技术：</h4>
+                    <pre><code>&lt;!-- DNS预解析 --&gt;
+&lt;link rel="dns-prefetch" href="//example.com"&gt;
+
+&lt;!-- 预连接 --&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+
+&lt;!-- 资源预加载 --&gt;
+&lt;link rel="preload" href="style.css" as="style"&gt;
+&lt;link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin&gt;
+
+&lt;!-- 模块预加载 --&gt;
+&lt;link rel="modulepreload" href="module.js"&gt;
+
+&lt;!-- 预取 --&gt;
+&lt;link rel="prefetch" href="next-page.html"&gt;</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ link和@import加载CSS的区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特性</th>
+                                            <th>link标签</th>
+                                            <th>@import</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>加载时机</td>
+                                            <td>页面加载时同时加载</td>
+                                            <td>页面加载完后才加载</td>
+                                        </tr>
+                                        <tr>
+                                            <td>兼容性</td>
+                                            <td>HTML标签，兼容性好</td>
+                                            <td>CSS2.1，IE5+支持</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DOM操作</td>
+                                            <td>可通过JS控制</td>
+                                            <td>无法通过JS控制</td>
+                                        </tr>
+                                        <tr>
+                                            <td>并行加载</td>
+                                            <td>支持并行加载</td>
+                                            <td>串行加载，阻塞渲染</td>
+                                        </tr>
+                                        <tr>
+                                            <td>权重</td>
+                                            <td>权重相同</td>
+                                            <td>权重相同</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p><strong>推荐使用link标签</strong>，性能更好，功能更强大。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>6.2 图片优化</h3>
+                <p>图片通常是网页中最大的资源，优化图片加载对性能至关重要。</p>
+                
+                <div class="code-example">
+                    <h4>现代图片加载技术：</h4>
+                    <pre><code>&lt;!-- 响应式图片 --&gt;
+&lt;picture&gt;
+  &lt;source media="(min-width: 800px)" srcset="large.webp" type="image/webp"&gt;
+  &lt;source media="(min-width: 800px)" srcset="large.jpg" type="image/jpeg"&gt;
+  &lt;source media="(min-width: 400px)" srcset="medium.webp" type="image/webp"&gt;
+  &lt;source media="(min-width: 400px)" srcset="medium.jpg" type="image/jpeg"&gt;
+  &lt;img src="small.jpg" alt="图片描述" loading="lazy"&gt;
+&lt;/picture&gt;
+
+&lt;!-- 懒加载 --&gt;
+&lt;img src="placeholder.jpg" data-src="actual-image.jpg" loading="lazy" alt="描述"&gt;
+
+&lt;!-- WebP格式支持 --&gt;
+&lt;picture&gt;
+  &lt;source srcset="image.webp" type="image/webp"&gt;
+  &lt;img src="image.jpg" alt="描述"&gt;
+&lt;/picture&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>6.3 关键渲染路径优化</h3>
+                
+                <div class="code-example">
+                    <h4>优化HTML结构：</h4>
+                    <pre><code>&lt;!-- 内联关键CSS --&gt;
+&lt;style&gt;
+  /* 首屏关键样式 */
+  .header { background: #333; color: white; }
+&lt;/style&gt;
+
+&lt;!-- 异步加载非关键CSS --&gt;
+&lt;link rel="preload" href="non-critical.css" as="style" onload="this.onload=null;this.rel='stylesheet'"&gt;
+
+&lt;!-- 异步加载JavaScript --&gt;
+&lt;script src="app.js" async&gt;&lt;/script&gt;
+&lt;script src="analytics.js" defer&gt;&lt;/script&gt;
+
+&lt;!-- 避免阻塞的脚本 --&gt;
+&lt;script&gt;
+  // 非阻塞加载
+  (function() {
+    var script = document.createElement('script');
+    script.src = 'widget.js';
+    script.async = true;
+    document.head.appendChild(script);
+  })();
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 可访问性 -->
+        <section id="accessibility" class="chapter">
+            <h2>第7章：可访问性</h2>
+            
+            <div class="lesson">
+                <h3>7.1 ARIA属性和最佳实践</h3>
+                
+                <div class="accessibility-tips">
+                    <div class="tip-card">
+                        <h4>语义化标签</h4>
+                        <p>使用正确的HTML标签来表达内容的含义</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>Alt属性</h4>
+                        <p>为所有图片提供有意义的替代文本</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>键盘导航</h4>
+                        <p>确保所有交互元素都可以通过键盘访问</p>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <h4>颜色对比</h4>
+                        <p>确保文字和背景有足够的颜色对比度</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>可访问性示例：</h4>
+                    <pre><code>&lt;!-- 使用正确的标题层级 --&gt;
+&lt;h1&gt;主标题&lt;/h1&gt;
+&lt;h2&gt;副标题&lt;/h2&gt;
+&lt;h3&gt;子标题&lt;/h3&gt;
+
+&lt;!-- 为表单元素提供标签 --&gt;
+&lt;label for="username"&gt;用户名：&lt;/label&gt;
+&lt;input type="text" id="username" name="username" required&gt;
+
+&lt;!-- 为图片提供alt属性 --&gt;
+&lt;img src="logo.png" alt="公司标志"&gt;
+
+&lt;!-- 使用ARIA属性 --&gt;
+&lt;button aria-label="关闭对话框"&gt;×&lt;/button&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Components -->
+        <section id="web-components" class="chapter">
+            <h2>第8章：Web Components</h2>
+            
+            <div class="lesson">
+                <h3>8.1 自定义元素</h3>
+                <p>Web Components允许开发者创建可重用的自定义HTML元素。</p>
+                
+                <div class="code-example">
+                    <h4>创建自定义元素：</h4>
+                    <pre><code>class MyButton extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+            &lt;style&gt;
+                button {
+                    background: #007bff;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            &lt;/style&gt;
+            &lt;button&gt;&lt;slot&gt;点击我&lt;/slot&gt;&lt;/button&gt;
+        `;
+    }
+}
+
+customElements.define('my-button', MyButton);</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ Web Components的核心技术？</h4>
+                        <div class="interview-answer">
+                            <p><strong>四大核心技术：</strong></p>
+                            <ul>
+                                <li><strong>Custom Elements</strong>：自定义HTML元素</li>
+                                <li><strong>Shadow DOM</strong>：封装样式和DOM结构</li>
+                                <li><strong>HTML Templates</strong>：可重用的HTML模板</li>
+                                <li><strong>ES Modules</strong>：模块化组件</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PWA基础 -->
+        <section id="pwa" class="chapter">
+            <h2>第9章：PWA渐进式Web应用</h2>
+            
+            <div class="lesson">
+                <h3>9.1 Service Worker实战</h3>
+                <p>Service Worker是PWA的核心技术，让我们创建一个完整的PWA应用。</p>
+                
+                <div class="code-example">
+                    <h4>1. 创建主页面（index.html）：</h4>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;我的PWA应用&lt;/title&gt;
+    &lt;link rel="manifest" href="manifest.json"&gt;
+    &lt;meta name="theme-color" content="#2196F3"&gt;
+    &lt;link rel="icon" href="icon-192.png"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="app"&gt;
+        &lt;header&gt;
+            &lt;h1&gt;📱 我的PWA应用&lt;/h1&gt;
+            &lt;button id="installBtn" style="display:none"&gt;安装应用&lt;/button&gt;
+        &lt;/header&gt;
+        
+        &lt;main&gt;
+            &lt;div class="status" id="status"&gt;在线&lt;/div&gt;
+            &lt;div class="content"&gt;
+                &lt;h2&gt;欢迎使用PWA应用！&lt;/h2&gt;
+                &lt;p&gt;这个应用支持离线使用和安装到桌面。&lt;/p&gt;
+                &lt;button id="cacheBtn"&gt;缓存重要资源&lt;/button&gt;
+                &lt;button id="notifyBtn"&gt;发送通知&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // 注册Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration =&gt; {
+                    console.log('SW注册成功:', registration);
+                })
+                .catch(error =&gt; {
+                    console.log('SW注册失败:', error);
+                });
+        }
+
+        // 安装提示
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) =&gt; {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('installBtn').style.display = 'block';
+        });
+
+        document.getElementById('installBtn').addEventListener('click', () =&gt; {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) =&gt; {
+                    console.log('用户选择:', choiceResult.outcome);
+                    deferredPrompt = null;
+                });
+            }
+        });
+
+        // 网络状态监测
+        function updateOnlineStatus() {
+            const status = document.getElementById('status');
+            if (navigator.onLine) {
+                status.textContent = '在线';
+                status.className = 'status online';
+            } else {
+                status.textContent = '离线';
+                status.className = 'status offline';
+            }
+        }
+
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+        updateOnlineStatus();
+
+        // 缓存按钮
+        document.getElementById('cacheBtn').addEventListener('click', () =&gt; {
+            if ('caches' in window) {
+                caches.open('app-cache-v1').then(cache =&gt; {
+                    cache.addAll([
+                        '/',
+                        '/style.css',
+                        '/script.js',
+                        '/icon-192.png'
+                    ]);
+                    alert('资源已缓存！');
+                });
+            }
+        });
+
+        // 通知按钮
+        document.getElementById('notifyBtn').addEventListener('click', () =&gt; {
+            if ('Notification' in window) {
+                Notification.requestPermission().then(permission =&gt; {
+                    if (permission === 'granted') {
+                        new Notification('PWA应用', {
+                            body: '这是一个来自PWA应用的通知！',
+                            icon: 'icon-192.png'
+                        });
+                    }
+                });
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>2. Service Worker文件（sw.js）：</h4>
+                    <pre><code>const CACHE_NAME = 'pwa-app-v1';
+const urlsToCache = [
+    '/',
+    '/style.css',
+    '/script.js',
+    '/icon-192.png',
+    '/offline.html'
+];
+
+// 安装事件 - 缓存静态资源
+self.addEventListener('install', event =&gt; {
+    console.log('Service Worker 安装中...');
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache =&gt; {
+                console.log('缓存已打开');
+                return cache.addAll(urlsToCache);
+            })
+    );
+});
+
+// 激活事件 - 清理旧缓存
+self.addEventListener('activate', event =&gt; {
+    console.log('Service Worker 激活中...');
+    event.waitUntil(
+        caches.keys().then(cacheNames =&gt; {
+            return Promise.all(
+                cacheNames.map(cacheName =&gt; {
+                    if (cacheName !== CACHE_NAME) {
+                        console.log('删除旧缓存:', cacheName);
+                        return caches.delete(cacheName);
+                    }
+                })
+            );
+        })
+    );
+});
+
+// 拦截网络请求
+self.addEventListener('fetch', event =&gt; {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response =&gt; {
+                // 缓存命中 - 返回缓存的资源
+                if (response) {
+                    return response;
+                }
+
+                // 缓存未命中 - 发起网络请求
+                return fetch(event.request).then(response =&gt; {
+                    // 检查是否是有效响应
+                    if (!response || response.status !== 200 || response.type !== 'basic') {
+                        return response;
+                    }
+
+                    // 克隆响应
+                    const responseToCache = response.clone();
+
+                    caches.open(CACHE_NAME)
+                        .then(cache =&gt; {
+                            cache.put(event.request, responseToCache);
+                        });
+
+                    return response;
+                }).catch(() =&gt; {
+                    // 网络请求失败，返回离线页面
+                    return caches.match('/offline.html');
+                });
+            })
+    );
+});
+
+// 后台同步
+self.addEventListener('sync', event =&gt; {
+    if (event.tag === 'background-sync') {
+        event.waitUntil(doBackgroundSync());
+    }
+});
+
+function doBackgroundSync() {
+    return new Promise((resolve, reject) =&gt; {
+        // 执行后台同步操作
+        console.log('执行后台同步...');
+        // 这里可以同步离线时的数据
+        resolve();
+    });
+}
+
+// 推送通知
+self.addEventListener('push', event =&gt; {
+    const options = {
+        body: event.data ? event.data.text() : '新消息',
+        icon: 'icon-192.png',
+        badge: 'badge-72.png',
+        vibrate: [100, 50, 100],
+        actions: [
+            {action: 'explore', title: '查看详情'},
+            {action: 'close', title: '关闭'}
+        ]
+    };
+
+    event.waitUntil(
+        self.registration.showNotification('PWA应用', options)
+    );
+});
+
+// 通知点击事件
+self.addEventListener('notificationclick', event =&gt; {
+    event.notification.close();
+
+    if (event.action === 'explore') {
+        event.waitUntil(
+            clients.openWindow('/')
+        );
+    }
+});</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>3. Web应用清单（manifest.json）：</h4>
+                    <pre><code>{
+    "name": "我的PWA应用",
+    "short_name": "PWA应用",
+    "description": "一个演示PWA功能的应用",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2196F3",
+    "orientation": "portrait-primary",
+    "categories": ["education", "productivity"],
+    "lang": "zh-CN",
+    "icons": [
+        {
+            "src": "icon-72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "screenshot1.png",
+            "sizes": "1280x720",
+            "type": "image/png"
+        }
+    ]
+}</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ PWA的核心特征和优势？</h4>
+                        <div class="interview-answer">
+                            <p><strong>PWA特征：</strong></p>
+                            <ul>
+                                <li><strong>可安装</strong>：可添加到主屏幕，像原生应用一样使用</li>
+                                <li><strong>离线工作</strong>：通过Service Worker实现离线功能</li>
+                                <li><strong>响应式</strong>：适配各种设备和屏幕尺寸</li>
+                                <li><strong>安全</strong>：必须使用HTTPS协议</li>
+                                <li><strong>推送通知</strong>：支持消息推送功能</li>
+                                <li><strong>渐进增强</strong>：在支持的浏览器上提供更好体验</li>
+                                <li><strong>自动更新</strong>：Service Worker自动更新缓存</li>
+                                <li><strong>无需应用商店</strong>：直接通过网址分享和安装</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Canvas与SVG -->
+        <section id="canvas-svg" class="chapter">
+            <h2>第10章：Canvas与SVG图形</h2>
+            
+            <div class="lesson">
+                <h3>10.1 Canvas动态绘图</h3>
+                <p>Canvas提供了强大的2D绘图API，适用于游戏、图表和动态效果。</p>
+                
+                <div class="code-example">
+                    <h4>Canvas绘制图表示例：</h4>
+                    <pre><code>&lt;canvas id="chart" width="400" height="300"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+
+// 绘制柱状图
+function drawBarChart(data) {
+    const barWidth = 50;
+    const barGap = 20;
+    const maxValue = Math.max(...data);
+    
+    data.forEach((value, index) =&gt; {
+        const barHeight = (value / maxValue) * 200;
+        const x = index * (barWidth + barGap) + 50;
+        const y = 250 - barHeight;
+        
+        // 绘制柱子
+        ctx.fillStyle = `hsl(${index * 60}, 70%, 50%)`;
+        ctx.fillRect(x, y, barWidth, barHeight);
+        
+        // 绘制数值
+        ctx.fillStyle = '#333';
+        ctx.font = '14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(value, x + barWidth/2, y - 10);
+    });
+}
+
+// 使用示例
+const salesData = [120, 95, 140, 85, 160];
+drawBarChart(salesData);
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>10.2 SVG交互式图形</h3>
+                <p>SVG支持CSS样式和JavaScript交互，适合制作矢量图标和交互式图表。</p>
+                
+                <div class="code-example">
+                    <h4>SVG饼图示例：</h4>
+                    <pre><code>&lt;svg width="300" height="300" viewBox="0 0 300 300"&gt;
+    &lt;circle cx="150" cy="150" r="100" fill="none" stroke="#ddd" stroke-width="2"/&gt;
+    
+    &lt;!-- 饼图扇形 --&gt;
+    &lt;path id="slice1" d="M 150,150 L 150,50 A 100,100 0 0,1 235.36,114.64 Z" 
+          fill="#ff6b6b" class="pie-slice" data-value="30"/&gt;
+    &lt;path id="slice2" d="M 150,150 L 235.36,114.64 A 100,100 0 0,1 185.36,235.36 Z" 
+          fill="#4ecdc4" class="pie-slice" data-value="25"/&gt;
+    &lt;path id="slice3" d="M 150,150 L 185.36,235.36 A 100,100 0 1,1 150,50 Z" 
+          fill="#45b7d1" class="pie-slice" data-value="45"/&gt;
+    
+    &lt;!-- 标签 --&gt;
+    &lt;text x="180" y="80" text-anchor="middle" class="pie-label"&gt;30%&lt;/text&gt;
+    &lt;text x="220" y="180" text-anchor="middle" class="pie-label"&gt;25%&lt;/text&gt;
+    &lt;text x="120" y="180" text-anchor="middle" class="pie-label"&gt;45%&lt;/text&gt;
+&lt;/svg&gt;
+
+&lt;style&gt;
+.pie-slice {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform-origin: 150px 150px;
+}
+
+.pie-slice:hover {
+    transform: scale(1.05);
+}
+
+.pie-label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    fill: white;
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+document.querySelectorAll('.pie-slice').forEach(slice =&gt; {
+    slice.addEventListener('click', () =&gt; {
+        const value = slice.getAttribute('data-value');
+        alert(`选中的数据：${value}%`);
+    });
+});
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- WebSocket通信 -->
+        <section id="websocket" class="chapter">
+            <h2>第11章：WebSocket实时通信</h2>
+            
+            <div class="lesson">
+                <h3>11.1 实时聊天室</h3>
+                <p>WebSocket提供全双工通信，特别适合聊天、游戏等实时应用。</p>
+                
+                <div class="code-example">
+                    <h4>简单聊天室客户端：</h4>
+                    <pre><code>&lt;div class="chat-app"&gt;
+    &lt;div class="chat-messages" id="messages"&gt;&lt;/div&gt;
+    &lt;div class="chat-input"&gt;
+        &lt;input type="text" id="messageInput" placeholder="输入消息..."&gt;
+        &lt;button onclick="sendMessage()"&gt;发送&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class ChatClient {
+    constructor() {
+        this.socket = null;
+        this.username = prompt('请输入您的用户名:') || '匿名用户';
+        this.connect();
+    }
+    
+    connect() {
+        // 连接WebSocket服务器
+        this.socket = new WebSocket('ws://localhost:8080');
+        
+        this.socket.onopen = () =&gt; {
+            console.log('连接已建立');
+            this.addMessage('系统', '已连接到聊天室');
+            
+            // 发送用户信息
+            this.sendSystemMessage('join', {username: this.username});
+        };
+        
+        this.socket.onmessage = (event) =&gt; {
+            const data = JSON.parse(event.data);
+            this.handleMessage(data);
+        };
+        
+        this.socket.onclose = () =&gt; {
+            console.log('连接已断开');
+            this.addMessage('系统', '连接已断开');
+        };
+        
+        this.socket.onerror = (error) =&gt; {
+            console.error('连接错误:', error);
+            this.addMessage('系统', '连接错误');
+        };
+    }
+    
+    sendMessage(text) {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            const message = {
+                type: 'message',
+                username: this.username,
+                text: text,
+                timestamp: new Date().toISOString()
+            };
+            this.socket.send(JSON.stringify(message));
+        }
+    }
+    
+    sendSystemMessage(type, data) {
+        if (this.socket.readyState === WebSocket.OPEN) {
+            const message = {
+                type: type,
+                username: this.username,
+                data: data,
+                timestamp: new Date().toISOString()
+            };
+            this.socket.send(JSON.stringify(message));
+        }
+    }
+    
+    handleMessage(data) {
+        switch (data.type) {
+            case 'message':
+                this.addMessage(data.username, data.text);
+                break;
+            case 'join':
+                this.addMessage('系统', `${data.username} 加入了聊天室`);
+                break;
+            case 'leave':
+                this.addMessage('系统', `${data.username} 离开了聊天室`);
+                break;
+            case 'userList':
+                this.updateUserList(data.users);
+                break;
+        }
+    }
+    
+    addMessage(username, text) {
+        const messagesDiv = document.getElementById('messages');
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message';
+        
+        const time = new Date().toLocaleTimeString();
+        messageElement.innerHTML = `
+            &lt;span class="time"&gt;${time}&lt;/span&gt;
+            &lt;span class="username"&gt;${username}:&lt;/span&gt;
+            &lt;span class="text"&gt;${text}&lt;/span&gt;
+        `;
+        
+        messagesDiv.appendChild(messageElement);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+}
+
+// 初始化聊天客户端
+const chatClient = new ChatClient();
+
+// 发送消息函数
+function sendMessage() {
+    const input = document.getElementById('messageInput');
+    const text = input.value.trim();
+    
+    if (text) {
+        chatClient.sendMessage(text);
+        input.value = '';
+    }
+}
+
+// 回车发送
+document.getElementById('messageInput').addEventListener('keypress', (e) =&gt; {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 本地存储技术 -->
+        <section id="storage" class="chapter">
+            <h2>第12章：现代存储技术</h2>
+            
+            <div class="lesson">
+                <h3>12.1 IndexedDB客户端数据库</h3>
+                <p>IndexedDB是浏览器内置的NoSQL数据库，适合存储大量结构化数据。</p>
+                
+                <div class="code-example">
+                    <h4>学生管理系统示例：</h4>
+                    <pre><code>class StudentDB {
+    constructor() {
+        this.dbName = 'StudentManagement';
+        this.version = 1;
+        this.db = null;
+    }
+    
+    async init() {
+        return new Promise((resolve, reject) =&gt; {
+            const request = indexedDB.open(this.dbName, this.version);
+            
+            request.onerror = () =&gt; reject(request.error);
+            request.onsuccess = () =&gt; {
+                this.db = request.result;
+                resolve(this.db);
+            };
+            
+            request.onupgradeneeded = (event) =&gt; {
+                const db = event.target.result;
+                
+                // 创建学生表
+                if (!db.objectStoreNames.contains('students')) {
+                    const store = db.createObjectStore('students', {
+                        keyPath: 'id',
+                        autoIncrement: true
+                    });
+                    
+                    // 创建索引
+                    store.createIndex('name', 'name', { unique: false });
+                    store.createIndex('email', 'email', { unique: true });
+                    store.createIndex('class', 'class', { unique: false });
+                }
+            };
+        });
+    }
+    
+    async addStudent(student) {
+        const transaction = this.db.transaction(['students'], 'readwrite');
+        const store = transaction.objectStore('students');
+        return store.add(student);
+    }
+    
+    async getStudent(id) {
+        const transaction = this.db.transaction(['students'], 'readonly');
+        const store = transaction.objectStore('students');
+        return new Promise((resolve, reject) =&gt; {
+            const request = store.get(id);
+            request.onsuccess = () =&gt; resolve(request.result);
+            request.onerror = () =&gt; reject(request.error);
+        });
+    }
+    
+    async getAllStudents() {
+        const transaction = this.db.transaction(['students'], 'readonly');
+        const store = transaction.objectStore('students');
+        return new Promise((resolve, reject) =&gt; {
+            const request = store.getAll();
+            request.onsuccess = () =&gt; resolve(request.result);
+            request.onerror = () =&gt; reject(request.error);
+        });
+    }
+    
+    async searchByClass(className) {
+        const transaction = this.db.transaction(['students'], 'readonly');
+        const store = transaction.objectStore('students');
+        const index = store.index('class');
+        
+        return new Promise((resolve, reject) =&gt; {
+            const request = index.getAll(className);
+            request.onsuccess = () =&gt; resolve(request.result);
+            request.onerror = () =&gt; reject(request.error);
+        });
+    }
+    
+    async updateStudent(student) {
+        const transaction = this.db.transaction(['students'], 'readwrite');
+        const store = transaction.objectStore('students');
+        return store.put(student);
+    }
+    
+    async deleteStudent(id) {
+        const transaction = this.db.transaction(['students'], 'readwrite');
+        const store = transaction.objectStore('students');
+        return store.delete(id);
+    }
+}
+
+// 使用示例
+async function demonstrateIndexedDB() {
+    const studentDB = new StudentDB();
+    await studentDB.init();
+    
+    // 添加学生
+    await studentDB.addStudent({
+        name: '张三',
+        email: 'zhangsan@example.com',
+        class: '计算机科学1班',
+        age: 20,
+        grades: {
+            math: 85,
+            english: 78,
+            programming: 92
+        }
+    });
+    
+    // 获取所有学生
+    const students = await studentDB.getAllStudents();
+    console.log('所有学生:', students);
+    
+    // 按班级搜索
+    const classStudents = await studentDB.searchByClass('计算机科学1班');
+    console.log('计算机科学1班学生:', classStudents);
+}
+
+// 运行演示
+demonstrateIndexedDB();</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>12.2 对比不同存储方案</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 浏览器存储方案对比？</h4>
+                        <div class="interview-answer">
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>存储方案</th>
+                                            <th>容量限制</th>
+                                            <th>数据类型</th>
+                                            <th>持久性</th>
+                                            <th>适用场景</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Cookie</td>
+                                            <td>4KB</td>
+                                            <td>字符串</td>
+                                            <td>可设置过期</td>
+                                            <td>用户认证、偏好设置</td>
+                                        </tr>
+                                        <tr>
+                                            <td>localStorage</td>
+                                            <td>5-10MB</td>
+                                            <td>字符串</td>
+                                            <td>持久</td>
+                                            <td>配置信息、缓存数据</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sessionStorage</td>
+                                            <td>5-10MB</td>
+                                            <td>字符串</td>
+                                            <td>会话期间</td>
+                                            <td>临时数据、表单状态</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IndexedDB</td>
+                                            <td>无限制*</td>
+                                            <td>任意对象</td>
+                                            <td>持久</td>
+                                            <td>大量结构化数据、离线应用</td>
+                                        </tr>
+                                        <tr>
+                                            <td>WebSQL</td>
+                                            <td>5MB+</td>
+                                            <td>SQL数据</td>
+                                            <td>持久</td>
+                                            <td>已废弃，不推荐使用</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p><small>*受设备存储空间和浏览器配额限制</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地理位置API -->
+        <section id="geolocation" class="chapter">
+            <h2>第13章：地理位置API</h2>
+            
+            <div class="lesson">
+                <h3>13.1 获取用户位置</h3>
+                <p>Geolocation API允许网页获取用户的地理位置信息。</p>
+                
+                <div class="code-example">
+                    <h4>位置获取和地图显示：</h4>
+                    <pre><code>&lt;div class="location-app"&gt;
+    &lt;button onclick="getCurrentLocation()"&gt;获取我的位置&lt;/button&gt;
+    &lt;div id="locationInfo"&gt;&lt;/div&gt;
+    &lt;div id="map" style="width: 100%; height: 300px; border: 1px solid #ccc;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class LocationManager {
+    constructor() {
+        this.watchId = null;
+        this.lastPosition = null;
+    }
+    
+    // 获取当前位置
+    getCurrentPosition() {
+        return new Promise((resolve, reject) =&gt; {
+            if (!navigator.geolocation) {
+                reject(new Error('浏览器不支持地理位置API'));
+                return;
+            }
+            
+            const options = {
+                enableHighAccuracy: true,  // 高精度
+                timeout: 10000,           // 超时时间
+                maximumAge: 60000         // 缓存时间
+            };
+            
+            navigator.geolocation.getCurrentPosition(
+                position =&gt; resolve(position),
+                error =&gt; reject(this.handleError(error)),
+                options
+            );
+        });
+    }
+    
+    // 监听位置变化
+    watchPosition(callback) {
+        if (!navigator.geolocation) {
+            throw new Error('浏览器不支持地理位置API');
+        }
+        
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        
+        this.watchId = navigator.geolocation.watchPosition(
+            position =&gt; {
+                this.lastPosition = position;
+                callback(position);
+            },
+            error =&gt; console.error('位置监听错误:', this.handleError(error)),
+            options
+        );
+    }
+    
+    // 停止监听
+    stopWatching() {
+        if (this.watchId !== null) {
+            navigator.geolocation.clearWatch(this.watchId);
+            this.watchId = null;
+        }
+    }
+    
+    // 错误处理
+    handleError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                return "用户拒绝了地理位置请求";
+            case error.POSITION_UNAVAILABLE:
+                return "位置信息不可用";
+            case error.TIMEOUT:
+                return "获取位置信息超时";
+            default:
+                return "获取位置时发生未知错误";
+        }
+    }
+    
+    // 计算两点间距离（单位：公里）
+    calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // 地球半径
+        const dLat = this.toRadians(lat2 - lat1);
+        const dLon = this.toRadians(lon2 - lon1);
+        
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(this.toRadians(lat1)) * Math.cos(this.toRadians(lat2)) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+        
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+    }
+    
+    toRadians(degrees) {
+        return degrees * (Math.PI/180);
+    }
+}
+
+// 全局位置管理器
+const locationManager = new LocationManager();
+
+// 获取当前位置
+async function getCurrentLocation() {
+    try {
+        const position = await locationManager.getCurrentPosition();
+        displayLocationInfo(position);
+        displayMap(position.coords.latitude, position.coords.longitude);
+    } catch (error) {
+        document.getElementById('locationInfo').innerHTML = 
+            `&lt;p style="color: red;"&gt;错误: ${error.message}&lt;/p&gt;`;
+    }
+}
+
+// 显示位置信息
+function displayLocationInfo(position) {
+    const { latitude, longitude, accuracy, altitude, heading, speed } = position.coords;
+    const timestamp = new Date(position.timestamp);
+    
+    const info = `
+        &lt;h3&gt;📍 位置信息&lt;/h3&gt;
+        &lt;p&gt;&lt;strong&gt;纬度：&lt;/strong&gt;${latitude.toFixed(6)}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;经度：&lt;/strong&gt;${longitude.toFixed(6)}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;精度：&lt;/strong&gt;${accuracy} 米&lt;/p&gt;
+        ${altitude ? `&lt;p&gt;&lt;strong&gt;海拔：&lt;/strong&gt;${altitude.toFixed(2)} 米&lt;/p&gt;` : ''}
+        ${heading ? `&lt;p&gt;&lt;strong&gt;方向：&lt;/strong&gt;${heading}°&lt;/p&gt;` : ''}
+        ${speed ? `&lt;p&gt;&lt;strong&gt;速度：&lt;/strong&gt;${speed} m/s&lt;/p&gt;` : ''}
+        &lt;p&gt;&lt;strong&gt;获取时间：&lt;/strong&gt;${timestamp.toLocaleString()}&lt;/p&gt;
+    `;
+    
+    document.getElementById('locationInfo').innerHTML = info;
+}
+
+// 简单地图显示（使用OpenStreetMap）
+function displayMap(lat, lng) {
+    const mapDiv = document.getElementById('map');
+    
+    // 这里使用简单的静态地图图片
+    // 实际项目中建议使用Leaflet、Google Maps等专业地图库
+    const mapUrl = `https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s-l+000(${lng},${lat})/${lng},${lat},14/400x300?access_token=YOUR_MAPBOX_TOKEN`;
+    
+    mapDiv.innerHTML = `
+        &lt;div style="text-align: center; padding: 50px; background: #f0f0f0;"&gt;
+            &lt;p&gt;📍 位置：${lat.toFixed(4)}, ${lng.toFixed(4)}&lt;/p&gt;
+            &lt;p&gt;在实际项目中，这里会显示真实的地图&lt;/p&gt;
+            &lt;small&gt;建议使用 Leaflet 或 Google Maps API&lt;/small&gt;
+        &lt;/div&gt;
+    `;
+}
+
+// 开始位置监听
+function startLocationTracking() {
+    locationManager.watchPosition((position) =&gt; {
+        console.log('位置更新:', position);
+        displayLocationInfo(position);
+    });
+}
+
+// 停止位置监听
+function stopLocationTracking() {
+    locationManager.stopWatching();
+}
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 拖拽API -->
+        <section id="drag-drop" class="chapter">
+            <h2>第14章：拖拽API</h2>
+            
+            <div class="lesson">
+                <h3>14.1 文件拖拽上传</h3>
+                <p>HTML5拖拽API让用户可以直接拖拽文件到网页进行上传。</p>
+                
+                <div class="code-example">
+                    <h4>拖拽上传区域：</h4>
+                    <pre><code>&lt;div class="upload-area" id="uploadArea"&gt;
+    &lt;div class="upload-text"&gt;
+        &lt;h3&gt;📁 拖拽文件到这里&lt;/h3&gt;
+        &lt;p&gt;或者点击选择文件&lt;/p&gt;
+        &lt;input type="file" id="fileInput" multiple hidden&gt;
+        &lt;button onclick="document.getElementById('fileInput').click()"&gt;
+            选择文件
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="file-list" id="fileList"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class FileUploader {
+    constructor(dropAreaId) {
+        this.dropArea = document.getElementById(dropAreaId);
+        this.fileInput = document.getElementById('fileInput');
+        this.fileList = document.getElementById('fileList');
+        this.files = [];
+        
+        this.init();
+    }
+    
+    init() {
+        // 防止默认的拖拽行为
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName =&gt; {
+            this.dropArea.addEventListener(eventName, this.preventDefaults, false);
+            document.body.addEventListener(eventName, this.preventDefaults, false);
+        });
+        
+        // 高亮拖拽区域
+        ['dragenter', 'dragover'].forEach(eventName =&gt; {
+            this.dropArea.addEventListener(eventName, () =&gt; {
+                this.dropArea.classList.add('drag-highlight');
+            }, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName =&gt; {
+            this.dropArea.addEventListener(eventName, () =&gt; {
+                this.dropArea.classList.remove('drag-highlight');
+            }, false);
+        });
+        
+        // 处理文件拖拽
+        this.dropArea.addEventListener('drop', this.handleDrop.bind(this), false);
+        
+        // 处理文件选择
+        this.fileInput.addEventListener('change', (e) =&gt; {
+            this.handleFiles(e.target.files);
+        });
+    }
+    
+    preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    
+    handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        this.handleFiles(files);
+    }
+    
+    handleFiles(files) {
+        [...files].forEach(this.uploadFile.bind(this));
+    }
+    
+    uploadFile(file) {
+        // 验证文件类型
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'text/plain', 'application/pdf'];
+        if (!allowedTypes.includes(file.type)) {
+            alert(`不支持的文件类型: ${file.type}`);
+            return;
+        }
+        
+        // 验证文件大小（限制5MB）
+        if (file.size &gt; 5 * 1024 * 1024) {
+            alert('文件大小不能超过5MB');
+            return;
+        }
+        
+        this.files.push(file);
+        this.displayFile(file);
+    }
+    
+    displayFile(file) {
+        const fileItem = document.createElement('div');
+        fileItem.className = 'file-item';
+        
+        const fileIcon = this.getFileIcon(file.type);
+        const fileSize = this.formatFileSize(file.size);
+        
+        fileItem.innerHTML = `
+            &lt;div class="file-info"&gt;
+                &lt;span class="file-icon"&gt;${fileIcon}&lt;/span&gt;
+                &lt;div class="file-details"&gt;
+                    &lt;div class="file-name"&gt;${file.name}&lt;/div&gt;
+                    &lt;div class="file-size"&gt;${fileSize}&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button class="remove-btn" onclick="this.parentElement.parentElement.remove()"&gt;
+                    ❌
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="progress-bar"&gt;
+                &lt;div class="progress" style="width: 0%"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        `;
+        
+        this.fileList.appendChild(fileItem);
+        
+        // 模拟上传进度
+        this.simulateUpload(fileItem);
+    }
+    
+    getFileIcon(type) {
+        if (type.startsWith('image/')) return '🖼️';
+        if (type.includes('pdf')) return '📄';
+        if (type.includes('text')) return '📝';
+        if (type.includes('video')) return '🎥';
+        if (type.includes('audio')) return '🎵';
+        return '📁';
+    }
+    
+    formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    simulateUpload(fileItem) {
+        const progressBar = fileItem.querySelector('.progress');
+        let progress = 0;
+        
+        const interval = setInterval(() =&gt; {
+            progress += Math.random() * 30;
+            if (progress &gt;= 100) {
+                progress = 100;
+                clearInterval(interval);
+                fileItem.classList.add('upload-complete');
+            }
+            progressBar.style.width = progress + '%';
+        }, 200);
+    }
+}
+
+// 初始化文件上传器
+const uploader = new FileUploader('uploadArea');
+&lt;/script&gt;
+
+&lt;style&gt;
+.upload-area {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+}
+
+.upload-area.drag-highlight {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.file-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    background: white;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.file-details {
+    flex: 1;
+    text-align: left;
+}
+
+.file-name {
+    font-weight: bold;
+}
+
+.file-size {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, #007bff, #28a745);
+    transition: width 0.3s ease;
+}
+
+.upload-complete {
+    background: #f8f9fa;
+    border-color: #28a745;
+}
+&lt;/style&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- File API -->
+        <section id="file-api" class="chapter">
+            <h2>第15章：File API</h2>
+            
+            <div class="lesson">
+                <h3>15.1 文件读取和处理</h3>
+                <p>File API允许JavaScript读取用户选择的文件内容。</p>
+                
+                <div class="code-example">
+                    <h4>图片预览和文本文件读取：</h4>
+                    <pre><code>&lt;div class="file-reader-demo"&gt;
+    &lt;input type="file" id="fileSelector" accept="image/*,text/*" multiple&gt;
+    &lt;div class="preview-area" id="previewArea"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class FileReader {
+    constructor() {
+        this.fileInput = document.getElementById('fileSelector');
+        this.previewArea = document.getElementById('previewArea');
+        
+        this.fileInput.addEventListener('change', this.handleFileSelect.bind(this));
+    }
+    
+    handleFileSelect(event) {
+        const files = event.target.files;
+        this.previewArea.innerHTML = '';
+        
+        Array.from(files).forEach(file =&gt; {
+            this.processFile(file);
+        });
+    }
+    
+    processFile(file) {
+        const reader = new FileReader();
+        
+        if (file.type.startsWith('image/')) {
+            reader.onload = (e) =&gt; {
+                this.displayImage(file, e.target.result);
+            };
+            reader.readAsDataURL(file);
+        } else if (file.type.startsWith('text/')) {
+            reader.onload = (e) =&gt; {
+                this.displayText(file, e.target.result);
+            };
+            reader.readAsText(file);
+        } else {
+            reader.onload = (e) =&gt; {
+                this.displayBinary(file, e.target.result);
+            };
+            reader.readAsArrayBuffer(file);
+        }
+    }
+    
+    displayImage(file, dataUrl) {
+        const container = document.createElement('div');
+        container.className = 'file-preview image-preview';
+        
+        container.innerHTML = `
+            &lt;h4&gt;📷 ${file.name}&lt;/h4&gt;
+            &lt;img src="${dataUrl}" alt="${file.name}" style="max-width: 200px; max-height: 200px;"&gt;
+            &lt;div class="file-info"&gt;
+                &lt;p&gt;大小: ${this.formatSize(file.size)}&lt;/p&gt;
+                &lt;p&gt;类型: ${file.type}&lt;/p&gt;
+                &lt;p&gt;修改时间: ${new Date(file.lastModified).toLocaleString()}&lt;/p&gt;
+            &lt;/div&gt;
+        `;
+        
+        this.previewArea.appendChild(container);
+    }
+    
+    displayText(file, content) {
+        const container = document.createElement('div');
+        container.className = 'file-preview text-preview';
+        
+        // 限制显示内容长度
+        const displayContent = content.length &gt; 500 ? 
+            content.substring(0, 500) + '...' : content;
+        
+        container.innerHTML = `
+            &lt;h4&gt;📝 ${file.name}&lt;/h4&gt;
+            &lt;pre class="text-content"&gt;${this.escapeHtml(displayContent)}&lt;/pre&gt;
+            &lt;div class="file-info"&gt;
+                &lt;p&gt;大小: ${this.formatSize(file.size)}&lt;/p&gt;
+                &lt;p&gt;行数: ${content.split('\n').length}&lt;/p&gt;
+                &lt;p&gt;字符数: ${content.length}&lt;/p&gt;
+            &lt;/div&gt;
+        `;
+        
+        this.previewArea.appendChild(container);
+    }
+    
+    displayBinary(file, arrayBuffer) {
+        const container = document.createElement('div');
+        container.className = 'file-preview binary-preview';
+        
+        const bytes = new Uint8Array(arrayBuffer);
+        const hexString = Array.from(bytes)
+            .slice(0, 50) // 只显示前50个字节
+            .map(b =&gt; b.toString(16).padStart(2, '0'))
+            .join(' ');
+        
+        container.innerHTML = `
+            &lt;h4&gt;📄 ${file.name}&lt;/h4&gt;
+            &lt;div class="hex-content"&gt;
+                &lt;p&gt;二进制内容 (前50字节):&lt;/p&gt;
+                &lt;code&gt;${hexString}${bytes.length &gt; 50 ? '...' : ''}&lt;/code&gt;
+            &lt;/div&gt;
+            &lt;div class="file-info"&gt;
+                &lt;p&gt;大小: ${this.formatSize(file.size)}&lt;/p&gt;
+                &lt;p&gt;类型: ${file.type || 'unknown'}&lt;/p&gt;
+            &lt;/div&gt;
+        `;
+        
+        this.previewArea.appendChild(container);
+    }
+    
+    formatSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+    
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+}
+
+// 初始化文件读取器
+const fileReader = new FileReader();
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intersection Observer -->
+        <section id="intersection-observer" class="chapter">
+            <h2>第16章：Intersection Observer</h2>
+            
+            <div class="lesson">
+                <h3>16.1 元素可见性检测</h3>
+                <p>Intersection Observer API用于高效检测元素与视口的交叉状态。</p>
+                
+                <div class="code-example">
+                    <h4>懒加载图片示例：</h4>
+                    <pre><code>&lt;div class="lazy-load-demo"&gt;
+    &lt;h3&gt;🖼️ 懒加载图片演示&lt;/h3&gt;
+    &lt;div class="image-container"&gt;
+        &lt;img class="lazy-image" data-src="image1.jpg" alt="图片1"&gt;
+        &lt;img class="lazy-image" data-src="image2.jpg" alt="图片2"&gt;
+        &lt;img class="lazy-image" data-src="image3.jpg" alt="图片3"&gt;
+        &lt;img class="lazy-image" data-src="image4.jpg" alt="图片4"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class LazyLoader {
+    constructor() {
+        this.images = document.querySelectorAll('.lazy-image');
+        this.imageObserver = null;
+        
+        this.init();
+    }
+    
+    init() {
+        // 检查浏览器支持
+        if ('IntersectionObserver' in window) {
+            this.imageObserver = new IntersectionObserver(
+                this.handleIntersection.bind(this),
+                {
+                    // 当图片进入视口100px范围内时开始加载
+                    rootMargin: '100px 0px',
+                    threshold: 0.01
+                }
+            );
+            
+            // 观察所有懒加载图片
+            this.images.forEach(img =&gt; {
+                this.imageObserver.observe(img);
+            });
+        } else {
+            // 降级处理：直接加载所有图片
+            this.loadAllImages();
+        }
+    }
+    
+    handleIntersection(entries) {
+        entries.forEach(entry =&gt; {
+            if (entry.isIntersecting) {
+                this.loadImage(entry.target);
+                this.imageObserver.unobserve(entry.target);
+            }
+        });
+    }
+    
+    loadImage(img) {
+        const src = img.getAttribute('data-src');
+        if (!src) return;
+        
+        // 创建新的Image对象预加载
+        const newImg = new Image();
+        
+        newImg.onload = () =&gt; {
+            // 图片加载完成后设置src并添加动画效果
+            img.src = src;
+            img.classList.add('loaded');
+        };
+        
+        newImg.onerror = () =&gt; {
+            // 加载失败时显示占位图
+            img.src = 'data:image/svg+xml,&lt;svg xmlns="http://www.w3.org/2000/svg" width="200" height="150"&gt;&lt;rect width="200" height="150" fill="%23ddd"/&gt;&lt;text x="100" y="75" text-anchor="middle" fill="%23999"&gt;加载失败&lt;/text&gt;&lt;/svg&gt;';
+            img.classList.add('error');
+        };
+        
+        newImg.src = src;
+    }
+    
+    loadAllImages() {
+        this.images.forEach(this.loadImage.bind(this));
+    }
+}
+
+// 初始化懒加载
+const lazyLoader = new LazyLoader();
+
+// 滚动动画示例
+class ScrollAnimator {
+    constructor() {
+        this.animElements = document.querySelectorAll('.scroll-animate');
+        this.observer = null;
+        
+        this.init();
+    }
+    
+    init() {
+        if ('IntersectionObserver' in window) {
+            this.observer = new IntersectionObserver(
+                this.handleScroll.bind(this),
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                }
+            );
+            
+            this.animElements.forEach(el =&gt; {
+                this.observer.observe(el);
+            });
+        }
+    }
+    
+    handleScroll(entries) {
+        entries.forEach(entry =&gt; {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            } else {
+                entry.target.classList.remove('animate-in');
+            }
+        });
+    }
+}
+
+// 初始化滚动动画
+const scrollAnimator = new ScrollAnimator();
+&lt;/script&gt;
+
+&lt;style&gt;
+.lazy-image {
+    width: 200px;
+    height: 150px;
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    display: block;
+    margin: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+.lazy-image.error {
+    opacity: 0.5;
+}
+
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.scroll-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+&lt;/style&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web Workers -->
+        <section id="web-workers" class="chapter">
+            <h2>第17章：Web Workers</h2>
+            
+            <div class="lesson">
+                <h3>17.1 后台线程处理</h3>
+                <p>Web Workers允许在后台线程中运行JavaScript，避免阻塞主线程。</p>
+                
+                <div class="code-example">
+                    <h4>大数据处理示例：</h4>
+                    <pre><code>&lt;div class="worker-demo"&gt;
+    &lt;h3&gt;⚡ Web Workers 演示&lt;/h3&gt;
+    &lt;button onclick="startHeavyTask()"&gt;开始重任务计算&lt;/button&gt;
+    &lt;button onclick="testMainThread()"&gt;测试主线程是否阻塞&lt;/button&gt;
+    &lt;div class="results"&gt;
+        &lt;div id="workerResult"&gt;&lt;/div&gt;
+        &lt;div id="mainThreadTest"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Worker脚本内容 --&gt;
+&lt;script id="workerScript" type="text/plain"&gt;
+// 这里是Worker的代码内容
+self.addEventListener('message', function(e) {
+    const { command, data } = e.data;
+    
+    switch (command) {
+        case 'calculatePrimes':
+            const primes = calculatePrimes(data.max);
+            self.postMessage({
+                type: 'primesResult',
+                result: primes,
+                count: primes.length
+            });
+            break;
+            
+        case 'processLargeArray':
+            const processed = processArray(data.array);
+            self.postMessage({
+                type: 'arrayResult',
+                result: processed
+            });
+            break;
+    }
+});
+
+function calculatePrimes(max) {
+    const primes = [];
+    
+    for (let i = 2; i &lt;= max; i++) {
+        let isPrime = true;
+        
+        for (let j = 2; j &lt;= Math.sqrt(i); j++) {
+            if (i % j === 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        
+        if (isPrime) {
+            primes.push(i);
+        }
+        
+        // 定期发送进度更新
+        if (i % 1000 === 0) {
+            self.postMessage({
+                type: 'progress',
+                current: i,
+                max: max,
+                progress: (i / max * 100).toFixed(1)
+            });
+        }
+    }
+    
+    return primes;
+}
+
+function processArray(arr) {
+    return arr.map(item =&gt; {
+        // 模拟复杂计算
+        let result = item;
+        for (let i = 0; i &lt; 10000; i++) {
+            result = Math.sqrt(result + i) * Math.sin(i);
+        }
+        return result;
+    });
+}
+&lt;/script&gt;
+
+&lt;script&gt;
+class WorkerManager {
+    constructor() {
+        this.worker = null;
+        this.createWorker();
+    }
+    
+    createWorker() {
+        // 获取Worker脚本内容
+        const scriptContent = document.getElementById('workerScript').textContent;
+        
+        // 创建Blob URL
+        const blob = new Blob([scriptContent], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+        
+        // 创建Worker
+        this.worker = new Worker(workerUrl);
+        
+        // 监听Worker消息
+        this.worker.addEventListener('message', this.handleWorkerMessage.bind(this));
+        
+        // 监听Worker错误
+        this.worker.addEventListener('error', (error) =&gt; {
+            console.error('Worker错误:', error);
+            document.getElementById('workerResult').innerHTML = 
+                '&lt;p style="color: red;"&gt;Worker执行错误&lt;/p&gt;';
+        });
+    }
+    
+    handleWorkerMessage(e) {
+        const { type, result, count, current, max, progress } = e.data;
+        const resultDiv = document.getElementById('workerResult');
+        
+        switch (type) {
+            case 'progress':
+                resultDiv.innerHTML = `
+                    &lt;p&gt;正在计算中... ${progress}%&lt;/p&gt;
+                    &lt;div class="progress-bar"&gt;
+                        &lt;div class="progress" style="width: ${progress}%"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+                break;
+                
+            case 'primesResult':
+                resultDiv.innerHTML = `
+                    &lt;h4&gt;✅ 质数计算完成&lt;/h4&gt;
+                    &lt;p&gt;找到 ${count} 个质数&lt;/p&gt;
+                    &lt;p&gt;前10个质数: ${result.slice(0, 10).join(', ')}&lt;/p&gt;
+                    &lt;p&gt;后10个质数: ${result.slice(-10).join(', ')}&lt;/p&gt;
+                `;
+                break;
+                
+            case 'arrayResult':
+                resultDiv.innerHTML = `
+                    &lt;h4&gt;✅ 数组处理完成&lt;/h4&gt;
+                    &lt;p&gt;处理了 ${result.length} 个元素&lt;/p&gt;
+                    &lt;p&gt;示例结果: ${result.slice(0, 5).map(n =&gt; n.toFixed(2)).join(', ')}...&lt;/p&gt;
+                `;
+                break;
+        }
+    }
+    
+    calculatePrimes(max = 50000) {
+        document.getElementById('workerResult').innerHTML = 
+            '&lt;p&gt;🔄 开始计算质数...&lt;/p&gt;';
+            
+        this.worker.postMessage({
+            command: 'calculatePrimes',
+            data: { max }
+        });
+    }
+    
+    processLargeArray() {
+        const largeArray = Array.from({ length: 1000 }, (_, i) =&gt; i + 1);
+        
+        document.getElementById('workerResult').innerHTML = 
+            '&lt;p&gt;🔄 处理大型数组...&lt;/p&gt;';
+            
+        this.worker.postMessage({
+            command: 'processLargeArray',
+            data: { array: largeArray }
+        });
+    }
+    
+    terminate() {
+        if (this.worker) {
+            this.worker.terminate();
+            this.worker = null;
+        }
+    }
+}
+
+// 创建Worker管理器
+const workerManager = new WorkerManager();
+
+// 测试函数
+function startHeavyTask() {
+    workerManager.calculatePrimes(50000);
+}
+
+function testMainThread() {
+    const startTime = Date.now();
+    let counter = 0;
+    
+    const interval = setInterval(() =&gt; {
+        counter++;
+        document.getElementById('mainThreadTest').innerHTML = 
+            `&lt;p&gt;主线程测试: ${counter} (${Date.now() - startTime}ms)&lt;/p&gt;`;
+            
+        if (counter &gt;= 10) {
+            clearInterval(interval);
+            document.getElementById('mainThreadTest').innerHTML += 
+                '&lt;p style="color: green;"&gt;✅ 主线程未被阻塞！&lt;/p&gt;';
+        }
+    }, 500);
+}
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Web安全 -->
+        <section id="security" class="chapter">
+            <h2>第18章：Web安全</h2>
+            
+            <div class="lesson">
+                <h3>18.1 前端安全防护</h3>
+                <p>了解常见的Web安全威胁和防护措施，保护用户数据安全。</p>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 常见的前端安全威胁和防护方法？</h4>
+                        <div class="interview-answer">
+                            <p><strong>1. XSS（跨站脚本攻击）</strong></p>
+                            <div class="code-example">
+                                <h5>防护方法：</h5>
+                                <pre><code>// 输入验证和输出编码
+function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+}
+
+// 使用textContent而不是innerHTML
+element.textContent = userInput; // 安全
+// element.innerHTML = userInput; // 危险
+
+// CSP（内容安全策略）
+// 在HTML head中添加：
+// &lt;meta http-equiv="Content-Security-Policy" 
+//       content="default-src 'self'; script-src 'self'"&gt;</code></pre>
+                            </div>
+                            
+                            <p><strong>2. CSRF（跨站请求伪造）</strong></p>
+                            <div class="code-example">
+                                <h5>防护方法：</h5>
+                                <pre><code>// 使用CSRF Token
+function makeSecureRequest(url, data) {
+    const token = document.querySelector('meta[name="csrf-token"]').content;
+    
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': token
+        },
+        body: JSON.stringify(data)
+    });
+}
+
+// 验证Referer头
+// SameSite Cookie属性
+document.cookie = "sessionId=abc123; SameSite=Strict; Secure";</code></pre>
+                            </div>
+                            
+                            <p><strong>3. 点击劫持</strong></p>
+                            <div class="code-example">
+                                <h5>防护方法：</h5>
+                                <pre><code>// X-Frame-Options头部
+// 在服务器响应中添加：
+// X-Frame-Options: DENY
+// X-Frame-Options: SAMEORIGIN
+
+// 使用JavaScript检测
+if (window.top !== window.self) {
+    // 页面被嵌入iframe中
+    document.body.style.display = 'none';
+    alert('检测到页面被嵌入，可能存在安全风险');
+}</code></pre>
+                            </div>
+                            
+                            <p><strong>4. 敏感信息泄露</strong></p>
+                            <div class="code-example">
+                                <h5>防护方法：</h5>
+                                <pre><code>// 不在前端存储敏感信息
+// 错误示例：
+// localStorage.setItem('password', userPassword);
+// localStorage.setItem('creditCard', cardNumber);
+
+// 正确示例：只存储必要的非敏感信息
+localStorage.setItem('theme', 'dark');
+localStorage.setItem('language', 'zh-CN');
+
+// 敏感操作需要重新验证
+function performSensitiveAction() {
+    const confirmed = confirm('此操作需要确认，是否继续？');
+    if (confirmed) {
+        // 发送到服务器进行验证
+        verifyUserIdentity().then(isValid =&gt; {
+            if (isValid) {
+                // 执行敏感操作
+            }
+        });
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>18.2 数据加密和安全传输</h3>
+                
+                <div class="code-example">
+                    <h4>前端数据保护示例：</h4>
+                    <pre><code>// 简单的数据混淆（注意：这不是真正的加密）
+class DataProtector {
+    constructor() {
+        this.key = 'mySecretKey123';
+    }
+    
+    // 简单的XOR混淆
+    obfuscate(data) {
+        let result = '';
+        for (let i = 0; i &lt; data.length; i++) {
+            result += String.fromCharCode(
+                data.charCodeAt(i) ^ this.key.charCodeAt(i % this.key.length)
+            );
+        }
+        return btoa(result); // Base64编码
+    }
+    
+    deobfuscate(obfuscatedData) {
+        const decoded = atob(obfuscatedData);
+        let result = '';
+        for (let i = 0; i &lt; decoded.length; i++) {
+            result += String.fromCharCode(
+                decoded.charCodeAt(i) ^ this.key.charCodeAt(i % this.key.length)
+            );
+        }
+        return result;
+    }
+    
+    // 安全的API请求
+    async secureRequest(url, data) {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest' // 防止CSRF
+                },
+                body: JSON.stringify(data),
+                credentials: 'same-origin' // 只发送同源Cookie
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            return await response.json();
+        } catch (error) {
+            console.error('请求失败:', error);
+            throw error;
+        }
+    }
+}
+
+// 使用Web Crypto API进行真正的加密（现代浏览器）
+class ModernCrypto {
+    async generateKey() {
+        return await window.crypto.subtle.generateKey(
+            {
+                name: 'AES-GCM',
+                length: 256
+            },
+            true,
+            ['encrypt', 'decrypt']
+        );
+    }
+    
+    async encrypt(data, key) {
+        const iv = window.crypto.getRandomValues(new Uint8Array(12));
+        const encodedData = new TextEncoder().encode(data);
+        
+        const encryptedData = await window.crypto.subtle.encrypt(
+            {
+                name: 'AES-GCM',
+                iv: iv
+            },
+            key,
+            encodedData
+        );
+        
+        return {
+            iv: Array.from(iv),
+            data: Array.from(new Uint8Array(encryptedData))
+        };
+    }
+    
+    async decrypt(encryptedObj, key) {
+        const iv = new Uint8Array(encryptedObj.iv);
+        const data = new Uint8Array(encryptedObj.data);
+        
+        const decryptedData = await window.crypto.subtle.decrypt(
+            {
+                name: 'AES-GCM',
+                iv: iv
+            },
+            key,
+            data
+        );
+        
+        return new TextDecoder().decode(decryptedData);
+    }
+}
+
+// 使用示例
+const protector = new DataProtector();
+const sensitiveData = "用户敏感信息";
+const obfuscated = protector.obfuscate(sensitiveData);
+console.log('混淆后:', obfuscated);
+console.log('还原后:', protector.deobfuscate(obfuscated));</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 综合项目 -->
+        <section id="projects" class="chapter">
+            <h2>第19章：综合项目</h2>
+            
+            <div class="project-list">
+                <div class="project-card">
+                    <h3>项目1：个人简历页面</h3>
+                    <p>使用HTML5语义化标签创建一个完整的个人简历页面</p>
+                    <div class="project-features">
+                        <span class="feature">语义化结构</span>
+                        <span class="feature">表单联系方式</span>
+                        <span class="feature">多媒体内容</span>
+                    </div>
+                    <button onclick="startProject('resume')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目2：新闻文章页面</h3>
+                    <p>创建一个结构良好的新闻文章页面，包含评论系统</p>
+                    <div class="project-features">
+                        <span class="feature">article标签</span>
+                        <span class="feature">时间元素</span>
+                        <span class="feature">评论表单</span>
+                    </div>
+                    <button onclick="startProject('news')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目3：产品展示页面</h3>
+                    <p>使用现代HTML5特性创建产品展示页面</p>
+                    <div class="project-features">
+                        <span class="feature">响应式图片</span>
+                        <span class="feature">视频展示</span>
+                        <span class="feature">表单验证</span>
+                    </div>
+                    <button onclick="startProject('product')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card featured-project">
+                    <div class="project-badge">💼 综合实战</div>
+                    <h3>项目4：个人博客网站</h3>
+                    <p>运用HTML、CSS、JavaScript创建一个完整的个人博客，包含文章管理、评论互动等功能</p>
+                    
+                    <div class="project-description">
+                        <h4>📋 项目功能：</h4>
+                        <ul>
+                            <li><strong>文章展示</strong>：使用语义化HTML结构展示博客文章</li>
+                            <li><strong>响应式布局</strong>：CSS Grid和Flexbox实现自适应设计</li>
+                            <li><strong>交互功能</strong>：JavaScript实现评论、点赞、搜索等</li>
+                            <li><strong>数据存储</strong>：localStorage保存用户偏好和草稿</li>
+                            <li><strong>主题切换</strong>：明暗主题模式切换</li>
+                            <li><strong>文章分类</strong>：标签系统和分类筛选</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <h4>🛠️ 技术栈应用：</h4>
+                        <div class="tech-items">
+                            <div class="tech-item html">
+                                <span class="tech-icon">🌐</span>
+                                <div class="tech-details">
+                                    <strong>HTML5</strong>
+                                    <p>语义化标签、文章结构、表单设计、多媒体嵌入</p>
+                                </div>
+                            </div>
+                            <div class="tech-item css">
+                                <span class="tech-icon">🎨</span>
+                                <div class="tech-details">
+                                    <strong>CSS3</strong>
+                                    <p>响应式布局、主题切换、动画效果、字体排版</p>
+                                </div>
+                            </div>
+                            <div class="tech-item js">
+                                <span class="tech-icon">⚡</span>
+                                <div class="tech-details">
+                                    <strong>JavaScript</strong>
+                                    <p>交互功能、评论系统、搜索筛选、数据存储</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-features">
+                        <span class="feature priority-high">拖拽交互</span>
+                        <span class="feature priority-high">数据持久化</span>
+                        <span class="feature priority-medium">图表可视化</span>
+                        <span class="feature priority-medium">响应式设计</span>
+                        <span class="feature priority-low">搜索过滤</span>
+                    </div>
+                    
+                    <div class="project-demo">
+                        <h4>🎮 项目预览：</h4>
+                        <div class="demo-mockup">
+                            <div class="demo-header">
+                                <div class="demo-title">✅ 智能任务管理器</div>
+                                <div class="demo-stats">
+                                    <span class="stat">📊 完成率 75%</span>
+                                    <span class="stat">⏰ 今日任务 3/8</span>
+                                </div>
+                            </div>
+                            <div class="demo-content">
+                                <div class="demo-column">
+                                    <div class="demo-column-title">📝 待办</div>
+                                    <div class="demo-task high">学习JavaScript异步编程</div>
+                                    <div class="demo-task medium">优化网站性能</div>
+                                </div>
+                                <div class="demo-column">
+                                    <div class="demo-column-title">🔄 进行中</div>
+                                    <div class="demo-task high">完成项目代码审查</div>
+                                </div>
+                                <div class="demo-column">
+                                    <div class="demo-column-title">✅ 已完成</div>
+                                    <div class="demo-task completed">设计用户界面</div>
+                                    <div class="demo-task completed">编写HTML结构</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-learning">
+                        <h4>🎯 学习收获：</h4>
+                        <div class="learning-points">
+                            <div class="learning-point">
+                                <span class="point-icon">💡</span>
+                                <span>掌握前端三大技术的协同工作方式</span>
+                            </div>
+                            <div class="learning-point">
+                                <span class="point-icon">🚀</span>
+                                <span>学会构建完整的单页应用(SPA)</span>
+                            </div>
+                            <div class="learning-point">
+                                <span class="point-icon">🎨</span>
+                                <span>提升用户交互设计和体验优化能力</span>
+                            </div>
+                            <div class="learning-point">
+                                <span class="point-icon">🔧</span>
+                                <span>熟练使用现代前端开发最佳实践</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="startProject('task-manager')" class="btn-primary featured-btn">
+                        🚀 开始综合项目
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 学习助手 -->
+    <div id="learning-assistant" class="assistant">
+        <button id="assistant-toggle" class="assistant-btn">💡</button>
+        <div id="assistant-panel" class="assistant-panel">
+            <h3>学习助手</h3>
+            <div id="assistant-tips">
+                <p>点击左侧导航开始学习，完成练习来提升技能！</p>
+            </div>
+            <div class="assistant-progress">
+                <p>学习进度：<span id="chapter-progress">0/19</span></p>
+                <div class="progress-chapters">
+                    <span class="chapter-dot" data-chapter="1"></span>
+                    <span class="chapter-dot" data-chapter="2"></span>
+                    <span class="chapter-dot" data-chapter="3"></span>
+                    <span class="chapter-dot" data-chapter="4"></span>
+                    <span class="chapter-dot" data-chapter="5"></span>
+                    <span class="chapter-dot" data-chapter="6"></span>
+                    <span class="chapter-dot" data-chapter="7"></span>
+                    <span class="chapter-dot" data-chapter="8"></span>
+                    <span class="chapter-dot" data-chapter="9"></span>
+                    <span class="chapter-dot" data-chapter="10"></span>
+                    <span class="chapter-dot" data-chapter="11"></span>
+                    <span class="chapter-dot" data-chapter="12"></span>
+                    <span class="chapter-dot" data-chapter="13"></span>
+                    <span class="chapter-dot" data-chapter="14"></span>
+                    <span class="chapter-dot" data-chapter="15"></span>
+                    <span class="chapter-dot" data-chapter="16"></span>
+                    <span class="chapter-dot" data-chapter="17"></span>
+                    <span class="chapter-dot" data-chapter="18"></span>
+                    <span class="chapter-dot" data-chapter="19"></span>
+                </div>
+                <div class="progress-actions">
+                    <button onclick="window.learningSystem?.resetProgress()" class="reset-progress-btn">
+                        🔄 重置进度
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/learn.js"></script>
+    <script>
+        // HTML特定的功能
+        function runHTML(editorId, previewId) {
+            const code = document.getElementById(editorId).value;
+            const preview = document.getElementById(previewId);
+            
+            // 创建iframe来安全地显示HTML
+            const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '300px';
+            iframe.style.border = '1px solid #ddd';
+            
+            preview.innerHTML = '';
+            preview.appendChild(iframe);
+            
+            const doc = iframe.contentDocument || iframe.contentWindow.document;
+            doc.open();
+            doc.write(code);
+            doc.close();
+        }
+        
+        function resetEditor(editorId) {
+            const editor = document.getElementById(editorId);
+            const originalCode = editor.defaultValue || editor.getAttribute('data-original');
+            if (originalCode) {
+                editor.value = originalCode;
+            }
+        }
+        
+        function startProject(projectType) {
+            // 这里可以跳转到具体的项目页面
+            alert(`即将开始 ${projectType} 项目！`);
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 保存原始代码
+            document.querySelectorAll('.code-editor').forEach(editor => {
+                editor.setAttribute('data-original', editor.value);
+            });
+        });
+    </script>
+</body>
+</html>

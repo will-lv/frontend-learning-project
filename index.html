@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="前端学习项目-实践项目-前端技术栈-进阶技术">
+    <meta name="keywords" content="前端开发, 学习项目, 前端技术栈, 进阶技术">
+    <meta name="author" content="前端学习者">
+    <title>前端学习项目</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>正在加载前端学习项目...</p>
+    </div>
+
+    <!-- 主题切换按钮 -->
+    <button id="theme-toggle" aria-label="切换主题">🌙</button>
+
+    <!-- 滚动进度条 -->
+    <div id="scroll-progress"></div>
+
+    <!-- 头部导航 -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>前端学习之路</h1>
+                    <span class="subtitle">现代前端开发技术栈</span>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#projects">项目</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 首页区域 -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">欢迎来到前端学习世界</h1>
+                <p class="hero-subtitle">从零开始，掌握前端开发技术</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('about')">开始学习</button>
+                    <button class="btn-secondary" onclick="window.open('https://github.com', '_blank')">查看GitHub</button>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于区域 -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">关于这个项目</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>这是一个系统学习前端开发的项目，旨在帮助初学者从零开始掌握现代前端开发技术。</p>
+                        <p>项目主要包括了前端技术栈、开发工具、进阶技术等核心知识点，通过实际项目练习巩固所学知识。</p>
+                        
+                        <div class="learning-path">
+                            <h3>学习路径</h3>
+                            <ul>
+                                <li>📝 HTML5 语义化标签和最佳实践</li>
+                                <li>🎨 CSS3 现代布局和动画效果</li>
+                                <li>⚡ JavaScript ES6+ 和 DOM 操作</li>
+                                <li>📱 响应式设计和移动端适配</li>
+                                <li>🔧 现代开发工具和工作流</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="3">0</div>
+                            <div class="stat-label">核心技术</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="10">0</div>
+                            <div class="stat-label">实践项目</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">知识点</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能区域 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">前端技术栈</h2>
+                <div class="tech-stack-intro">
+                    <p>从基础的前端三件套开始，逐步掌握现代前端开发的完整技术体系</p>
+                </div>
+                
+                <!-- 基础三件套 -->
+                <div class="skill-category">
+                    <h3 class="category-title">📚 基础三件套</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="html" onclick="openSkillPage('html')">
+                            <div class="skill-icon">🌐</div>
+                            <h4>HTML5</h4>
+                            <p>Web Components、PWA、Canvas、API</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">0% (0/19)</span>
+                            <div class="skill-action">
+                                <span class="learn-btn">开始学习 →</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card" data-skill="css" onclick="openSkillPage('css')">
+                            <div class="skill-icon">🎨</div>
+                            <h4>CSS3</h4>
+                            <p>Container Queries、CSS-in-JS、架构</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">0% (0/20)</span>
+                            <div class="skill-action">
+                                <span class="learn-btn">开始学习 →</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card" data-skill="javascript" onclick="openSkillPage('javascript')">
+                            <div class="skill-icon">⚡</div>
+                            <h4>JavaScript</h4>
+                            <p>ES6+、TypeScript、框架基础、面试宝典</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">0% (0/20)</span>
+                            <div class="skill-action">
+                                <span class="learn-btn">开始学习 →</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 前端框架 -->
+                <div class="skill-category">
+                    <h3 class="category-title">⚛️ 前端框架</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card coming-soon" data-skill="react">
+                            <div class="skill-icon">⚛️</div>
+                            <h4>React</h4>
+                            <p>组件化开发、状态管理、Hooks</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="vue">
+                            <div class="skill-icon">💚</div>
+                            <h4>Vue.js</h4>
+                            <p>渐进式框架、双向绑定、组合式API</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="angular">
+                            <div class="skill-icon">🅰️</div>
+                            <h4>Angular</h4>
+                            <p>企业级框架、TypeScript、依赖注入</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 开发工具与工程化 -->
+                <div class="skill-category">
+                    <h3 class="category-title">🛠️ 开发工具与工程化</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="tools" onclick="openSkillPage('tools')">
+                            <div class="skill-icon">🔧</div>
+                            <h4>开发工具</h4>
+                            <p>VS Code、Git、Chrome DevTools</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">0% (0/6)</span>
+                            <div class="skill-action">
+                                <span class="learn-btn">开始学习 →</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="webpack">
+                            <div class="skill-icon">📦</div>
+                            <h4>构建工具</h4>
+                            <p>Webpack、Vite、Rollup、Parcel</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="nodejs">
+                            <div class="skill-icon">🟢</div>
+                            <h4>Node.js</h4>
+                            <p>服务端JavaScript、npm、Express</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 进阶技术 -->
+                <div class="skill-category">
+                    <h3 class="category-title">🚀 进阶技术</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card coming-soon" data-skill="typescript">
+                            <div class="skill-icon">🔷</div>
+                            <h4>TypeScript</h4>
+                            <p>类型系统、接口、泛型、装饰器</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="testing">
+                            <div class="skill-icon">🧪</div>
+                            <h4>测试</h4>
+                            <p>Jest、Testing Library、E2E测试</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                        
+                        <div class="skill-card coming-soon" data-skill="performance">
+                            <div class="skill-icon">⚡</div>
+                            <h4>性能优化</h4>
+                            <p>代码分割、懒加载、缓存策略</p>
+                            <div class="skill-progress">
+                                <div class="progress-bar" data-progress="0"></div>
+                            </div>
+                            <span class="progress-text">即将推出</span>
+                            <div class="coming-soon-badge">Coming Soon</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目区域 -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">学习项目</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">📄</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>个人简历页面</h3>
+                            <p>使用HTML5语义化标签构建的响应式个人简历</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML5</span>
+                                <span class="tech-tag">CSS3</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-small" onclick="openProject('resume')">查看</button>
+                                <button class="btn-small btn-outline" onclick="viewCode('resume')">代码</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">🧮</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>计算器应用</h3>
+                            <p>功能完整的计算器，支持基础运算和键盘操作</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">CSS Grid</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-small" onclick="openProject('calculator')">查看</button>
+                                <button class="btn-small btn-outline" onclick="viewCode('calculator')">代码</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <div class="project-placeholder">📝</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>待办事项</h3>
+                            <p>支持增删改查的待办事项管理应用</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">LocalStorage</span>
+                            </div>
+                            <div class="project-links">
+                                <button class="btn-small" onclick="openProject('todo')">查看</button>
+                                <button class="btn-small btn-outline" onclick="viewCode('todo')">代码</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>前端学习项目</h3>
+                    <p>系统学习前端开发，从基础到进阶</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于</a></li>
+                        <li><a href="#skills">技能</a></li>
+                        <li><a href="#projects">项目</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>学习资源</h4>
+                    <ul>
+                        <li><a href="https://developer.mozilla.org" target="_blank">MDN文档</a></li>
+                        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+                        <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://codepen.io" target="_blank">CodePen</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>联系方式</h4>
+                    <div class="contact-info">
+                        <p>📧 <a href="mailto:about0807@163.com">about0807@163.com</a></p>
+                        <p>💼 <a href="https://github.com/frontend-learner" target="_blank">GitHub</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 前端学习项目. 保留所有权利.</p>
+                <p>本项目开源，欢迎 Star 和 Fork！</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" aria-label="返回顶部">↑</button>
+
+    <!-- Toast 消息容器 -->
+    <div id="toast-container"></div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

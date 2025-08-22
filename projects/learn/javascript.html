@@ -1,0 +1,2719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 学习教程 - 前端三件套学习项目</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/learn.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <style>
+        /* JavaScript演示专用样式 */
+        .js-demo {
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #fef9e7;
+        }
+        
+        .output-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            min-height: 40px;
+            border: 1px solid #34495e;
+        }
+        
+        .interactive-demo {
+            background: #e8f4f8;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .demo-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .demo-input {
+            padding: 0.5rem;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .variable-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .variable-card {
+            background: white;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .variable-card h5 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+        }
+        
+        .code-inline {
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            border: 1px solid #e9ecef;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* ADHD友好的导航分组样式 */
+        .nav-section {
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .nav-section h4 {
+            margin: 0 0 0.8rem 0;
+            font-size: 0.9rem;
+            color: #495057;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-section ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-section li {
+            margin-bottom: 0.3rem;
+        }
+        
+        .nav-section a {
+            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-section a:hover {
+            background: rgba(0, 123, 255, 0.1);
+            transform: translateX(3px);
+        }
+        
+        /* 进度指示器样式 */
+        .progress-indicator {
+            position: sticky;
+            top: 10px;
+            background: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e3f2fd;
+        }
+        
+        .progress-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0deg, #e0e0e0 0deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 0 auto 0.5rem;
+        }
+        
+        .concept-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .concept-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .concept-card h4 {
+            margin: 0 0 1rem 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="learn-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="back-btn">← 返回首页</a>
+            <h1>JavaScript 学习教程</h1>
+            <div class="progress-indicator">
+                <span id="progress-text">进度: 0%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+        <nav class="chapter-nav">
+            <h3>🎯 学习目录</h3>
+            <div class="nav-section">
+                <h4>📚 基础篇</h4>
+                <ul>
+                    <li><a href="#basics" data-chapter="1">🔤 数据类型与变量</a></li>
+                    <li><a href="#functions" data-chapter="2">🎯 函数与作用域</a></li>
+                    <li><a href="#objects" data-chapter="3">📦 对象与数组</a></li>
+                    <li><a href="#dom" data-chapter="4">🎪 DOM操作</a></li>
+                    <li><a href="#events" data-chapter="5">⚡ 事件处理</a></li>
+                    <li><a href="#async" data-chapter="6">🔄 异步编程</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h4>🚀 进阶篇</h4>
+                <ul>
+                    <li><a href="#es6" data-chapter="7">✨ ES6+新特性</a></li>
+                    <li><a href="#modules" data-chapter="8">📁 模块化开发</a></li>
+                    <li><a href="#errors" data-chapter="9">🛠️ 错误处理</a></li>
+                    <li><a href="#regex" data-chapter="10">🔍 正则表达式</a></li>
+                    <li><a href="#ajax" data-chapter="11">🌐 网络请求</a></li>
+                    <li><a href="#storage" data-chapter="12">💾 数据存储</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h4>💡 实战篇</h4>
+                <ul>
+                    <li><a href="#debugging" data-chapter="13">🐛 调试技巧</a></li>
+                    <li><a href="#performance" data-chapter="14">⚡ 性能优化</a></li>
+                    <li><a href="#typescript" data-chapter="15">🎨 TypeScript入门</a></li>
+                    <li><a href="#frameworks" data-chapter="16">🏗️ 框架基础</a></li>
+                    <li><a href="#tools" data-chapter="17">🔧 开发工具</a></li>
+                    <li><a href="#testing" data-chapter="18">🧪 代码测试</a></li>
+                </ul>
+            </div>
+            <div class="nav-section">
+                <h4>🎓 项目篇</h4>
+                <ul>
+                    <li><a href="#projects" data-chapter="19">💼 综合项目</a></li>
+                    <li><a href="#interview" data-chapter="20">🎯 面试宝典</a></li>
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="learn-content">
+        <!-- JavaScript基础 -->
+        <section id="basics" class="chapter">
+            <h2>第1章：JavaScript基础与类型系统</h2>
+            
+            <div class="lesson">
+                <h3>1.1 数据类型详解</h3>
+                <p>JavaScript有8种基本数据类型，理解类型系统是掌握JavaScript的基础。</p>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ JavaScript有哪些数据类型？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <p><strong>基本类型（原始类型）7种：</strong></p>
+                            <ul>
+                                <li><strong>Number</strong>：数字类型，包括整数和浮点数</li>
+                                <li><strong>String</strong>：字符串类型</li>
+                                <li><strong>Boolean</strong>：布尔类型，true/false</li>
+                                <li><strong>undefined</strong>：未定义</li>
+                                <li><strong>null</strong>：空值</li>
+                                <li><strong>Symbol</strong>：唯一标识符（ES6+）</li>
+                                <li><strong>BigInt</strong>：大整数类型（ES2020+）</li>
+                            </ul>
+                            <p><strong>引用类型1种：</strong></p>
+                            <ul>
+                                <li><strong>Object</strong>：对象类型，包括普通对象、数组、函数等</li>
+                            </ul>
+                            
+                            <div class="code-example">
+                                <pre><code>// 检测数据类型的方法
+console.log(typeof 42);              // "number"
+console.log(typeof "Hello");         // "string"
+console.log(typeof true);            // "boolean"
+console.log(typeof undefined);       // "undefined"
+console.log(typeof null);            // "object" (历史遗留bug)
+console.log(typeof Symbol());        // "symbol"
+console.log(typeof 123n);            // "bigint"
+console.log(typeof {});              // "object"
+console.log(typeof []);              // "object"
+console.log(typeof function(){});    // "function"
+
+// 更准确的类型检测
+console.log(Object.prototype.toString.call(null));     // "[object Null]"
+console.log(Object.prototype.toString.call([]));       // "[object Array]"
+console.log(Array.isArray([]));                        // true</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.2 类型转换与比较</h3>
+                <p>JavaScript的类型转换是面试中的高频考点，包括隐式转换和显式转换。</p>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ == 和 === 的区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特性</th>
+                                            <th>== (相等)</th>
+                                            <th>=== (严格相等)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>类型转换</td>
+                                            <td>会进行类型转换</td>
+                                            <td>不进行类型转换</td>
+                                        </tr>
+                                        <tr>
+                                            <td>比较规则</td>
+                                            <td>值相等即可</td>
+                                            <td>值和类型都必须相等</td>
+                                        </tr>
+                                        <tr>
+                                            <td>性能</td>
+                                            <td>较慢（需要转换）</td>
+                                            <td>较快（直接比较）</td>
+                                        </tr>
+                                        <tr>
+                                            <td>推荐使用</td>
+                                            <td>一般不推荐</td>
+                                            <td>强烈推荐</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <div class="code-example">
+                                <pre><code>// == 的隐式转换示例
+console.log(1 == "1");        // true (字符串转数字)
+console.log(true == 1);       // true (布尔转数字)
+console.log(null == undefined); // true (特殊规则)
+console.log(0 == false);      // true (布尔转数字)
+console.log("" == false);     // true (多步转换)
+
+// === 严格比较
+console.log(1 === "1");       // false (类型不同)
+console.log(true === 1);      // false (类型不同)
+console.log(null === undefined); // false (类型不同)
+console.log(0 === false);     // false (类型不同)
+
+// 特殊情况
+console.log(NaN == NaN);      // false
+console.log(NaN === NaN);     // false
+console.log(Object.is(NaN, NaN)); // true
+
+console.log(+0 === -0);       // true
+console.log(Object.is(+0, -0)); // false</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ JavaScript的类型转换规则？</h4>
+                        <div class="interview-answer">
+                            <p><strong>转换规则：</strong></p>
+                            
+                            <p><strong>1. 转为字符串：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// 显式转换
+String(123);        // "123"
+String(true);       // "true"
+String(null);       // "null"
+String(undefined);  // "undefined"
+
+// 隐式转换
+123 + "";          // "123"
+true + "";         // "true"</code></pre>
+                            </div>
+                            
+                            <p><strong>2. 转为数字：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// 显式转换
+Number("123");      // 123
+Number("123.45");   // 123.45
+Number("");         // 0
+Number("abc");      // NaN
+Number(true);       // 1
+Number(false);      // 0
+Number(null);       // 0
+Number(undefined);  // NaN
+
+// 隐式转换
++"123";            // 123
+"123" * 1;         // 123
+"123" - 0;         // 123</code></pre>
+                            </div>
+                            
+                            <p><strong>3. 转为布尔值：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// Falsy值（转为false）
+Boolean(0);         // false
+Boolean(-0);        // false
+Boolean(NaN);       // false
+Boolean("");        // false
+Boolean(null);      // false
+Boolean(undefined); // false
+Boolean(false);     // false
+
+// Truthy值（转为true）
+Boolean(1);         // true
+Boolean("0");       // true (非空字符串)
+Boolean([]);        // true (空数组)
+Boolean({});        // true (空对象)</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="variable-demo">
+                    <div class="variable-card">
+                        <h5>字符串 (String)</h5>
+                        <code class="code-inline">let name = "张三";</code>
+                        <p>用于存储文本数据</p>
+                    </div>
+                    
+                    <div class="variable-card">
+                        <h5>数字 (Number)</h5>
+                        <code class="code-inline">let age = 25;</code>
+                        <p>用于存储整数和浮点数</p>
+                    </div>
+                    
+                    <div class="variable-card">
+                        <h5>布尔值 (Boolean)</h5>
+                        <code class="code-inline">let isActive = true;</code>
+                        <p>只能是true或false</p>
+                    </div>
+                    
+                    <div class="variable-card">
+                        <h5>数组 (Array)</h5>
+                        <code class="code-inline">let colors = ["红", "绿", "蓝"];</code>
+                        <p>用于存储多个值</p>
+                    </div>
+                    
+                    <div class="variable-card">
+                        <h5>对象 (Object)</h5>
+                        <code class="code-inline">let user = {name: "李四"};</code>
+                        <p>用于存储键值对</p>
+                    </div>
+                    
+                    <div class="variable-card">
+                        <h5>空值 (Null/Undefined)</h5>
+                        <code class="code-inline">let data = null;</code>
+                        <p>表示没有值</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>变量声明方式：</h4>
+                    <pre><code>// var - 函数作用域（不推荐）
+var oldWay = "旧方式";
+
+// let - 块级作用域（推荐）
+let modernWay = "现代方式";
+
+// const - 常量（推荐用于不变的值）
+const PI = 3.14159;
+
+// ES6解构赋值
+const person = {name: "张三", age: 25};
+const {name, age} = person;
+
+const colors = ["红", "绿", "蓝"];
+const [first, second] = colors;</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>变量类型检测：</h4>
+                    <div class="demo-controls">
+                        <input type="text" id="typeInput" class="demo-input" placeholder="输入任何值">
+                        <button onclick="checkType()" class="demo-button">检测类型</button>
+                    </div>
+                    <div id="typeOutput" class="output-box">在上方输入值，点击按钮查看类型</div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.2 运算符与控制结构</h3>
+                
+                <div class="code-example">
+                    <h4>常用运算符：</h4>
+                    <pre><code>// 算术运算符
+let sum = 10 + 5;        // 加法
+let difference = 10 - 5; // 减法
+let product = 10 * 5;    // 乘法
+let quotient = 10 / 5;   // 除法
+let remainder = 10 % 3;  // 取余
+
+// 比较运算符
+5 == "5"   // true (类型转换)
+5 === "5"  // false (严格相等)
+5 != "5"   // false
+5 !== "5"  // true
+5 > 3      // true
+5 <= 10    // true
+
+// 逻辑运算符
+true && false  // false (与)
+true || false  // true (或)
+!true         // false (非)</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>条件语句：</h4>
+                    <pre><code>// if...else 语句
+if (age >= 18) {
+    console.log("成年人");
+} else if (age >= 13) {
+    console.log("青少年");
+} else {
+    console.log("儿童");
+}
+
+// 三元运算符
+const status = age >= 18 ? "成年" : "未成年";
+
+// switch 语句
+switch (day) {
+    case "周一":
+        console.log("工作日");
+        break;
+    case "周六":
+    case "周日":
+        console.log("周末");
+        break;
+    default:
+        console.log("其他");
+}</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>循环语句：</h4>
+                    <pre><code>// for 循环
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// while 循环
+let count = 0;
+while (count < 5) {
+    console.log(count);
+    count++;
+}
+
+// for...of 循环（遍历数组）
+const fruits = ["苹果", "香蕉", "橙子"];
+for (const fruit of fruits) {
+    console.log(fruit);
+}
+
+// for...in 循环（遍历对象属性）
+const person = {name: "张三", age: 25};
+for (const key in person) {
+    console.log(key, person[key]);
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 函数与作用域 -->
+        <section id="functions" class="chapter">
+            <h2>第2章：函数、作用域与闭包</h2>
+            
+            <div class="lesson">
+                <h3>2.1 函数定义与this指向</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ JavaScript中this的指向规则？</h4>
+                        <div class="interview-answer">
+                            <p><strong>this指向的4种情况：</strong></p>
+                            
+                            <p><strong>1. 默认绑定（全局调用）</strong></p>
+                            <div class="code-example">
+                                <pre><code>function foo() {
+    console.log(this); // 严格模式下是undefined，非严格模式是window
+}
+foo(); // 普通函数调用
+
+// 严格模式
+"use strict";
+function bar() {
+    console.log(this); // undefined
+}
+bar();</code></pre>
+                            </div>
+                            
+                            <p><strong>2. 隐式绑定（对象方法调用）</strong></p>
+                            <div class="code-example">
+                                <pre><code>const obj = {
+    name: '张三',
+    greet() {
+        console.log(this.name); // '张三'
+    }
+};
+obj.greet(); // this指向obj
+
+// 注意：赋值后丢失绑定
+const fn = obj.greet;
+fn(); // this指向window(或undefined)</code></pre>
+                            </div>
+                            
+                            <p><strong>3. 显式绑定（call/apply/bind）</strong></p>
+                            <div class="code-example">
+                                <pre><code>function introduce() {
+    console.log(`我是${this.name}`);
+}
+
+const person1 = { name: '李四' };
+const person2 = { name: '王五' };
+
+// call方法
+introduce.call(person1); // '我是李四'
+introduce.call(person2); // '我是王五'
+
+// apply方法（参数是数组）
+introduce.apply(person1); // '我是李四'
+
+// bind方法（返回新函数）
+const boundFn = introduce.bind(person1);
+boundFn(); // '我是李四'</code></pre>
+                            </div>
+                            
+                            <p><strong>4. new绑定（构造函数）</strong></p>
+                            <div class="code-example">
+                                <pre><code>function Person(name) {
+    this.name = name;
+    console.log(this); // 新创建的对象
+}
+
+const p1 = new Person('赵六'); // this指向新对象p1
+
+// 箭头函数没有this
+const ArrowFunc = (name) => {
+    this.name = name; // this继承自外层作用域
+};
+// new ArrowFunc('test'); // TypeError</code></pre>
+                            </div>
+                            
+                            <p><strong>优先级：new > bind > call/apply > 对象方法 > 默认绑定</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.2 闭包详解</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 什么是闭包？闭包的作用和注意事项？</h4>
+                        <div class="interview-answer">
+                            <p><strong>闭包定义：</strong></p>
+                            <p>闭包是指有权访问另一个函数作用域中变量的函数。即使外部函数已经返回，内部函数仍然可以访问外部函数的变量。</p>
+                            
+                            <p><strong>1. 基本闭包示例：</strong></p>
+                            <div class="code-example">
+                                <pre><code>function outerFunction(x) {
+    // 外部函数的变量
+    let outerVariable = x;
+    
+    // 内部函数（闭包）
+    function innerFunction(y) {
+        console.log(outerVariable + y); // 访问外部变量
+    }
+    
+    return innerFunction;
+}
+
+const myClosure = outerFunction(10);
+myClosure(5); // 输出：15
+
+// 即使outerFunction执行完毕，innerFunction仍能访问outerVariable</code></pre>
+                            </div>
+                            
+                            <p><strong>2. 闭包的实际应用：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// 模拟私有变量
+function createCounter() {
+    let count = 0; // 私有变量
+    
+    return {
+        increment() {
+            count++;
+            return count;
+        },
+        decrement() {
+            count--;
+            return count;
+        },
+        getCount() {
+            return count;
+        }
+    };
+}
+
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.getCount());  // 2
+// console.log(count); // ReferenceError: count未定义</code></pre>
+                            </div>
+                            
+                            <p><strong>3. 循环中的闭包陷阱：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// 错误示例
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i); // 输出：3 3 3
+    }, 1000);
+}
+
+// 解决方案1：使用let
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => {
+        console.log(i); // 输出：0 1 2
+    }, 1000);
+}
+
+// 解决方案2：使用闭包
+for (var i = 0; i < 3; i++) {
+    (function(j) {
+        setTimeout(() => {
+            console.log(j); // 输出：0 1 2
+        }, 1000);
+    })(i);
+}
+
+// 解决方案3：使用bind
+for (var i = 0; i < 3; i++) {
+    setTimeout(function(j) {
+        console.log(j); // 输出：0 1 2
+    }.bind(null, i), 1000);
+}</code></pre>
+                            </div>
+                            
+                            <p><strong>闭包的优缺点：</strong></p>
+                            <ul>
+                                <li><strong>优点</strong>：
+                                    <ul>
+                                        <li>可以实现数据封装和私有变量</li>
+                                        <li>可以创建函数工厂</li>
+                                        <li>在回调函数中保持状态</li>
+                                    </ul>
+                                </li>
+                                <li><strong>缺点</strong>：
+                                    <ul>
+                                        <li>容易造成内存泄漏（变量无法被垃圾回收）</li>
+                                        <li>性能开销（需要维护额外的作用域链）</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>函数的不同定义方式：</h4>
+                    <pre><code>// 函数声明
+function greet(name) {
+    return `你好，${name}！`;
+}
+
+// 函数表达式
+const greet2 = function(name) {
+    return `你好，${name}！`;
+};
+
+// 箭头函数（ES6）
+const greet3 = (name) => `你好，${name}！`;
+
+// 简化的箭头函数
+const double = x => x * 2;
+
+// 无参数的箭头函数
+const getTime = () => new Date();
+
+// 多行箭头函数
+const processData = (data) => {
+    const processed = data.filter(item => item > 0);
+    return processed.map(item => item * 2);
+};</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>函数计算器：</h4>
+                    <div class="demo-controls">
+                        <input type="number" id="num1" class="demo-input" placeholder="数字1" value="10">
+                        <input type="number" id="num2" class="demo-input" placeholder="数字2" value="5">
+                        <button onclick="calculate('add')" class="demo-button">加法</button>
+                        <button onclick="calculate('subtract')" class="demo-button">减法</button>
+                        <button onclick="calculate('multiply')" class="demo-button">乘法</button>
+                        <button onclick="calculate('divide')" class="demo-button">除法</button>
+                    </div>
+                    <div id="calcOutput" class="output-box">选择运算操作</div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.2 作用域与闭包</h3>
+                
+                <div class="code-example">
+                    <h4>作用域示例：</h4>
+                    <pre><code>// 全局作用域
+let globalVar = "我是全局变量";
+
+function outerFunction() {
+    // 函数作用域
+    let outerVar = "我是外层函数变量";
+    
+    function innerFunction() {
+        // 内层函数可以访问外层变量
+        let innerVar = "我是内层函数变量";
+        console.log(globalVar); // 可以访问
+        console.log(outerVar);  // 可以访问
+        console.log(innerVar);  // 可以访问
+    }
+    
+    // console.log(innerVar); // 错误！无法访问
+    return innerFunction;
+}
+
+// 闭包示例
+function createCounter() {
+    let count = 0;
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const counter = createCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 对象与数组 -->
+        <section id="objects" class="chapter">
+            <h2>第3章：对象、原型链与继承</h2>
+            
+            <div class="lesson">
+                <h3>3.1 原型链与继承</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ JavaScript的原型链是什么？如何实现继承？</h4>
+                        <div class="interview-answer">
+                            <p><strong>原型链概念：</strong></p>
+                            <p>每个JavaScript对象都有一个原型对象，原型对象也可能有自己的原型，这样形成的链条就是原型链。</p>
+                            
+                            <p><strong>1. 原型链基础：</strong></p>
+                            <div class="code-example">
+                                <pre><code>// 构造函数
+function Person(name) {
+    this.name = name;
+}
+
+// 在原型上添加方法
+Person.prototype.sayHello = function() {
+    console.log(`Hello, I'm ${this.name}`);
+};
+
+const person1 = new Person('张三');
+const person2 = new Person('李四');
+
+person1.sayHello(); // "Hello, I'm 张三"
+person2.sayHello(); // "Hello, I'm 李四"
+
+// 原型链查找
+console.log(person1.__proto__ === Person.prototype); // true
+console.log(Person.prototype.__proto__ === Object.prototype); // true
+console.log(Object.prototype.__proto__ === null); // true</code></pre>
+                            </div>
+                            
+                            <p><strong>2. ES6 Class继承（推荐）：</strong></p>
+                            <div class="code-example">
+                                <pre><code>class Animal {
+    constructor(name) {
+                        this.name = name;
+    }
+    
+    eat() {
+        console.log(`${this.name} is eating`);
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name); // 调用父类构造函数
+        this.breed = breed;
+    }
+    
+    bark() {
+        console.log(`${this.name} is barking`);
+    }
+}
+
+const dog1 = new Dog('旺财', '金毛');
+dog1.eat();  // "旺财 is eating"
+dog1.bark(); // "旺财 is barking"</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>3.2 对象操作</h3>
+                
+                <div class="code-example">
+                    <h4>对象的创建和操作：</h4>
+                    <pre><code>// 对象字面量
+const person = {
+    name: "张三",
+    age: 25,
+    city: "北京",
+    hobbies: ["读书", "游泳", "编程"]
+};
+
+// 访问属性
+console.log(person.name);        // 点符号
+console.log(person["age"]);      // 方括号
+
+// 添加属性
+person.email = "zhangsan@example.com";
+person["phone"] = "13800138000";
+
+// 删除属性
+delete person.city;
+
+// 检查属性是否存在
+console.log("name" in person);           // true
+console.log(person.hasOwnProperty("name")); // true
+
+// 获取所有键
+console.log(Object.keys(person));
+// 获取所有值
+console.log(Object.values(person));
+// 获取键值对
+console.log(Object.entries(person));</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>ES6对象新特性：</h4>
+                    <pre><code>// 属性简写
+const name = "李四";
+const age = 30;
+const person = {name, age}; // 等同于 {name: name, age: age}
+
+// 方法简写
+const calculator = {
+    add(a, b) {
+        return a + b;
+    },
+    // 等同于
+    subtract: function(a, b) {
+        return a - b;
+    }
+};
+
+// 计算属性名
+const prop = "dynamicKey";
+const obj = {
+    [prop]: "动态属性值",
+    [`${prop}2`]: "另一个动态属性"
+};
+
+// 对象解构
+const {name, age, city = "未知"} = person;</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>3.2 数组操作</h3>
+                
+                <div class="code-example">
+                    <h4>数组常用方法：</h4>
+                    <pre><code>const fruits = ["苹果", "香蕉", "橙子"];
+
+// 添加元素
+fruits.push("葡萄");        // 末尾添加
+fruits.unshift("草莓");     // 开头添加
+
+// 删除元素
+fruits.pop();              // 删除末尾元素
+fruits.shift();            // 删除开头元素
+
+// 查找元素
+console.log(fruits.indexOf("苹果"));     // 返回索引
+console.log(fruits.includes("香蕉"));    // 返回布尔值
+
+// 数组遍历
+fruits.forEach((fruit, index) => {
+    console.log(`${index}: ${fruit}`);
+});
+
+// 数组转换
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(num => num * 2);
+const evens = numbers.filter(num => num % 2 === 0);
+const sum = numbers.reduce((total, num) => total + num, 0);
+
+// 数组排序
+const names = ["张三", "李四", "王五"];
+names.sort(); // 字母排序
+numbers.sort((a, b) => a - b); // 数字排序</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>数组操作演示：</h4>
+                    <div class="demo-controls">
+                        <input type="text" id="arrayInput" class="demo-input" placeholder="输入元素（逗号分隔）" value="1,2,3,4,5">
+                        <button onclick="processArray('map')" class="demo-button">乘以2</button>
+                        <button onclick="processArray('filter')" class="demo-button">过滤偶数</button>
+                        <button onclick="processArray('reduce')" class="demo-button">求和</button>
+                        <button onclick="processArray('sort')" class="demo-button">排序</button>
+                    </div>
+                    <div id="arrayOutput" class="output-box">数组操作结果将在这里显示</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOM操作 -->
+        <section id="dom" class="chapter">
+            <h2>第4章：🎪 DOM操作基础</h2>
+            
+            <div class="lesson">
+                <h3>4.1 选择和操作DOM元素</h3>
+                
+                <div class="code-example">
+                    <h4>选择DOM元素：</h4>
+                    <pre><code>// 根据ID选择
+const element = document.getElementById("myId");
+
+// 根据类名选择
+const elements = document.getElementsByClassName("myClass");
+const element2 = document.querySelector(".myClass"); // 第一个
+const allElements = document.querySelectorAll(".myClass"); // 所有
+
+// 根据标签选择
+const paragraphs = document.getElementsByTagName("p");
+const firstP = document.querySelector("p");
+
+// 复杂选择器
+const specificElement = document.querySelector("#container .highlight");
+const nestedElements = document.querySelectorAll("div > p:first-child");</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>操作DOM元素：</h4>
+                    <pre><code>// 修改内容
+element.textContent = "新的文本内容";
+element.innerHTML = "&lt;strong&gt;HTML内容&lt;/strong&gt;";
+
+// 修改样式
+element.style.color = "red";
+element.style.backgroundColor = "yellow";
+element.style.fontSize = "18px";
+
+// 修改类名
+element.classList.add("newClass");
+element.classList.remove("oldClass");
+element.classList.toggle("activeClass");
+element.classList.contains("someClass");
+
+// 修改属性
+element.setAttribute("data-value", "123");
+const value = element.getAttribute("data-value");
+element.removeAttribute("data-value");
+
+// 创建和插入元素
+const newElement = document.createElement("div");
+newElement.textContent = "新创建的元素";
+document.body.appendChild(newElement);
+
+// 删除元素
+element.remove();
+parent.removeChild(child);</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>DOM操作演示：</h4>
+                    <div id="domDemo" style="padding: 1rem; border: 2px solid #ccc; border-radius: 5px; margin: 1rem 0;">
+                        <p id="demoText">这是一个演示段落</p>
+                        <div id="demoBox" style="width: 100px; height: 100px; background: #3498db; margin: 1rem 0; transition: all 0.3s;"></div>
+                    </div>
+                    <div class="demo-controls">
+                        <button onclick="changeDOMText()" class="demo-button">改变文本</button>
+                        <button onclick="changeDOMStyle()" class="demo-button">改变样式</button>
+                        <button onclick="addDOMElement()" class="demo-button">添加元素</button>
+                        <button onclick="removeDOMElement()" class="demo-button">删除元素</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>4.2 事件处理</h3>
+                
+                <div class="code-example">
+                    <h4>事件监听：</h4>
+                    <pre><code>// 添加事件监听器
+element.addEventListener("click", function(event) {
+    console.log("元素被点击了！");
+    console.log("点击位置：", event.clientX, event.clientY);
+});
+
+// 箭头函数形式
+element.addEventListener("click", (event) => {
+    event.preventDefault(); // 阻止默认行为
+    event.stopPropagation(); // 阻止事件冒泡
+});
+
+// 常见事件类型
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("页面加载完成");
+});
+
+input.addEventListener("input", (e) => {
+    console.log("输入值：", e.target.value);
+});
+
+button.addEventListener("mouseover", () => {
+    console.log("鼠标悬停");
+});
+
+window.addEventListener("resize", () => {
+    console.log("窗口大小改变");
+});
+
+// 移除事件监听器
+function handleClick(event) {
+    console.log("点击处理");
+}
+element.addEventListener("click", handleClick);
+element.removeEventListener("click", handleClick);</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>事件演示：</h4>
+                    <div class="demo-controls">
+                        <button id="eventBtn1" class="demo-button">点击事件</button>
+                        <button id="eventBtn2" class="demo-button">鼠标悬停</button>
+                        <input type="text" id="eventInput" class="demo-input" placeholder="输入监听">
+                    </div>
+                    <div id="eventOutput" class="output-box">事件信息将在这里显示</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 事件处理 -->
+        <section id="events" class="chapter">
+            <h2>第5章：⚡ 事件处理专精</h2>
+            
+            <div class="lesson">
+                <h3>5.1 🎯 事件基础（3分钟掌握）</h3>
+                <p><strong>💡 快速理解：</strong>事件就像"触发器"，用户做了什么，网页就能响应什么！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🎮 互动体验：常见事件类型</h4>
+                    <div class="demo-controls">
+                        <button onclick="showEventInfo('click')" class="demo-button">👆 点击事件</button>
+                        <button onmouseover="showEventInfo('hover')" class="demo-button">🖱️ 悬停事件</button>
+                        <input type="text" onkeyup="showEventInfo('keyup')" placeholder="⌨️ 输入事件" class="demo-input">
+                    </div>
+                    <div id="eventDemo" class="output-box">等待你的操作...</div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>📝 基础语法（超简单）</h4>
+                    <pre><code>// 🎯 方法1：直接在HTML中
+&lt;button onclick="alert('Hello!')"&gt;点我&lt;/button&gt;
+
+// 🎯 方法2：JavaScript中添加
+button.onclick = function() {
+    alert('Hello!');
+};
+
+// 🎯 方法3：现代推荐方式
+button.addEventListener('click', function() {
+    alert('Hello!');
+});</code></pre>
+                </div>
+                
+                <script>
+                function showEventInfo(type) {
+                    const info = {
+                        'click': '🎉 你触发了点击事件！这是最常用的事件类型。',
+                        'hover': '✨ 鼠标悬停事件被触发！适合做提示效果。',
+                        'keyup': '⌨️ 键盘事件被触发！每次按键都会响应。'
+                    };
+                    document.getElementById('eventDemo').innerHTML = info[type];
+                }
+                </script>
+            </div>
+
+            <div class="lesson">
+                <h3>5.2 🚀 事件对象（1分钟理解）</h3>
+                <p><strong>💡 核心概念：</strong>每个事件都会携带信息，就像快递包裹的详情单！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🔍 探索事件对象</h4>
+                    <button onclick="exploreEvent(event)" class="demo-button">点击查看事件详情</button>
+                    <div id="eventDetails" class="output-box">点击按钮查看事件对象信息</div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>📊 事件对象常用属性</h4>
+                    <pre><code>button.addEventListener('click', function(event) {
+    console.log('事件类型:', event.type);        // 'click'
+    console.log('目标元素:', event.target);      // 被点击的元素
+    console.log('鼠标位置:', event.clientX, event.clientY);
+    
+    // 🛑 阻止默认行为
+    event.preventDefault();
+    
+    // 🛑 阻止事件冒泡
+    event.stopPropagation();
+});</code></pre>
+                </div>
+                
+                <script>
+                function exploreEvent(event) {
+                    const details = `
+                        🎯 事件类型: ${event.type}<br>
+                        📍 鼠标位置: (${event.clientX}, ${event.clientY})<br>
+                        🎪 目标元素: ${event.target.tagName}<br>
+                        ⏰ 时间戳: ${event.timeStamp}ms
+                    `;
+                    document.getElementById('eventDetails').innerHTML = details;
+                }
+                </script>
+            </div>
+
+            <div class="lesson">
+                <h3>5.3 🎪 事件冒泡与捕获（重要概念）</h3>
+                <p><strong>💡 形象比喻：</strong>就像水泡从深水浮到水面，事件从内层元素传播到外层！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🫧 冒泡演示</h4>
+                    <div onclick="logEvent('外层')" style="padding: 20px; background: #e3f2fd; border-radius: 10px;">
+                        外层 DIV
+                        <div onclick="logEvent('中层')" style="padding: 15px; background: #bbdefb; border-radius: 8px; margin: 10px;">
+                            中层 DIV
+                            <button onclick="logEvent('按钮')" class="demo-button">点击我看冒泡</button>
+                        </div>
+                    </div>
+                    <div id="bubbleLog" class="output-box">点击按钮观察事件冒泡过程</div>
+                </div>
+                
+                <script>
+                let bubbleCount = 0;
+                function logEvent(element) {
+                    bubbleCount++;
+                    const log = document.getElementById('bubbleLog');
+                    log.innerHTML += `第${bubbleCount}步: ${element}被点击<br>`;
+                    if (bubbleCount >= 3) {
+                        setTimeout(() => {
+                            log.innerHTML = '点击按钮观察事件冒泡过程';
+                            bubbleCount = 0;
+                        }, 3000);
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 异步编程 -->
+        <section id="async" class="chapter">
+            <h2>第6章：🔄 异步编程与事件循环</h2>
+            
+            <div class="lesson">
+                <h3>5.1 事件循环机制</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ JavaScript事件循环是如何工作的？</h4>
+                        <div class="interview-answer">
+                            <p><strong>事件循环组成部分：</strong></p>
+                            <ul>
+                                <li><strong>调用栈（Call Stack）</strong>：执行同步代码</li>
+                                <li><strong>Web APIs</strong>：浏览器提供的异步API</li>
+                                <li><strong>任务队列（Task Queue）</strong>：宏任务队列</li>
+                                <li><strong>微任务队列（Microtask Queue）</strong>：优先级更高</li>
+                            </ul>
+                            
+                            <p><strong>执行顺序：</strong></p>
+                            <div class="code-example">
+                                <pre><code>console.log('1'); // 同步代码
+
+setTimeout(() => {
+    console.log('2'); // 宏任务
+}, 0);
+
+Promise.resolve().then(() => {
+    console.log('3'); // 微任务
+});
+
+console.log('4'); // 同步代码
+
+// 输出顺序：1 4 3 2
+// 解释：同步代码 → 微任务 → 宏任务</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>5.2 Promise与async/await</h3>
+                
+                <div class="code-example">
+                    <h4>Promise基础：</h4>
+                    <pre><code>// 创建Promise
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const success = true;
+        if (success) {
+            resolve("操作成功！");
+        } else {
+            reject("操作失败！");
+        }
+    }, 1000);
+});
+
+// 使用Promise
+promise
+    .then(result => {
+        console.log(result);
+        return "下一步";
+    })
+    .then(next => {
+        console.log(next);
+    })
+    .catch(error => {
+        console.error(error);
+    })
+    .finally(() => {
+        console.log("无论成功失败都会执行");
+    });
+
+// Promise.all - 并行执行
+const promise1 = fetch("/api/data1");
+const promise2 = fetch("/api/data2");
+Promise.all([promise1, promise2])
+    .then(results => {
+        console.log("所有请求完成", results);
+    });</code></pre>
+                </div>
+
+                <div class="code-example">
+                    <h4>async/await语法：</h4>
+                    <pre><code>// async函数返回Promise
+async function fetchData() {
+    try {
+        const response = await fetch("/api/data");
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("获取数据失败：", error);
+        throw error;
+    }
+}
+
+// 使用async/await
+async function main() {
+    try {
+        const result = await fetchData();
+        console.log("数据：", result);
+    } catch (error) {
+        console.log("处理错误：", error);
+    }
+}
+
+// 箭头函数形式
+const getData = async () => {
+    const data = await fetchData();
+    return data;
+};
+
+// 并行执行
+async function fetchMultiple() {
+    try {
+        const [data1, data2] = await Promise.all([
+            fetch("/api/data1"),
+            fetch("/api/data2")
+        ]);
+        console.log("并行获取完成");
+    } catch (error) {
+        console.error("并行获取失败", error);
+    }
+}</code></pre>
+                </div>
+
+                <div class="interactive-demo">
+                    <h4>异步操作演示：</h4>
+                    <div class="demo-controls">
+                        <button onclick="simulateAsync('promise')" class="demo-button">Promise演示</button>
+                        <button onclick="simulateAsync('async')" class="demo-button">Async/Await演示</button>
+                        <button onclick="simulateAsync('parallel')" class="demo-button">并行执行演示</button>
+                    </div>
+                    <div id="asyncOutput" class="output-box">异步操作结果将在这里显示</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ES6+新特性 -->
+        <section id="es6" class="chapter">
+            <h2>第7章：✨ ES6+现代语法</h2>
+            
+            <div class="lesson">
+                <h3>7.1 🎯 箭头函数（2分钟掌握）</h3>
+                <p><strong>💡 一句话总结：</strong>更简洁的函数写法，还能自动绑定this！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🔄 语法对比体验</h4>
+                    <div class="demo-controls">
+                        <button onclick="showArrowDemo('old')" class="demo-button">📜 传统写法</button>
+                        <button onclick="showArrowDemo('new')" class="demo-button">✨ 箭头函数</button>
+                        <button onclick="showArrowDemo('both')" class="demo-button">🔄 对比</button>
+                    </div>
+                    <div id="arrowDemo" class="output-box">点击按钮查看不同写法</div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>🎨 箭头函数的多种形态</h4>
+                    <pre><code>// 🎯 基础形态
+const add = (a, b) => a + b;
+
+// 🎯 单参数（省略括号）
+const double = x => x * 2;
+
+// 🎯 无参数
+const greet = () => 'Hello!';
+
+// 🎯 多行函数体
+const calculate = (x, y) => {
+    const sum = x + y;
+    return sum * 2;
+};
+
+// 🎯 返回对象（注意括号）
+const person = name => ({ name, age: 18 });</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>7.2 🎁 解构赋值（超实用）</h3>
+                <p><strong>💡 生活比喻：</strong>就像从包装盒里取出你想要的物品！</p>
+                
+                <div class="interactive-demo">
+                    <h4>📦 解构演示</h4>
+                    <button onclick="demoDestructuring()" class="demo-button">🎯 体验解构魔法</button>
+                    <div id="destructuringDemo" class="output-box">点击体验解构赋值</div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>🔧 解构的各种玩法</h4>
+                    <pre><code>// 🎯 数组解构
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+console.log(first);  // 1
+console.log(rest);   // [3, 4, 5]
+
+// 🎯 对象解构
+const { name, age, city = '北京' } = person;
+
+// 🎯 重命名
+const { name: fullName } = person;
+
+// 🎯 函数参数解构
+function greet({ name, age }) {
+    return `Hi ${name}, you are ${age}`;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>7.3 🔄 模板字符串（告别拼接烦恼）</h3>
+                <p><strong>💡 核心优势：</strong>用反引号包裹，${}插入变量，支持多行！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🎭 模板字符串体验</h4>
+                    <input type="text" id="nameInput" placeholder="输入你的名字" class="demo-input">
+                    <input type="number" id="ageInput" placeholder="输入你的年龄" class="demo-input">
+                    <button onclick="generateTemplate()" class="demo-button">🎨 生成介绍</button>
+                    <div id="templateDemo" class="output-box">等待你的输入...</div>
+                </div>
+                
+                <script>
+                function showArrowDemo(type) {
+                    const demos = {
+                        'old': `// 传统函数写法
+function add(a, b) {
+    return a + b;
+}
+结果: ${(function(a,b){return a+b})(3,5)}`,
+                        'new': `// 箭头函数写法  
+const add = (a, b) => a + b;
+
+结果: ${((a,b) => a+b)(3,5)}`,
+                        'both': `传统: function(a,b){return a+b}
+箭头: (a, b) => a + b
+
+✨ 箭头函数更简洁！`
+                    };
+                    document.getElementById('arrowDemo').innerHTML = demos[type];
+                }
+                
+                function demoDestructuring() {
+                    const person = { name: '小明', age: 25, city: '上海' };
+                    const numbers = [10, 20, 30, 40];
+                    
+                    const result = `
+📦 原始数据:
+person = ${JSON.stringify(person)}
+numbers = [${numbers.join(', ')}]
+
+✨ 解构后:
+const { name, age } = person;
+// name = "${person.name}", age = ${person.age}
+
+const [first, second] = numbers;
+// first = ${numbers[0]}, second = ${numbers[1]}
+                    `;
+                    document.getElementById('destructuringDemo').innerHTML = result;
+                }
+                
+                function generateTemplate() {
+                    const name = document.getElementById('nameInput').value || '匿名';
+                    const age = document.getElementById('ageInput').value || '未知';
+                    
+                    const template = `
+🎭 使用模板字符串生成：
+
+\`大家好，我是 \${name}，今年 \${age} 岁。
+很高兴认识大家！\`
+
+📊 最终结果：
+大家好，我是 ${name}，今年 ${age} 岁。
+很高兴认识大家！
+                    `;
+                    document.getElementById('templateDemo').innerHTML = template;
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 模块化开发 -->
+        <section id="modules" class="chapter">
+            <h2>第8章：📁 模块化开发</h2>
+            
+            <div class="lesson">
+                <h3>8.1 🧩 什么是模块化（1分钟理解）</h3>
+                <p><strong>💡 生活比喻：</strong>就像乐高积木，每个模块负责一个功能，组合起来完成复杂任务！</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📤 导出 Export</h4>
+                        <p>把函数或变量分享给其他文件</p>
+                        <code>export const name = 'value';</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📥 导入 Import</h4>
+                        <p>从其他文件获取需要的功能</p>
+                        <code>import { name } from './file.js';</code>
+                    </div>
+                </div>
+                
+                <div class="code-example">
+                    <h4>🎯 模块化示例</h4>
+                    <pre><code>// 📄 math.js (工具模块)
+export const add = (a, b) => a + b;
+export const multiply = (a, b) => a * b;
+export default function subtract(a, b) {
+    return a - b;
+}
+
+// 📄 main.js (主程序)
+import subtract, { add, multiply } from './math.js';
+
+console.log(add(5, 3));      // 8
+console.log(multiply(4, 2)); // 8
+console.log(subtract(10, 3)); // 7</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 错误处理 -->
+        <section id="errors" class="chapter">
+            <h2>第9章：🛠️ 错误处理</h2>
+            
+            <div class="lesson">
+                <h3>9.1 🚨 Try-Catch（程序员的救命稻草）</h3>
+                <p><strong>💡 核心理念：</strong>预料错误可能发生，提前准备应对方案！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🎮 错误处理体验</h4>
+                    <div class="demo-controls">
+                        <button onclick="testErrorHandling('safe')" class="demo-button">✅ 安全操作</button>
+                        <button onclick="testErrorHandling('error')" class="demo-button">❌ 错误操作</button>
+                        <button onclick="testErrorHandling('async')" class="demo-button">⏰ 异步错误</button>
+                    </div>
+                    <div id="errorDemo" class="output-box">点击按钮测试错误处理</div>
+                </div>
+                
+                <script>
+                function testErrorHandling(type) {
+                    const output = document.getElementById('errorDemo');
+                    
+                    try {
+                        switch(type) {
+                            case 'safe':
+                                const result = JSON.parse('{"name": "test"}');
+                                output.innerHTML = '✅ 操作成功！数据解析正常：' + JSON.stringify(result);
+                                break;
+                            case 'error':
+                                const badResult = JSON.parse('invalid json');
+                                output.innerHTML = '这行不会执行';
+                                break;
+                            case 'async':
+                                Promise.reject('异步错误').catch(err => {
+                                    output.innerHTML = '🔄 捕获异步错误：' + err;
+                                });
+                                return;
+                        }
+                    } catch (error) {
+                        output.innerHTML = `🛠️ 错误被捕获：${error.message}`;
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 正则表达式 -->
+        <section id="regex" class="chapter">
+            <h2>第10章：🔍 正则表达式</h2>
+            
+            <div class="lesson">
+                <h3>10.1 🎯 正则基础（5分钟入门）</h3>
+                <p><strong>💡 什么是正则：</strong>用特殊符号描述文本模式的工具，像搜索的"超级版本"！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🔎 正则实时测试</h4>
+                    <input type="text" id="regexPattern" placeholder="输入正则表达式，如：\\d+" class="demo-input">
+                    <input type="text" id="testString" placeholder="输入测试字符串" class="demo-input">
+                    <button onclick="testRegex()" class="demo-button">🎯 测试匹配</button>
+                    <div id="regexResult" class="output-box">输入正则表达式和测试字符串</div>
+                </div>
+                
+                <script>
+                function testRegex() {
+                    const pattern = document.getElementById('regexPattern').value;
+                    const testStr = document.getElementById('testString').value;
+                    const output = document.getElementById('regexResult');
+                    
+                    if (!pattern || !testStr) {
+                        output.innerHTML = '⚠️ 请输入正则表达式和测试字符串';
+                        return;
+                    }
+                    
+                    try {
+                        const regex = new RegExp(pattern, 'g');
+                        const matches = testStr.match(regex);
+                        
+                        if (matches) {
+                            output.innerHTML = `✅ 匹配成功！找到 ${matches.length} 个结果：<br>${matches.join(', ')}`;
+                        } else {
+                            output.innerHTML = '❌ 没有找到匹配项';
+                        }
+                    } catch (error) {
+                        output.innerHTML = `🚨 正则表达式语法错误：${error.message}`;
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 网络请求 -->
+        <section id="ajax" class="chapter">
+            <h2>第11章：🌐 网络请求(Ajax)</h2>
+            
+            <div class="lesson">
+                <h3>11.1 🚀 Fetch API（现代请求方式）</h3>
+                <p><strong>💡 核心理念：</strong>向服务器要数据，就像在网上点外卖！</p>
+                
+                <div class="interactive-demo">
+                    <h4>📡 网络请求体验</h4>
+                    <button onclick="demoFetch('get')" class="demo-button">📥 GET请求</button>
+                    <button onclick="demoFetch('post')" class="demo-button">📤 POST请求</button>
+                    <button onclick="demoFetch('error')" class="demo-button">❌ 错误处理</button>
+                    <div id="fetchDemo" class="output-box">点击按钮体验网络请求</div>
+                </div>
+                
+                <script>
+                async function demoFetch(type) {
+                    const output = document.getElementById('fetchDemo');
+                    output.innerHTML = '🔄 请求中...';
+                    
+                    try {
+                        switch(type) {
+                            case 'get':
+                                // 模拟GET请求
+                                setTimeout(() => {
+                                    output.innerHTML = `✅ GET请求成功！
+                                    <br>📊 获取到用户数据：
+                                    <br>{ "id": 1, "name": "小明", "email": "xiaoming@example.com" }`;
+                                }, 1000);
+                                break;
+                            case 'post':
+                                setTimeout(() => {
+                                    output.innerHTML = `✅ POST请求成功！
+                                    <br>📝 数据已提交到服务器
+                                    <br>🎯 响应状态：201 Created`;
+                                }, 1200);
+                                break;
+                            case 'error':
+                                setTimeout(() => {
+                                    output.innerHTML = `❌ 请求失败！
+                                    <br>🚨 错误信息：Network Error
+                                    <br>💡 建议：检查网络连接`;
+                                }, 800);
+                                break;
+                        }
+                    } catch (error) {
+                        output.innerHTML = `🛠️ 捕获到错误：${error.message}`;
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 数据存储 -->
+        <section id="storage" class="chapter">
+            <h2>第12章：💾 数据存储</h2>
+            
+            <div class="lesson">
+                <h3>12.1 🏪 LocalStorage（浏览器小仓库）</h3>
+                <p><strong>💡 生活比喻：</strong>就像你的私人小仓库，刷新页面数据还在！</p>
+                
+                <div class="interactive-demo">
+                    <h4>💼 存储体验</h4>
+                    <input type="text" id="storageKey" placeholder="键名(key)" class="demo-input">
+                    <input type="text" id="storageValue" placeholder="值(value)" class="demo-input">
+                    <div class="demo-controls">
+                        <button onclick="saveToStorage()" class="demo-button">💾 保存</button>
+                        <button onclick="loadFromStorage()" class="demo-button">📖 读取</button>
+                        <button onclick="clearStorage()" class="demo-button">🗑️ 清空</button>
+                    </div>
+                    <div id="storageDemo" class="output-box">存储操作结果将显示这里</div>
+                </div>
+                
+                <script>
+                function saveToStorage() {
+                    const key = document.getElementById('storageKey').value;
+                    const value = document.getElementById('storageValue').value;
+                    const output = document.getElementById('storageDemo');
+                    
+                    if (!key || !value) {
+                        output.innerHTML = '⚠️ 请输入键名和值';
+                        return;
+                    }
+                    
+                    localStorage.setItem(key, value);
+                    output.innerHTML = `✅ 保存成功！<br>键：${key}<br>值：${value}`;
+                }
+                
+                function loadFromStorage() {
+                    const key = document.getElementById('storageKey').value;
+                    const output = document.getElementById('storageDemo');
+                    
+                    if (!key) {
+                        output.innerHTML = '⚠️ 请输入要读取的键名';
+                        return;
+                    }
+                    
+                    const value = localStorage.getItem(key);
+                    if (value) {
+                        output.innerHTML = `📖 读取成功！<br>键：${key}<br>值：${value}`;
+                    } else {
+                        output.innerHTML = `❌ 未找到键"${key}"对应的值`;
+                    }
+                }
+                
+                function clearStorage() {
+                    localStorage.clear();
+                    document.getElementById('storageDemo').innerHTML = '🗑️ 所有存储数据已清空';
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 调试技巧 -->
+        <section id="debugging" class="chapter">
+            <h2>第13章：🐛 调试技巧</h2>
+            
+            <div class="lesson">
+                <h3>13.1 🔍 Console调试（程序员的X光）</h3>
+                <p><strong>💡 调试心态：</strong>Bug不是敌人，是帮你改进代码的老师！</p>
+                
+                <div class="interactive-demo">
+                    <h4>🔧 调试工具箱</h4>
+                    <div class="demo-controls">
+                        <button onclick="demoConsole('log')" class="demo-button">📝 console.log</button>
+                        <button onclick="demoConsole('error')" class="demo-button">🚨 console.error</button>
+                        <button onclick="demoConsole('table')" class="demo-button">📊 console.table</button>
+                        <button onclick="demoConsole('time')" class="demo-button">⏱️ 性能测试</button>
+                    </div>
+                    <div id="debugDemo" class="output-box">打开浏览器控制台查看输出</div>
+                </div>
+                
+                <script>
+                function demoConsole(type) {
+                    const output = document.getElementById('debugDemo');
+                    
+                    switch(type) {
+                        case 'log':
+                            console.log('🎯 这是普通日志信息');
+                            console.log('变量值：', { name: '测试', age: 25 });
+                            output.innerHTML = '📝 已输出日志信息到控制台';
+                            break;
+                        case 'error':
+                            console.error('🚨 这是错误信息');
+                            console.warn('⚠️ 这是警告信息');
+                            output.innerHTML = '🚨 已输出错误信息到控制台';
+                            break;
+                        case 'table':
+                            const users = [
+                                { name: '小明', age: 25, city: '北京' },
+                                { name: '小红', age: 23, city: '上海' }
+                            ];
+                            console.table(users);
+                            output.innerHTML = '📊 已输出表格数据到控制台';
+                            break;
+                        case 'time':
+                            console.time('性能测试');
+                            // 模拟耗时操作
+                            setTimeout(() => {
+                                console.timeEnd('性能测试');
+                            }, 100);
+                            output.innerHTML = '⏱️ 正在进行性能测试...';
+                            break;
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 性能优化 -->
+        <section id="performance" class="chapter">
+            <h2>第14章：⚡ 性能优化</h2>
+            
+            <div class="lesson">
+                <h3>14.1 🚀 性能优化原则（让代码飞起来）</h3>
+                <p><strong>💡 优化理念：</strong>好的性能就像好的用户体验，用户感觉不到，但很舒服！</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>⚡ 减少DOM操作</h4>
+                        <p>批量修改DOM，避免频繁重绘</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔄 函数节流防抖</h4>
+                        <p>控制函数执行频率</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📦 资源懒加载</h4>
+                        <p>按需加载，提升首屏速度</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>💾 缓存优化</h4>
+                        <p>合理使用缓存减少请求</p>
+                    </div>
+                </div>
+                
+                <div class="interactive-demo">
+                    <h4>🎮 性能对比体验</h4>
+                    <div class="demo-controls">
+                        <button onclick="performanceTest('bad')" class="demo-button">🐌 低效代码</button>
+                        <button onclick="performanceTest('good')" class="demo-button">🚀 优化代码</button>
+                    </div>
+                    <div id="performanceDemo" class="output-box">点击按钮对比性能差异</div>
+                </div>
+                
+                <script>
+                function performanceTest(type) {
+                    const output = document.getElementById('performanceDemo');
+                    
+                    if (type === 'bad') {
+                        console.time('低效代码');
+                        // 模拟低效的DOM操作
+                        for (let i = 0; i < 1000; i++) {
+                            const div = document.createElement('div');
+                            div.textContent = `Item ${i}`;
+                            // 每次都操作DOM（低效）
+                        }
+                        console.timeEnd('低效代码');
+                        output.innerHTML = '🐌 低效代码执行完成，查看控制台时间';
+                    } else {
+                        console.time('优化代码');
+                        // 模拟优化的批量操作
+                        const fragment = document.createDocumentFragment();
+                        for (let i = 0; i < 1000; i++) {
+                            const div = document.createElement('div');
+                            div.textContent = `Item ${i}`;
+                            fragment.appendChild(div);
+                        }
+                        // 一次性添加（高效）
+                        console.timeEnd('优化代码');
+                        output.innerHTML = '🚀 优化代码执行完成，查看控制台时间对比';
+                    }
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- TypeScript入门 -->
+        <section id="typescript" class="chapter">
+            <h2>第15章：🎨 TypeScript入门</h2>
+            
+            <div class="lesson">
+                <h3>15.1 🛡️ 类型安全（给JavaScript加个保险）</h3>
+                <p><strong>💡 核心优势：</strong>在写代码时就能发现错误，而不是运行时才发现！</p>
+                
+                <div class="code-example">
+                    <h4>🔄 JavaScript vs TypeScript</h4>
+                    <pre><code>// 🟡 JavaScript（运行时才发现错误）
+function greet(name) {
+    return "Hello, " + name.toUpperCase();
+}
+greet(123); // 运行时错误！
+
+// 🟢 TypeScript（编写时就发现错误）
+function greet(name: string): string {
+    return "Hello, " + name.toUpperCase();
+}
+greet(123); // ❌ 编译错误：参数类型不匹配</code></pre>
+                </div>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📝 基础类型</h4>
+                        <code>string, number, boolean, array</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🏗️ 接口</h4>
+                        <code>interface User { name: string }</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎭 联合类型</h4>
+                        <code>string | number</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔧 泛型</h4>
+                        <code>Array&lt;T&gt;</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 框架基础 -->
+        <section id="frameworks" class="chapter">
+            <h2>第16章：🏗️ 框架基础</h2>
+            
+            <div class="lesson">
+                <h3>16.1 🎯 为什么需要框架（3分钟理解）</h3>
+                <p><strong>💡 形象比喻：</strong>框架就像搭房子的脚手架，让复杂的事情变简单！</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>⚛️ React</h4>
+                        <p>组件化、虚拟DOM</p>
+                        <code>function App() { return &lt;div&gt;Hello&lt;/div&gt; }</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🟢 Vue</h4>
+                        <p>渐进式、双向绑定</p>
+                        <code>&lt;div&gt;{{ message }}&lt;/div&gt;</code>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🅰️ Angular</h4>
+                        <p>企业级、TypeScript</p>
+                        <code>@Component({ ... })</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 开发工具 -->
+        <section id="tools" class="chapter">
+            <h2>第17章：🔧 开发工具</h2>
+            
+            <div class="lesson">
+                <h3>17.1 🛠️ 工具链概览（提升开发效率）</h3>
+                <p><strong>💡 工具理念：</strong>好工具让开发事半功倍，专注业务逻辑而不是琐碎工作！</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📦 npm/yarn</h4>
+                        <p>包管理器</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📦 Webpack/Vite</h4>
+                        <p>构建工具</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🎨 Prettier</h4>
+                        <p>代码格式化</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔍 ESLint</h4>
+                        <p>代码检查</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 代码测试 -->
+        <section id="testing" class="chapter">
+            <h2>第18章：🧪 代码测试</h2>
+            
+            <div class="lesson">
+                <h3>18.1 🎯 测试的重要性（质量保证）</h3>
+                <p><strong>💡 测试理念：</strong>测试不是为了找bug，而是为了预防bug！</p>
+                
+                <div class="code-example">
+                    <h4>🧪 简单测试示例</h4>
+                    <pre><code>// 被测试的函数
+function add(a, b) {
+    return a + b;
+}
+
+// 测试用例
+function testAdd() {
+    console.assert(add(2, 3) === 5, '2 + 3 应该等于 5');
+    console.assert(add(-1, 1) === 0, '-1 + 1 应该等于 0');
+    console.log('✅ 所有测试通过！');
+}
+
+testAdd();</code></pre>
+                </div>
+                
+                <div class="interactive-demo">
+                    <h4>🎮 测试体验</h4>
+                    <button onclick="runTests()" class="demo-button">🧪 运行测试</button>
+                    <div id="testDemo" class="output-box">点击运行测试用例</div>
+                </div>
+                
+                <script>
+                function runTests() {
+                    const output = document.getElementById('testDemo');
+                    
+                    // 被测试的函数
+                    function multiply(a, b) {
+                        return a * b;
+                    }
+                    
+                    // 运行测试
+                    const tests = [
+                        { input: [2, 3], expected: 6, name: '2 × 3' },
+                        { input: [0, 5], expected: 0, name: '0 × 5' },
+                        { input: [-2, 3], expected: -6, name: '-2 × 3' }
+                    ];
+                    
+                    let results = '🧪 测试结果：<br>';
+                    let passed = 0;
+                    
+                    tests.forEach(test => {
+                        const result = multiply(...test.input);
+                        const success = result === test.expected;
+                        results += `${success ? '✅' : '❌'} ${test.name} = ${result} ${success ? '通过' : '失败'}<br>`;
+                        if (success) passed++;
+                    });
+                    
+                    results += `<br>📊 通过率：${passed}/${tests.length} (${Math.round(passed/tests.length*100)}%)`;
+                    output.innerHTML = results;
+                }
+                </script>
+            </div>
+        </section>
+
+        <!-- 实践项目 -->
+        <section id="projects" class="chapter">
+            <h2>第19章：💼 综合项目实战</h2>
+            
+            <div class="project-list">
+                <div class="project-card">
+                    <h3>项目1：待办事项管理</h3>
+                    <p>创建功能完整的待办事项应用，包含增删改查和本地存储</p>
+                    <div class="project-features">
+                        <span class="feature">DOM操作</span>
+                        <span class="feature">事件处理</span>
+                        <span class="feature">LocalStorage</span>
+                    </div>
+                    <button onclick="startProject('todo')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目2：天气查询应用</h3>
+                    <p>使用Fetch API获取天气数据，实现城市天气查询功能</p>
+                    <div class="project-features">
+                        <span class="feature">API调用</span>
+                        <span class="feature">异步编程</span>
+                        <span class="feature">错误处理</span>
+                    </div>
+                    <button onclick="startProject('weather')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目3：简易购物车</h3>
+                    <p>实现购物车功能，包含商品添加、删除、计算总价等</p>
+                    <div class="project-features">
+                        <span class="feature">数组操作</span>
+                        <span class="feature">对象处理</span>
+                        <span class="feature">数据持久化</span>
+                    </div>
+                    <button onclick="startProject('cart')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目4：交互式图表</h3>
+                    <p>使用Canvas或SVG创建动态图表，展示数据可视化</p>
+                    <div class="project-features">
+                        <span class="feature">Canvas API</span>
+                        <span class="feature">数据处理</span>
+                        <span class="feature">动画效果</span>
+                    </div>
+                    <button onclick="startProject('chart')" class="btn-primary">开始项目</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 面试宝典 -->
+        <section id="interview" class="chapter">
+            <h2>第20章：🎯 面试宝典</h2>
+            
+            <div class="lesson">
+                <h3>20.1 🔥 高频面试题（必背）</h3>
+                <p><strong>💡 面试心态：</strong>不是为了炫技，而是展示你的思维过程和解决问题的能力！</p>
+                
+                <div class="interview-questions">
+                    <div class="question-card">
+                        <h4>❓ JavaScript数据类型有哪些？</h4>
+                        <div class="answer-content">
+                            <p><strong>📋 答题思路：</strong></p>
+                            <p>🎯 <strong>8种数据类型：</strong></p>
+                            <ul>
+                                <li><strong>基本类型(7种)：</strong>number, string, boolean, undefined, null, symbol, bigint</li>
+                                <li><strong>引用类型(1种)：</strong>object (包括函数、数组等)</li>
+                            </ul>
+                            <p>🔍 <strong>检测方法：</strong></p>
+                            <code>typeof, Object.prototype.toString.call()</code>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card">
+                        <h4>❓ 闭包是什么？有什么作用？</h4>
+                        <div class="answer-content">
+                            <p><strong>📋 标准答案：</strong></p>
+                            <p>🎯 <strong>定义：</strong>函数和其词法环境的组合，内部函数访问外部函数变量</p>
+                            <p>🎯 <strong>作用：</strong></p>
+                            <ul>
+                                <li>创建私有变量</li>
+                                <li>模块化开发</li>
+                                <li>函数柯里化</li>
+                                <li>防抖节流</li>
+                            </ul>
+                            <p>⚠️ <strong>注意：</strong>可能造成内存泄漏，使用完记得解除引用</p>
+                        </div>
+                    </div>
+                    
+                    <div class="question-card">
+                        <h4>❓ Promise和async/await的区别？</h4>
+                        <div class="answer-content">
+                            <p><strong>📋 区别对比：</strong></p>
+                            <p>🎯 <strong>Promise：</strong></p>
+                            <ul>
+                                <li>链式调用 .then().catch()</li>
+                                <li>需要回调函数</li>
+                                <li>错误处理相对复杂</li>
+                            </ul>
+                            <p>🎯 <strong>async/await：</strong></p>
+                            <ul>
+                                <li>同步写法处理异步</li>
+                                <li>try/catch错误处理</li>
+                                <li>代码更直观易读</li>
+                            </ul>
+                            <p>💡 <strong>本质：</strong>async/await是Promise的语法糖</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                .interview-questions {
+                    display: grid;
+                    gap: 1.5rem;
+                    margin: 2rem 0;
+                }
+                
+                .question-card {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 1.5rem;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                }
+                
+                .question-card h4 {
+                    margin: 0 0 1rem 0;
+                    font-size: 1.1rem;
+                }
+                
+                .answer-content {
+                    background: rgba(255,255,255,0.1);
+                    padding: 1rem;
+                    border-radius: 8px;
+                    backdrop-filter: blur(10px);
+                }
+                
+                .answer-content ul {
+                    margin: 0.5rem 0;
+                    padding-left: 1.2rem;
+                }
+                
+                .answer-content code {
+                    background: rgba(255,255,255,0.2);
+                    padding: 0.2rem 0.5rem;
+                    border-radius: 4px;
+                }
+                </style>
+            </div>
+
+            <div class="lesson">
+                <h3>20.2 🎯 编程题库（手写代码）</h3>
+                <p><strong>💡 答题技巧：</strong>先说思路，再写代码，最后说优化！</p>
+                
+                <div class="coding-challenges">
+                    <div class="challenge-card">
+                        <h4>🖊️ 手写防抖函数</h4>
+                        <div class="interactive-demo">
+                            <button onclick="testDebounce()" class="demo-button">🎮 体验防抖效果</button>
+                            <div id="debounceDemo" class="output-box">快速点击按钮，看防抖效果</div>
+                        </div>
+                        <div class="code-example">
+                            <h5>💡 参考答案：</h5>
+                            <pre><code>function debounce(func, delay) {
+    let timer = null;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        }, delay);
+    };
+}
+
+// 使用示例
+const debouncedSearch = debounce((keyword) => {
+    console.log('搜索:', keyword);
+}, 300);</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-card">
+                        <h4>🖊️ 手写深拷贝</h4>
+                        <div class="interactive-demo">
+                            <button onclick="testDeepClone()" class="demo-button">🧪 测试深拷贝</button>
+                            <div id="cloneDemo" class="output-box">点击测试深拷贝功能</div>
+                        </div>
+                        <div class="code-example">
+                            <h5>💡 参考答案：</h5>
+                            <pre><code>function deepClone(obj) {
+    // 基本类型直接返回
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+    
+    // 处理Date
+    if (obj instanceof Date) {
+        return new Date(obj);
+    }
+    
+    // 处理Array
+    if (obj instanceof Array) {
+        return obj.map(item => deepClone(item));
+    }
+    
+    // 处理Object
+    const cloned = {};
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            cloned[key] = deepClone(obj[key]);
+        }
+    }
+    return cloned;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                // 防抖演示
+                let debounceCount = 0;
+                const debouncedDemo = debounce(() => {
+                    document.getElementById('debounceDemo').innerHTML = 
+                        `✅ 防抖函数执行了！计数: ${++debounceCount}`;
+                }, 500);
+                
+                function testDebounce() {
+                    document.getElementById('debounceDemo').innerHTML = '⏳ 等待防抖...';
+                    debouncedDemo();
+                }
+                
+                function debounce(func, delay) {
+                    let timer = null;
+                    return function(...args) {
+                        clearTimeout(timer);
+                        timer = setTimeout(() => {
+                            func.apply(this, args);
+                        }, delay);
+                    };
+                }
+                
+                // 深拷贝演示
+                function testDeepClone() {
+                    const original = {
+                        name: '测试对象',
+                        arr: [1, 2, 3],
+                        nested: { value: 'deep' },
+                        date: new Date()
+                    };
+                    
+                    function deepClone(obj) {
+                        if (obj === null || typeof obj !== 'object') return obj;
+                        if (obj instanceof Date) return new Date(obj);
+                        if (obj instanceof Array) return obj.map(item => deepClone(item));
+                        
+                        const cloned = {};
+                        for (let key in obj) {
+                            if (obj.hasOwnProperty(key)) {
+                                cloned[key] = deepClone(obj[key]);
+                            }
+                        }
+                        return cloned;
+                    }
+                    
+                    const cloned = deepClone(original);
+                    cloned.nested.value = 'modified';
+                    
+                    document.getElementById('cloneDemo').innerHTML = `
+                        ✅ 深拷贝测试完成！<br>
+                        原对象nested.value: ${original.nested.value}<br>
+                        克隆对象nested.value: ${cloned.nested.value}<br>
+                        🎯 两者互不影响，深拷贝成功！
+                    `;
+                }
+                </script>
+                
+                <style>
+                .coding-challenges {
+                    display: grid;
+                    gap: 2rem;
+                    margin: 2rem 0;
+                }
+                
+                .challenge-card {
+                    background: #f8f9fa;
+                    border: 2px solid #e9ecef;
+                    border-radius: 10px;
+                    padding: 1.5rem;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+                }
+                
+                .challenge-card h4 {
+                    color: #495057;
+                    margin: 0 0 1rem 0;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 2px solid #007bff;
+                }
+                </style>
+            </div>
+
+            <div class="lesson">
+                <h3>20.3 🎓 面试技巧</h3>
+                <p><strong>💡 成功秘诀：</strong>技术能力 + 沟通能力 + 学习能力 = 面试成功！</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>🎯 技术准备</h4>
+                        <ul>
+                            <li>掌握基础概念</li>
+                            <li>练习编程题</li>
+                            <li>了解项目经验</li>
+                            <li>准备技术难点</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>💬 表达技巧</h4>
+                        <ul>
+                            <li>先说思路再写代码</li>
+                            <li>边写边解释</li>
+                            <li>主动说出时间复杂度</li>
+                            <li>提及可能的优化方案</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🤝 心态调整</h4>
+                        <ul>
+                            <li>保持自信但谦虚</li>
+                            <li>不会就诚实说不会</li>
+                            <li>展示学习能力</li>
+                            <li>把面试当作交流</li>
+                        </ul>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📚 持续学习</h4>
+                        <ul>
+                            <li>关注技术趋势</li>
+                            <li>参与开源项目</li>
+                            <li>写技术博客</li>
+                            <li>与同行交流</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 学习助手 -->
+    <div id="learning-assistant" class="assistant">
+        <button id="assistant-toggle" class="assistant-btn">⚡</button>
+        <div id="assistant-panel" class="assistant-panel">
+            <h3>JS学习助手</h3>
+            <div id="assistant-tips">
+                <p>JavaScript是网页交互的核心！多练习编程才能熟练掌握。</p>
+            </div>
+            <div class="assistant-progress">
+                <p>学习进度：<span id="chapter-progress">0/20</span></p>
+                <div class="progress-chapters">
+                    <span class="chapter-dot" data-chapter="1"></span>
+                    <span class="chapter-dot" data-chapter="2"></span>
+                    <span class="chapter-dot" data-chapter="3"></span>
+                    <span class="chapter-dot" data-chapter="4"></span>
+                    <span class="chapter-dot" data-chapter="5"></span>
+                    <span class="chapter-dot" data-chapter="6"></span>
+                    <span class="chapter-dot" data-chapter="7"></span>
+                    <span class="chapter-dot" data-chapter="8"></span>
+                    <span class="chapter-dot" data-chapter="9"></span>
+                    <span class="chapter-dot" data-chapter="10"></span>
+                    <span class="chapter-dot" data-chapter="11"></span>
+                    <span class="chapter-dot" data-chapter="12"></span>
+                    <span class="chapter-dot" data-chapter="13"></span>
+                    <span class="chapter-dot" data-chapter="14"></span>
+                    <span class="chapter-dot" data-chapter="15"></span>
+                    <span class="chapter-dot" data-chapter="16"></span>
+                    <span class="chapter-dot" data-chapter="17"></span>
+                    <span class="chapter-dot" data-chapter="18"></span>
+                    <span class="chapter-dot" data-chapter="19"></span>
+                    <span class="chapter-dot" data-chapter="20"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/learn.js"></script>
+    <script>
+        // JavaScript特定的交互功能
+        
+        // 类型检测
+        function checkType() {
+            const input = document.getElementById('typeInput').value;
+            const output = document.getElementById('typeOutput');
+            
+            let value;
+            try {
+                value = JSON.parse(input);
+            } catch (e) {
+                value = input;
+            }
+            
+            const type = typeof value;
+            const constructor = value?.constructor?.name || 'N/A';
+            const isArray = Array.isArray(value);
+            
+            output.innerHTML = `
+                值: ${input}<br>
+                类型: ${type}<br>
+                构造函数: ${constructor}<br>
+                是否为数组: ${isArray}<br>
+                JSON表示: ${JSON.stringify(value)}
+            `;
+        }
+        
+        // 计算器功能
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const output = document.getElementById('calcOutput');
+            
+            let result;
+            switch (operation) {
+                case 'add':
+                    result = num1 + num2;
+                    break;
+                case 'subtract':
+                    result = num1 - num2;
+                    break;
+                case 'multiply':
+                    result = num1 * num2;
+                    break;
+                case 'divide':
+                    result = num2 !== 0 ? num1 / num2 : '除数不能为0';
+                    break;
+            }
+            
+            output.innerHTML = `计算结果: ${num1} ${operation === 'add' ? '+' : operation === 'subtract' ? '-' : operation === 'multiply' ? '×' : '÷'} ${num2} = ${result}`;
+        }
+        
+        // 数组操作
+        function processArray(operation) {
+            const input = document.getElementById('arrayInput').value;
+            const output = document.getElementById('arrayOutput');
+            
+            try {
+                const array = input.split(',').map(item => {
+                    const trimmed = item.trim();
+                    return isNaN(trimmed) ? trimmed : Number(trimmed);
+                });
+                
+                let result;
+                switch (operation) {
+                    case 'map':
+                        result = array.map(item => typeof item === 'number' ? item * 2 : item);
+                        break;
+                    case 'filter':
+                        result = array.filter(item => typeof item === 'number' && item % 2 === 0);
+                        break;
+                    case 'reduce':
+                        const numbers = array.filter(item => typeof item === 'number');
+                        result = numbers.length > 0 ? numbers.reduce((sum, num) => sum + num, 0) : '没有数字可计算';
+                        break;
+                    case 'sort':
+                        result = [...array].sort((a, b) => {
+                            if (typeof a === 'number' && typeof b === 'number') {
+                                return a - b;
+                            }
+                            return String(a).localeCompare(String(b));
+                        });
+                        break;
+                }
+                
+                output.innerHTML = `
+                    原数组: [${array.join(', ')}]<br>
+                    操作: ${operation}<br>
+                    结果: ${Array.isArray(result) ? '[' + result.join(', ') + ']' : result}
+                `;
+            } catch (error) {
+                output.innerHTML = `错误: ${error.message}`;
+            }
+        }
+        
+        // DOM操作演示
+        let elementCounter = 0;
+        
+        function changeDOMText() {
+            const element = document.getElementById('demoText');
+            const texts = ['这是修改后的文本', '又一次修改', '第三次修改', '这是一个演示段落'];
+            element.textContent = texts[Math.floor(Math.random() * texts.length)];
+        }
+        
+        function changeDOMStyle() {
+            const element = document.getElementById('demoBox');
+            const colors = ['#e74c3c', '#2ecc71', '#f39c12', '#9b59b6', '#3498db'];
+            const sizes = ['100px', '120px', '80px', '150px'];
+            
+            element.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            element.style.width = element.style.height = sizes[Math.floor(Math.random() * sizes.length)];
+            element.style.borderRadius = Math.random() > 0.5 ? '50%' : '10px';
+        }
+        
+        function addDOMElement() {
+            const container = document.getElementById('domDemo');
+            const newElement = document.createElement('div');
+            newElement.textContent = `动态元素 ${++elementCounter}`;
+            newElement.style.cssText = `
+                background: #1abc9c;
+                color: white;
+                padding: 0.5rem;
+                margin: 0.5rem 0;
+                border-radius: 5px;
+                display: inline-block;
+            `;
+            newElement.className = 'dynamic-element';
+            container.appendChild(newElement);
+        }
+        
+        function removeDOMElement() {
+            const elements = document.querySelectorAll('.dynamic-element');
+            if (elements.length > 0) {
+                elements[elements.length - 1].remove();
+            }
+        }
+        
+        // 事件处理演示
+        document.addEventListener('DOMContentLoaded', function() {
+            const eventOutput = document.getElementById('eventOutput');
+            
+            // 点击事件
+            document.getElementById('eventBtn1').addEventListener('click', () => {
+                eventOutput.innerHTML = `点击事件触发 - 时间: ${new Date().toLocaleTimeString()}`;
+            });
+            
+            // 鼠标悬停
+            document.getElementById('eventBtn2').addEventListener('mouseover', () => {
+                eventOutput.innerHTML = '鼠标悬停在按钮上';
+            });
+            
+            document.getElementById('eventBtn2').addEventListener('mouseout', () => {
+                eventOutput.innerHTML = '鼠标离开按钮';
+            });
+            
+            // 输入监听
+            document.getElementById('eventInput').addEventListener('input', (e) => {
+                eventOutput.innerHTML = `输入内容: "${e.target.value}" (长度: ${e.target.value.length})`;
+            });
+        });
+        
+        // 异步操作演示
+        function simulateAsync(type) {
+            const output = document.getElementById('asyncOutput');
+            output.innerHTML = '正在执行异步操作...';
+            
+            switch (type) {
+                case 'promise':
+                    new Promise((resolve) => {
+                        setTimeout(() => resolve('Promise操作完成！'), 2000);
+                    }).then(result => {
+                        output.innerHTML = result + ` (耗时: 2秒)`;
+                    });
+                    break;
+                    
+                case 'async':
+                    (async () => {
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        output.innerHTML = 'Async/Await操作完成！(耗时: 1.5秒)';
+                    })();
+                    break;
+                    
+                case 'parallel':
+                    const startTime = Date.now();
+                    Promise.all([
+                        new Promise(resolve => setTimeout(() => resolve('任务1'), 1000)),
+                        new Promise(resolve => setTimeout(() => resolve('任务2'), 1200)),
+                        new Promise(resolve => setTimeout(() => resolve('任务3'), 800))
+                    ]).then(results => {
+                        const endTime = Date.now();
+                        output.innerHTML = `
+                            并行执行完成！<br>
+                            结果: ${results.join(', ')}<br>
+                            总耗时: ${endTime - startTime}ms (并行执行)
+                        `;
+                    });
+                    break;
+            }
+        }
+        
+        // 项目启动
+        function startProject(projectType) {
+            const projects = {
+                'todo': '待办事项管理',
+                'weather': '天气查询应用',
+                'cart': '简易购物车',
+                'chart': '交互式图表'
+            };
+            
+            alert(`即将开始 ${projects[projectType]} 项目！`);
+        }
+        
+        // JavaScript特定的学习提示
+        document.addEventListener('DOMContentLoaded', function() {
+            const jsSpecificTips = [
+                '💡 使用console.log()调试JavaScript代码',
+                '🔍 学会使用浏览器开发者工具的调试功能',
+                '📚 多阅读MDN文档了解JavaScript API',
+                '🎯 练习算法和数据结构提升编程能力',
+                '🚀 尝试使用现代JavaScript特性(ES6+)',
+                '🛠️ 学会处理异步操作和错误处理'
+            ];
+            
+            const assistantTips = document.getElementById('assistant-tips');
+            let tipIndex = 0;
+            
+            setInterval(() => {
+                if (assistantTips) {
+                    assistantTips.innerHTML = `<p>${jsSpecificTips[tipIndex]}</p>`;
+                    tipIndex = (tipIndex + 1) % jsSpecificTips.length;
+                }
+            }, 8000);
+        });
+    </script>
+</body>
+</html>

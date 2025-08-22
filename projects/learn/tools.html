@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发工具学习教程 - 前端三件套学习项目</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/learn.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+    <style>
+        /* 开发工具页面专用样式 */
+        .tool-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .tool-icon.vscode { background: linear-gradient(135deg, #007ACC, #005A9E); }
+        .tool-icon.git { background: linear-gradient(135deg, #F05032, #D73027); }
+        .tool-icon.chrome { background: linear-gradient(135deg, #4285F4, #1976D2); }
+        .tool-icon.npm { background: linear-gradient(135deg, #CB3837, #A72F27); }
+        .tool-icon.webpack { background: linear-gradient(135deg, #8DD6F9, #6BB6FF); }
+        .tool-icon.figma { background: linear-gradient(135deg, #F24E1E, #A259FF); }
+        
+        .tool-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #2c3e50;
+            font-size: 1.3rem;
+        }
+        
+        .tool-category {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .tool-features {
+            margin: 1.5rem 0;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .tool-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .tool-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .tool-btn.primary {
+            background: #3498db;
+            color: white;
+        }
+        
+        .tool-btn.primary:hover {
+            background: #2980b9;
+        }
+        
+        .tool-btn.secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+            border: 1px solid #bdc3c7;
+        }
+        
+        .tool-btn.secondary:hover {
+            background: #d5dbdb;
+        }
+        
+        .command-demo {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .command-demo .prompt {
+            color: #27ae60;
+        }
+        
+        .command-demo .command {
+            color: #e74c3c;
+        }
+        
+        .command-demo .output {
+            color: #95a5a6;
+            margin-left: 2rem;
+        }
+        
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .workflow-step {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            position: relative;
+        }
+        
+        .workflow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .shortcut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .shortcut-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .shortcut-key {
+            background: #2c3e50;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+        }
+        
+        .tips-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tip-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tip-item h4 {
+            margin: 0 0 0.5rem 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="learn-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="back-btn">← 返回首页</a>
+            <h1>开发工具学习教程</h1>
+            <div class="progress-indicator">
+                <span id="progress-text">进度: 0%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+        <nav class="chapter-nav">
+            <h3>学习目录</h3>
+            <ul>
+                <li><a href="#editors" data-chapter="1">代码编辑器</a></li>
+                <li><a href="#version-control" data-chapter="2">版本控制</a></li>
+                <li><a href="#debugging" data-chapter="3">调试工具</a></li>
+                <li><a href="#package-managers" data-chapter="4">包管理器</a></li>
+                <li><a href="#build-tools" data-chapter="5">构建工具</a></li>
+                <li><a href="#workflow" data-chapter="6">开发流程</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="learn-content">
+        <!-- 代码编辑器 -->
+        <section id="editors" class="chapter">
+            <h2>第1章：代码编辑器</h2>
+            
+            <div class="lesson">
+                <h3>1.1 Visual Studio Code</h3>
+                <p>VS Code是目前最受欢迎的免费代码编辑器，具有强大的功能和丰富的扩展生态。</p>
+                
+                <div class="tool-showcase">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon vscode">💻</div>
+                            <div class="tool-info">
+                                <h3>Visual Studio Code</h3>
+                                <span class="tool-category">代码编辑器</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>智能代码补全和语法高亮</li>
+                                <li>内置Git版本控制</li>
+                                <li>丰富的扩展市场</li>
+                                <li>集成终端和调试器</li>
+                                <li>多光标编辑</li>
+                                <li>代码格式化和重构</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <a href="https://code.visualstudio.com/" target="_blank" class="tool-btn primary">下载安装</a>
+                            <button onclick="showVSCodeTips()" class="tool-btn secondary">使用技巧</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>VS Code 常用快捷键</h4>
+                    <div class="shortcut-grid">
+                        <div class="shortcut-item">
+                            <span>打开文件</span>
+                            <span class="shortcut-key">Ctrl + O</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>快速打开</span>
+                            <span class="shortcut-key">Ctrl + P</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>命令面板</span>
+                            <span class="shortcut-key">Ctrl + Shift + P</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>多光标选择</span>
+                            <span class="shortcut-key">Alt + Click</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>复制行</span>
+                            <span class="shortcut-key">Shift + Alt + ↓</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <span>格式化文档</span>
+                            <span class="shortcut-key">Shift + Alt + F</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>推荐扩展</h4>
+                    <div class="code-example">
+                        <pre><code>// 必装扩展
+1. Live Server - 实时预览HTML页面
+2. Prettier - 代码格式化
+3. ESLint - JavaScript代码检查
+4. Auto Rename Tag - 自动重命名HTML标签
+5. Bracket Pair Colorizer - 括号颜色匹配
+6. GitLens - 增强Git功能
+7. Material Icon Theme - 美化文件图标
+8. Chinese Language Pack - 中文语言包
+
+// 前端开发扩展
+9. HTML CSS Support - HTML/CSS支持
+10. JavaScript (ES6) code snippets - JS代码片段
+11. Emmet - HTML/CSS快速编写
+12. Live Sass Compiler - Sass编译</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 版本控制 -->
+        <section id="version-control" class="chapter">
+            <h2>第2章：版本控制 - Git</h2>
+            
+            <div class="lesson">
+                <h3>2.1 Git基础概念</h3>
+                <p>Git是分布式版本控制系统，用于跟踪代码变更历史和协作开发。</p>
+                
+                <div class="tool-showcase">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon git">📊</div>
+                            <div class="tool-info">
+                                <h3>Git</h3>
+                                <span class="tool-category">版本控制</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>分布式版本控制</li>
+                                <li>分支管理</li>
+                                <li>变更历史追踪</li>
+                                <li>团队协作支持</li>
+                                <li>代码备份和恢复</li>
+                                <li>冲突解决机制</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <a href="https://git-scm.com/" target="_blank" class="tool-btn primary">下载Git</a>
+                            <button onclick="showGitCommands()" class="tool-btn secondary">常用命令</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>Git工作流程</h4>
+                    <div class="workflow-steps">
+                        <div class="workflow-step" data-step="1">
+                            <h5>初始化仓库</h5>
+                            <p>创建新的Git仓库或克隆现有仓库</p>
+                            <div class="command-demo">
+<span class="prompt">$</span> <span class="command">git init</span>
+<span class="output">Initialized empty Git repository</span>
+<span class="prompt">$</span> <span class="command">git clone https://github.com/user/repo.git</span>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="2">
+                            <h5>修改文件</h5>
+                            <p>编辑项目文件，添加新功能或修复错误</p>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="3">
+                            <h5>暂存更改</h5>
+                            <p>将修改的文件添加到暂存区</p>
+                            <div class="command-demo">
+<span class="prompt">$</span> <span class="command">git add .</span>
+<span class="prompt">$</span> <span class="command">git add filename.js</span>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="4">
+                            <h5>提交更改</h5>
+                            <p>将暂存区的更改提交到本地仓库</p>
+                            <div class="command-demo">
+<span class="prompt">$</span> <span class="command">git commit -m "添加新功能"</span>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-step" data-step="5">
+                            <h5>推送到远程</h5>
+                            <p>将本地提交推送到远程仓库</p>
+                            <div class="command-demo">
+<span class="prompt">$</span> <span class="command">git push origin main</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>常用Git命令</h4>
+                    <div class="code-example">
+                        <pre><code>// 基础命令
+git status          // 查看文件状态
+git log             // 查看提交历史
+git diff            // 查看文件差异
+git show            // 查看提交详情
+
+// 分支操作
+git branch                    // 查看分支
+git branch feature-branch    // 创建分支
+git checkout feature-branch  // 切换分支
+git merge feature-branch     // 合并分支
+git branch -d feature-branch // 删除分支
+
+// 远程操作
+git remote -v              // 查看远程仓库
+git fetch                  // 获取远程更新
+git pull                   // 拉取并合并
+git push origin branch     // 推送分支
+
+// 撤销操作
+git reset HEAD~1           // 撤销最后一次提交
+git checkout -- filename  // 撤销文件修改
+git revert commit-id       // 撤销指定提交</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 调试工具 -->
+        <section id="debugging" class="chapter">
+            <h2>第3章：浏览器调试工具</h2>
+            
+            <div class="lesson">
+                <h3>3.1 Chrome DevTools</h3>
+                <p>Chrome开发者工具是前端开发最重要的调试工具，提供了完整的调试和性能分析功能。</p>
+                
+                <div class="tool-showcase">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon chrome">🔍</div>
+                            <div class="tool-info">
+                                <h3>Chrome DevTools</h3>
+                                <span class="tool-category">调试工具</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>元素检查和样式调试</li>
+                                <li>JavaScript断点调试</li>
+                                <li>网络请求监控</li>
+                                <li>性能分析和优化</li>
+                                <li>控制台交互调试</li>
+                                <li>设备模拟测试</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <button onclick="showDevToolsTips()" class="tool-btn primary">使用技巧</button>
+                            <button onclick="showDebugDemo()" class="tool-btn secondary">调试演示</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>DevTools面板介绍</h4>
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4>Elements</h4>
+                            <p>检查和修改HTML元素与CSS样式</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4>Console</h4>
+                            <p>JavaScript控制台，执行代码和查看日志</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4>Sources</h4>
+                            <p>源代码调试，设置断点和单步执行</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4>Network</h4>
+                            <p>监控网络请求和响应</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4>Performance</h4>
+                            <p>性能分析和优化建议</p>
+                        </div>
+                        
+                        <div class="concept-card">
+                            <h4>Application</h4>
+                            <p>本地存储、Cookie和Service Worker</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>调试技巧</h4>
+                    <div class="code-example">
+                        <pre><code>// Console调试技巧
+console.log('基础日志');
+console.warn('警告信息');
+console.error('错误信息');
+console.table(array);        // 表格形式显示数组
+console.group('分组开始');    // 分组日志
+console.groupEnd();
+console.time('timer');       // 开始计时
+console.timeEnd('timer');    // 结束计时
+
+// 断点调试
+debugger;                    // 代码中设置断点
+
+// 条件断点
+if (condition) {
+    debugger;                // 条件断点
+}
+
+// 查看对象属性
+console.dir(element);        // 查看DOM元素属性
+console.trace();             // 查看调用栈</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 包管理器 -->
+        <section id="package-managers" class="chapter">
+            <h2>第4章：包管理器</h2>
+            
+            <div class="lesson">
+                <h3>4.1 npm (Node Package Manager)</h3>
+                <p>npm是JavaScript的包管理器，用于管理项目依赖和发布包。</p>
+                
+                <div class="tool-showcase">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon npm">📦</div>
+                            <div class="tool-info">
+                                <h3>npm</h3>
+                                <span class="tool-category">包管理器</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>依赖包安装和管理</li>
+                                <li>脚本命令执行</li>
+                                <li>版本控制</li>
+                                <li>包发布和分享</li>
+                                <li>安全漏洞检查</li>
+                                <li>项目初始化</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <a href="https://www.npmjs.com/" target="_blank" class="tool-btn primary">访问npm</a>
+                            <button onclick="showNpmCommands()" class="tool-btn secondary">常用命令</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>npm常用命令</h4>
+                    <div class="command-demo">
+<span class="prompt">$</span> <span class="command">npm init</span>
+<span class="output">初始化新项目</span>
+
+<span class="prompt">$</span> <span class="command">npm install package-name</span>
+<span class="output">安装包到dependencies</span>
+
+<span class="prompt">$</span> <span class="command">npm install package-name --save-dev</span>
+<span class="output">安装包到devDependencies</span>
+
+<span class="prompt">$</span> <span class="command">npm install</span>
+<span class="output">安装package.json中的所有依赖</span>
+
+<span class="prompt">$</span> <span class="command">npm update</span>
+<span class="output">更新所有包</span>
+
+<span class="prompt">$</span> <span class="command">npm run script-name</span>
+<span class="output">运行package.json中定义的脚本</span>
+                    </div>
+                </div>
+
+                <div class="lesson">
+                    <h4>package.json配置</h4>
+                    <div class="code-example">
+                        <pre><code>{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "项目描述",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "webpack --mode=production",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "jest": "^27.5.1"
+  },
+  "keywords": ["node", "express"],
+  "author": "Your Name",
+  "license": "MIT"
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 构建工具 -->
+        <section id="build-tools" class="chapter">
+            <h2>第5章：构建工具</h2>
+            
+            <div class="lesson">
+                <h3>5.1 现代构建工具</h3>
+                <p>构建工具帮助我们自动化开发流程，包括代码编译、打包、优化等。</p>
+                
+                <div class="tool-showcase">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon webpack">⚙️</div>
+                            <div class="tool-info">
+                                <h3>Webpack</h3>
+                                <span class="tool-category">模块打包器</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>模块打包和依赖管理</li>
+                                <li>代码分割和懒加载</li>
+                                <li>热模块替换(HMR)</li>
+                                <li>资源优化和压缩</li>
+                                <li>多种文件类型支持</li>
+                                <li>开发服务器</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <a href="https://webpack.js.org/" target="_blank" class="tool-btn primary">学习Webpack</a>
+                            <button onclick="showBuildTools()" class="tool-btn secondary">其他工具</button>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <div class="tool-icon figma">🚀</div>
+                            <div class="tool-info">
+                                <h3>Vite</h3>
+                                <span class="tool-category">开发工具</span>
+                            </div>
+                        </div>
+                        
+                        <div class="tool-features">
+                            <ul class="feature-list">
+                                <li>极快的开发服务器</li>
+                                <li>原生ES模块支持</li>
+                                <li>热重载(HMR)</li>
+                                <li>TypeScript支持</li>
+                                <li>插件生态系统</li>
+                                <li>生产环境优化</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tool-actions">
+                            <a href="https://vitejs.dev/" target="_blank" class="tool-btn primary">学习Vite</a>
+                            <button onclick="showViteDemo()" class="tool-btn secondary">快速开始</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 开发流程 -->
+        <section id="workflow" class="chapter">
+            <h2>第6章：开发流程最佳实践</h2>
+            
+            <div class="lesson">
+                <h3>6.1 完整开发流程</h3>
+                
+                <div class="workflow-steps">
+                    <div class="workflow-step" data-step="1">
+                        <h5>项目初始化</h5>
+                        <p>创建项目结构，配置开发环境</p>
+                        <div class="command-demo">
+<span class="prompt">$</span> <span class="command">mkdir my-project && cd my-project</span>
+<span class="prompt">$</span> <span class="command">npm init -y</span>
+<span class="prompt">$</span> <span class="command">git init</span>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step" data-step="2">
+                        <h5>安装依赖</h5>
+                        <p>根据项目需求安装必要的依赖包</p>
+                        <div class="command-demo">
+<span class="prompt">$</span> <span class="command">npm install react react-dom</span>
+<span class="prompt">$</span> <span class="command">npm install -D webpack webpack-cli</span>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step" data-step="3">
+                        <h5>配置工具</h5>
+                        <p>设置构建工具、代码格式化、ESLint等</p>
+                    </div>
+                    
+                    <div class="workflow-step" data-step="4">
+                        <h5>开发调试</h5>
+                        <p>编写代码，使用开发服务器实时预览</p>
+                    </div>
+                    
+                    <div class="workflow-step" data-step="5">
+                        <h5>测试部署</h5>
+                        <p>运行测试，构建生产版本，部署到服务器</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-container">
+                <h3>💡 开发效率提升技巧</h3>
+                <div class="tips-grid">
+                    <div class="tip-item">
+                        <h4>快捷键掌握</h4>
+                        <p>熟练使用编辑器和浏览器快捷键，提升操作效率</p>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <h4>代码片段</h4>
+                        <p>使用代码片段快速生成常用代码模板</p>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <h4>扩展工具</h4>
+                        <p>合理使用编辑器扩展和浏览器插件</p>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <h4>自动化</h4>
+                        <p>使用构建工具自动化重复性任务</p>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <h4>版本控制</h4>
+                        <p>养成良好的Git提交习惯，保持代码历史清晰</p>
+                    </div>
+                    
+                    <div class="tip-item">
+                        <h4>持续学习</h4>
+                        <p>关注技术发展，学习新工具和最佳实践</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 学习助手 -->
+    <div id="learning-assistant" class="assistant">
+        <button id="assistant-toggle" class="assistant-btn">🔧</button>
+        <div id="assistant-panel" class="assistant-panel">
+            <h3>工具学习助手</h3>
+            <div id="assistant-tips">
+                <p>熟练使用开发工具是成为优秀前端开发者的关键！</p>
+            </div>
+            <div class="assistant-progress">
+                <p>学习进度：<span id="chapter-progress">0/6</span></p>
+                <div class="progress-chapters">
+                    <span class="chapter-dot" data-chapter="1"></span>
+                    <span class="chapter-dot" data-chapter="2"></span>
+                    <span class="chapter-dot" data-chapter="3"></span>
+                    <span class="chapter-dot" data-chapter="4"></span>
+                    <span class="chapter-dot" data-chapter="5"></span>
+                    <span class="chapter-dot" data-chapter="6"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/learn.js"></script>
+    <script>
+        // 开发工具页面特定功能
+        
+        function showVSCodeTips() {
+            alert(`VS Code 使用技巧：
+
+1. 使用 Ctrl+P 快速打开文件
+2. 使用 Ctrl+Shift+P 打开命令面板
+3. 按住 Alt 点击可以设置多个光标
+4. 使用 Ctrl+/ 快速注释代码
+5. 使用 Ctrl+D 选择相同的文本
+6. 使用 F2 重命名符号
+7. 使用 Ctrl+G 跳转到指定行
+8. 使用 Ctrl+Shift+E 打开资源管理器
+
+更多技巧请查看 VS Code 官方文档！`);
+        }
+        
+        function showGitCommands() {
+            alert(`Git 常用命令速查：
+
+基础操作：
+• git add . - 添加所有更改到暂存区
+• git commit -m "message" - 提交更改
+• git push - 推送到远程仓库
+• git pull - 拉取远程更新
+
+分支操作：
+• git branch - 查看分支
+• git checkout -b branch-name - 创建并切换分支
+• git merge branch-name - 合并分支
+
+查看状态：
+• git status - 查看工作区状态
+• git log --oneline - 查看提交历史
+• git diff - 查看更改差异
+
+撤销操作：
+• git reset HEAD~1 - 撤销最后一次提交
+• git checkout -- file - 撤销文件更改`);
+        }
+        
+        function showDevToolsTips() {
+            alert(`Chrome DevTools 使用技巧：
+
+快捷键：
+• F12 - 打开开发者工具
+• Ctrl+Shift+I - 打开开发者工具
+• Ctrl+Shift+C - 选择元素模式
+• Ctrl+Shift+M - 设备模拟模式
+
+调试技巧：
+• 在 Sources 面板设置断点
+• 使用 console.log() 输出调试信息
+• 在 Network 面板监控请求
+• 使用 Performance 面板分析性能
+• 在 Elements 面板实时修改样式
+
+Console 命令：
+• $0 - 当前选中的元素
+• $1 - 上一个选中的元素
+• copy() - 复制对象到剪贴板`);
+        }
+        
+        function showDebugDemo() {
+            // 创建一个简单的调试演示
+            console.group('🔍 调试演示');
+            console.log('这是一条普通日志');
+            console.warn('这是一条警告信息');
+            console.error('这是一条错误信息');
+            
+            const demoData = [
+                {name: '张三', age: 25, city: '北京'},
+                {name: '李四', age: 30, city: '上海'},
+                {name: '王五', age: 28, city: '广州'}
+            ];
+            console.table(demoData);
+            
+            console.time('性能测试');
+            for(let i = 0; i < 1000000; i++) {
+                // 模拟一些计算
+            }
+            console.timeEnd('性能测试');
+            
+            console.groupEnd();
+            
+            alert('调试演示已在控制台输出，请打开 F12 查看！');
+        }
+        
+        function showNpmCommands() {
+            alert(`npm 常用命令：
+
+项目管理：
+• npm init - 初始化项目
+• npm install - 安装依赖
+• npm install package-name - 安装特定包
+• npm install -g package-name - 全局安装
+• npm uninstall package-name - 卸载包
+
+脚本执行：
+• npm start - 启动应用
+• npm run script-name - 运行自定义脚本
+• npm test - 运行测试
+
+信息查看：
+• npm list - 查看已安装的包
+• npm outdated - 查看过时的包
+• npm audit - 安全审计
+• npm version - 查看版本信息
+
+其他：
+• npm cache clean --force - 清除缓存
+• npm config list - 查看配置`);
+        }
+        
+        function showBuildTools() {
+            alert(`常用构建工具对比：
+
+Webpack：
+• 功能最全面的模块打包器
+• 配置复杂但功能强大
+• 适合大型复杂项目
+
+Vite：
+• 开发速度极快
+• 基于原生ES模块
+• 适合现代前端框架
+
+Parcel：
+• 零配置打包器
+• 自动检测依赖
+• 适合快速原型开发
+
+Rollup：
+• 专注于库的打包
+• 输出更小的包
+• 适合组件库开发
+
+选择建议：
+• 新项目推荐使用 Vite
+• 复杂项目可以考虑 Webpack
+• 快速原型使用 Parcel
+• 库开发使用 Rollup`);
+        }
+        
+        function showViteDemo() {
+            alert(`Vite 快速开始：
+
+1. 创建项目：
+   npm create vite@latest my-app
+   cd my-app
+
+2. 安装依赖：
+   npm install
+
+3. 启动开发服务器：
+   npm run dev
+
+4. 构建生产版本：
+   npm run build
+
+特点：
+• 启动速度极快
+• 热重载即时生效
+• 支持 TypeScript
+• 插件生态丰富
+
+试试看，你会爱上这种开发体验！`);
+        }
+        
+        // 开发工具特定的学习提示
+        document.addEventListener('DOMContentLoaded', function() {
+            const toolsSpecificTips = [
+                '🛠️ 熟练使用快捷键可以大大提升开发效率',
+                '📊 学会使用Git进行版本控制是必备技能',
+                '🔍 Chrome DevTools是前端调试的最佳伙伴',
+                '📦 npm是JavaScript生态的基础设施',
+                '⚙️ 现代构建工具让开发变得更加高效',
+                '🚀 自动化工具可以减少重复劳动'
+            ];
+            
+            const assistantTips = document.getElementById('assistant-tips');
+            let tipIndex = 0;
+            
+            setInterval(() => {
+                if (assistantTips) {
+                    assistantTips.innerHTML = `<p>${toolsSpecificTips[tipIndex]}</p>`;
+                    tipIndex = (tipIndex + 1) % toolsSpecificTips.length;
+                }
+            }, 6000);
+        });
+    </script>
+</body>
+</html>

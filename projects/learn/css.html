@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 学习教程 - 前端三件套学习项目</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/learn.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <style>
+        /* CSS3演示专用样式 */
+        .css-demo {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: #f8f9fa;
+        }
+        
+        .flexbox-demo {
+            display: flex;
+            gap: 1rem;
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .flex-item {
+            background: #2196F3;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            background: #e8f5e8;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .grid-item {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .animation-demo {
+            width: 100px;
+            height: 100px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            margin: 2rem auto;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        .transform-demo {
+            width: 80px;
+            height: 80px;
+            background: #9c27b0;
+            margin: 2rem auto;
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .transform-demo:hover {
+            transform: scale(1.2) rotate(45deg);
+        }
+        
+        .gradient-demo {
+            height: 100px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        
+        .shadow-demo {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .responsive-demo {
+            background: #ffd93d;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .responsive-demo {
+                background: #ff6b6b;
+                color: white;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .responsive-demo {
+                background: #4ecdc4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="learn-nav">
+        <div class="nav-container">
+            <a href="../../index.html" class="back-btn">← 返回首页</a>
+            <h1>CSS3 学习教程</h1>
+            <div class="progress-indicator">
+                <span id="progress-text">进度: 0%</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 侧边导航 -->
+    <aside class="sidebar">
+        <nav class="chapter-nav">
+            <h3>学习目录</h3>
+            <ul>
+                <li><a href="#selectors" data-chapter="1">CSS基础与盒模型</a></li>
+                <li><a href="#positioning" data-chapter="2">定位系统与BFC</a></li>
+                <li><a href="#layout" data-chapter="3">现代布局</a></li>
+                <li><a href="#animations" data-chapter="4">动画与过渡</a></li>
+                <li><a href="#responsive" data-chapter="5">响应式设计</a></li>
+                <li><a href="#advanced" data-chapter="6">高级特性</a></li>
+                <li><a href="#preprocessors" data-chapter="7">CSS预处理器</a></li>
+                <li><a href="#css-in-js" data-chapter="8">CSS-in-JS</a></li>
+                <li><a href="#performance" data-chapter="9">性能优化</a></li>
+                <li><a href="#architecture" data-chapter="10">CSS架构</a></li>
+                <li><a href="#grid-advanced" data-chapter="11">Grid高级布局</a></li>
+                <li><a href="#custom-properties" data-chapter="12">CSS变量</a></li>
+                <li><a href="#logical-properties" data-chapter="13">逻辑属性</a></li>
+                <li><a href="#container-queries" data-chapter="14">容器查询</a></li>
+                <li><a href="#cascade-layers" data-chapter="15">级联层</a></li>
+                <li><a href="#color-functions" data-chapter="16">现代颜色函数</a></li>
+                <li><a href="#typography" data-chapter="17">现代排版</a></li>
+                <li><a href="#ui-components" data-chapter="18">UI组件设计</a></li>
+                <li><a href="#future-css" data-chapter="19">未来CSS特性</a></li>
+                <li><a href="#projects" data-chapter="20">综合项目</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主要内容 -->
+    <main class="learn-content">
+        <!-- CSS选择器 -->
+        <section id="selectors" class="chapter">
+            <h2>第1章：CSS基础与盒模型</h2>
+            
+            <div class="lesson">
+                <h3>1.1 CSS盒模型详解</h3>
+                <p>盒模型是CSS布局的基础，每个元素都被表示为一个矩形盒子。</p>
+                
+                <div class="css-demo">
+                    <h4>标准盒模型 vs IE盒模型</h4>
+                    <div style="display: flex; gap: 2rem; margin: 1rem 0;">
+                        <div style="border: 2px solid #333; padding: 20px; background: #f0f0f0; flex: 1;">
+                            <div style="background: #4CAF50; padding: 10px; color: white;">
+                                标准盒模型<br>
+                                width = content
+                            </div>
+                        </div>
+                        <div style="border: 2px solid #333; padding: 20px; background: #f0f0f0; flex: 1; box-sizing: border-box;">
+                            <div style="background: #FF9800; padding: 10px; color: white;">
+                                IE盒模型<br>
+                                width = content + padding + border
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 标准盒模型和IE盒模型的区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特性</th>
+                                            <th>标准盒模型(content-box)</th>
+                                            <th>IE盒模型(border-box)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>width计算</td>
+                                            <td>只包含content</td>
+                                            <td>包含content+padding+border</td>
+                                        </tr>
+                                        <tr>
+                                            <td>实际占用空间</td>
+                                            <td>width + padding + border + margin</td>
+                                            <td>width + margin</td>
+                                        </tr>
+                                        <tr>
+                                            <td>设置方式</td>
+                                            <td>box-sizing: content-box</td>
+                                            <td>box-sizing: border-box</td>
+                                        </tr>
+                                        <tr>
+                                            <td>优势</td>
+                                            <td>W3C标准，默认模式</td>
+                                            <td>更直观，易于计算布局</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p><strong>最佳实践：</strong>使用 <code>* { box-sizing: border-box; }</code> 统一为IE盒模型</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.2 CSS选择器权重与优先级</h3>
+                <p>CSS选择器用于选择HTML元素并应用样式。掌握选择器是CSS的基础。</p>
+                
+                <div class="code-example">
+                    <h4>常用选择器类型：</h4>
+                    <pre><code>/* 元素选择器 */
+p {
+    color: blue;
+}
+
+/* 类选择器 */
+.my-class {
+    background-color: yellow;
+}
+
+/* ID选择器 */
+#my-id {
+    font-size: 20px;
+}
+
+/* 属性选择器 */
+input[type="text"] {
+    border: 1px solid #ccc;
+}
+
+/* 伪类选择器 */
+a:hover {
+    color: red;
+}
+
+/* 伪元素选择器 */
+p::before {
+    content: "前缀: ";
+}</code></pre>
+                </div>
+
+                <div class="practice-area">
+                    <h4>选择器练习：</h4>
+                    <textarea id="css-editor1" class="code-editor" rows="15"><!DOCTYPE html>
+<html>
+<head>
+<style>
+/* 在这里编写CSS样式 */
+h1 {
+    color: #3498db;
+}
+
+.highlight {
+    background-color: yellow;
+    padding: 5px;
+}
+
+#special {
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* 尝试添加更多选择器 */
+
+</style>
+</head>
+<body>
+    <h1>CSS选择器练习</h1>
+    <p class="highlight">这是一个带有highlight类的段落</p>
+    <p id="special">这是一个带有special ID的段落</p>
+    <p>这是一个普通段落</p>
+    <a href="#">这是一个链接</a>
+</body>
+</html></textarea>
+                    <div class="editor-controls">
+                        <button onclick="runHTML('css-editor1', 'preview1')" class="btn-primary">运行代码</button>
+                        <button onclick="resetEditor('css-editor1')" class="btn-secondary">重置</button>
+                    </div>
+                    <div id="preview1" class="preview-area"></div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>1.2 高级选择器</h3>
+                
+                <div class="code-example">
+                    <h4>组合选择器：</h4>
+                    <pre><code>/* 后代选择器 */
+div p {
+    margin: 10px;
+}
+
+/* 子元素选择器 */
+div > p {
+    font-weight: bold;
+}
+
+/* 相邻兄弟选择器 */
+h1 + p {
+    font-size: 18px;
+}
+
+/* 通用兄弟选择器 */
+h1 ~ p {
+    color: gray;
+}
+
+/* 多个选择器 */
+h1, h2, h3 {
+    font-family: Arial, sans-serif;
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 定位与浮动 -->
+        <section id="positioning" class="chapter">
+            <h2>第2章：定位系统与BFC</h2>
+            
+            <div class="lesson">
+                <h3>2.1 CSS定位详解</h3>
+                <p>CSS定位是控制元素在页面中位置的重要机制。</p>
+                
+                <div class="code-example">
+                    <h4>五种定位方式：</h4>
+                    <pre><code>/* 静态定位（默认） */
+.static { position: static; }
+
+/* 相对定位 */
+.relative { 
+    position: relative; 
+    top: 10px; 
+    left: 20px; 
+}
+
+/* 绝对定位 */
+.absolute { 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+}
+
+/* 固定定位 */
+.fixed { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+}
+
+/* 粘性定位 */
+.sticky { 
+    position: sticky; 
+    top: 0; 
+}</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ absolute和relative定位的区别？</h4>
+                        <div class="interview-answer">
+                            <p><strong>答案：</strong></p>
+                            <ul>
+                                <li><strong>relative相对定位</strong>：
+                                    <ul>
+                                        <li>相对于元素原来的位置进行偏移</li>
+                                        <li>不脱离文档流，原位置仍然占据空间</li>
+                                        <li>常作为绝对定位子元素的参考点</li>
+                                    </ul>
+                                </li>
+                                <li><strong>absolute绝对定位</strong>：
+                                    <ul>
+                                        <li>相对于最近的已定位祖先元素进行定位</li>
+                                        <li>完全脱离文档流，不占据空间</li>
+                                        <li>如果没有已定位祖先，则相对于初始包含块</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.2 BFC块级格式化上下文</h3>
+                <p>BFC是Web页面CSS渲染的一个重要概念，是页面中的一块渲染区域。</p>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 什么是BFC？如何触发BFC？</h4>
+                        <div class="interview-answer">
+                            <p><strong>BFC的特性：</strong></p>
+                            <ul>
+                                <li>内部的Box会在垂直方向一个接一个地放置</li>
+                                <li>垂直方向上的距离由margin决定（margin重叠）</li>
+                                <li>BFC区域不会与float元素重叠</li>
+                                <li>计算BFC高度时，浮动元素也参与计算</li>
+                                <li>BFC是页面上的一个隔离的独立容器</li>
+                            </ul>
+                            
+                            <p><strong>触发BFC的方法：</strong></p>
+                            <div class="code-example">
+                                <pre><code>/* 1. 根元素或包含根元素的元素 */
+html { ... }
+
+/* 2. 浮动元素 */
+.float { float: left; }
+
+/* 3. 绝对定位元素 */
+.absolute { position: absolute; }
+
+/* 4. display值为inline-block、table-cell、flex等 */
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+
+/* 5. overflow不为visible */
+.overflow { overflow: hidden; }
+
+/* 6. contain值为layout、content、paint */
+.contain { contain: layout; }</code></pre>
+                            </div>
+                            
+                            <p><strong>BFC的应用：</strong></p>
+                            <ul>
+                                <li>清除浮动（父元素高度塌陷问题）</li>
+                                <li>防止margin重叠</li>
+                                <li>实现自适应两栏布局</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.3 浮动与清除浮动</h3>
+                
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 浮动的原理和清除浮动的方法？</h4>
+                        <div class="interview-answer">
+                            <p><strong>浮动的特点：</strong></p>
+                            <ul>
+                                <li>元素脱离文档流，但不脱离文本流</li>
+                                <li>浮动元素会向左或向右移动，直到碰到容器边界或另一个浮动元素</li>
+                                <li>浮动元素不占据空间，但影响其他元素布局</li>
+                            </ul>
+                            
+                            <p><strong>清除浮动的方法：</strong></p>
+                            <div class="code-example">
+                                <pre><code>/* 方法1：clear属性 */
+.clear { clear: both; }
+
+/* 方法2：伪元素清除 */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 方法3：BFC清除 */
+.bfc { overflow: hidden; }
+
+/* 方法4：父元素设置高度 */
+.parent { height: 300px; }
+
+/* 方法5：使用flex布局替代 */
+.flex-container { 
+    display: flex; 
+    flex-wrap: wrap; 
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 布局系统 -->
+        <section id="layout" class="chapter">
+            <h2>第3章：现代布局系统</h2>
+            
+            <div class="lesson">
+                <h3>3.1 Flexbox布局</h3>
+                <p>Flexbox是一种强大的一维布局方法，特别适合在容器中分配空间和对齐项目。</p>
+                
+                <div class="css-demo">
+                    <h4>Flexbox示例：</h4>
+                    <div class="flexbox-demo">
+                        <div class="flex-item">项目1</div>
+                        <div class="flex-item">项目2</div>
+                        <div class="flex-item">项目3</div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>Flexbox基础属性：</h4>
+                    <pre><code>/* 容器属性 */
+.flex-container {
+    display: flex;
+    flex-direction: row; /* row, column, row-reverse, column-reverse */
+    justify-content: center; /* flex-start, flex-end, center, space-between, space-around */
+    align-items: center; /* flex-start, flex-end, center, stretch, baseline */
+    flex-wrap: wrap; /* nowrap, wrap, wrap-reverse */
+}
+
+/* 项目属性 */
+.flex-item {
+    flex: 1; /* flex-grow flex-shrink flex-basis */
+    align-self: auto; /* auto, flex-start, flex-end, center, baseline, stretch */
+}</code></pre>
+                </div>
+
+                <div class="practice-area">
+                    <h4>Flexbox练习：</h4>
+                    <textarea id="css-editor2" class="code-editor" rows="20"><!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+    display: flex;
+    height: 200px;
+    background: #ecf0f1;
+    border: 2px solid #34495e;
+    /* 尝试修改这些属性 */
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.item {
+    background: #3498db;
+    color: white;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.item:nth-child(2) {
+    background: #e74c3c;
+    /* 尝试设置 flex: 2; */
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+    </div>
+</body>
+</html></textarea>
+                    <div class="editor-controls">
+                        <button onclick="runHTML('css-editor2', 'preview2')" class="btn-primary">运行代码</button>
+                    </div>
+                    <div id="preview2" class="preview-area"></div>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>2.2 Grid布局</h3>
+                <p>CSS Grid是强大的二维布局系统，允许同时控制行和列。</p>
+                
+                <div class="css-demo">
+                    <h4>Grid示例：</h4>
+                    <div class="grid-demo">
+                        <div class="grid-item">1</div>
+                        <div class="grid-item">2</div>
+                        <div class="grid-item">3</div>
+                        <div class="grid-item">4</div>
+                        <div class="grid-item">5</div>
+                        <div class="grid-item">6</div>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>Grid基础属性：</h4>
+                    <pre><code>/* 容器属性 */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 定义列 */
+    grid-template-rows: 100px 200px; /* 定义行 */
+    gap: 20px; /* 间隙 */
+    grid-template-areas: 
+        "header header header"
+        "sidebar main main";
+}
+
+/* 项目属性 */
+.grid-item {
+    grid-column: 1 / 3; /* 跨列 */
+    grid-row: 1 / 2; /* 跨行 */
+    grid-area: header; /* 使用命名区域 */
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 动画效果 -->
+        <section id="animations" class="chapter">
+            <h2>第4章：动画与过渡</h2>
+            
+            <div class="lesson">
+                <h3>4.1 CSS过渡</h3>
+                <p>过渡效果可以让CSS属性的变化更加平滑自然。</p>
+                
+                <div class="css-demo">
+                    <h4>过渡效果演示：</h4>
+                    <div class="transform-demo"></div>
+                    <p style="text-align: center; color: #666;">悬停查看效果</p>
+                </div>
+
+                <div class="code-example">
+                    <h4>过渡属性：</h4>
+                    <pre><code>.transition-element {
+    transition: all 0.3s ease;
+    /* 或者单独设置 */
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.1s;
+}
+
+.transition-element:hover {
+    transform: scale(1.2);
+    opacity: 0.8;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>3.2 CSS动画</h3>
+                <p>CSS动画提供了更复杂的动画控制，可以定义关键帧。</p>
+                
+                <div class="css-demo">
+                    <h4>动画演示：</h4>
+                    <div class="animation-demo"></div>
+                </div>
+
+                <div class="code-example">
+                    <h4>关键帧动画：</h4>
+                    <pre><code>@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.animated-element {
+    animation: slideIn 1s ease-out;
+    /* 完整语法 */
+    animation-name: slideIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}</code></pre>
+                </div>
+
+                <div class="practice-area">
+                    <h4>动画练习：</h4>
+                    <textarea id="css-editor3" class="code-editor" rows="20"><!DOCTYPE html>
+<html>
+<head>
+<style>
+.box {
+    width: 100px;
+    height: 100px;
+    background: #e74c3c;
+    margin: 20px auto;
+    border-radius: 10px;
+    /* 添加你的动画 */
+}
+
+/* 定义关键帧 */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* 应用动画 */
+.box:hover {
+    animation: rotate 2s linear infinite;
+}
+
+/* 尝试创建更多动画效果 */
+</style>
+</head>
+<body>
+    <div class="box"></div>
+    <p style="text-align: center;">悬停查看动画效果</p>
+</body>
+</html></textarea>
+                    <div class="editor-controls">
+                        <button onclick="runHTML('css-editor3', 'preview3')" class="btn-primary">运行代码</button>
+                    </div>
+                    <div id="preview3" class="preview-area"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 响应式设计 -->
+        <section id="responsive" class="chapter">
+            <h2>第4章：响应式设计</h2>
+            
+            <div class="lesson">
+                <h3>4.1 媒体查询</h3>
+                <p>媒体查询让我们能够根据设备特性应用不同的样式。</p>
+                
+                <div class="css-demo">
+                    <h4>响应式演示：</h4>
+                    <div class="responsive-demo">
+                        <p>调整浏览器窗口大小查看效果</p>
+                        <p>桌面端: 黄色 | 平板端: 红色 | 手机端: 青色</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>媒体查询语法：</h4>
+                    <pre><code>/* 桌面端优先 */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+/* 平板端 */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+}
+
+/* 手机端 */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 横屏手机 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .header {
+        height: 60px;
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>4.2 弹性单位</h3>
+                
+                <div class="code-example">
+                    <h4>CSS单位对比：</h4>
+                    <pre><code>/* 绝对单位 */
+.fixed {
+    width: 300px;     /* 像素 */
+    font-size: 16px;
+}
+
+/* 相对单位 */
+.responsive {
+    width: 50%;       /* 相对于父元素 */
+    font-size: 1.2em; /* 相对于父元素字体大小 */
+    padding: 1rem;    /* 相对于根元素字体大小 */
+    height: 50vh;     /* 相对于视口高度 */
+    width: 80vw;      /* 相对于视口宽度 */
+}
+
+/* 现代单位 */
+.modern {
+    width: min(90%, 1200px);        /* 取最小值 */
+    font-size: clamp(1rem, 4vw, 2rem); /* 响应式字体 */
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 高级特性 -->
+        <section id="advanced" class="chapter">
+            <h2>第5章：CSS高级特性</h2>
+            
+            <div class="lesson">
+                <h3>5.1 渐变与阴影</h3>
+                
+                <div class="css-demo">
+                    <div class="gradient-demo"></div>
+                    <div class="shadow-demo">
+                        <h4>阴影效果</h4>
+                        <p>这个卡片有漂亮的阴影效果</p>
+                    </div>
+                </div>
+
+                <div class="code-example">
+                    <h4>渐变语法：</h4>
+                    <pre><code>/* 线性渐变 */
+.linear-gradient {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    background: linear-gradient(to right, red, blue);
+}
+
+/* 径向渐变 */
+.radial-gradient {
+    background: radial-gradient(circle, #ff6b6b, #4ecdc4);
+}
+
+/* 阴影效果 */
+.box-shadow {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    /* x偏移 y偏移 模糊度 扩散 颜色 */
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.1);
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>5.2 CSS自定义属性（变量）</h3>
+                
+                <div class="code-example">
+                    <h4>CSS变量：</h4>
+                    <pre><code>/* 定义全局变量 */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --font-size: 16px;
+    --spacing: 1rem;
+}
+
+/* 使用变量 */
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: var(--spacing);
+    font-size: var(--font-size);
+    border: 2px solid var(--primary-color);
+}
+
+/* 带默认值的变量 */
+.element {
+    color: var(--text-color, #333);
+}
+
+/* 在JavaScript中使用 */
+/* document.documentElement.style.setProperty('--primary-color', '#e74c3c'); */</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- CSS预处理器 -->
+        <section id="preprocessors" class="chapter">
+            <h2>第7章：CSS预处理器</h2>
+            
+            <div class="lesson">
+                <h3>7.1 Sass/SCSS</h3>
+                <p>Sass是最流行的CSS预处理器，提供变量、嵌套、混合等功能。</p>
+                
+                <div class="code-example">
+                    <h4>SCSS语法示例：</h4>
+                    <pre><code>// 变量定义
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$font-stack: 'Helvetica Neue', Arial, sans-serif;
+
+// 嵌套规则
+.navbar {
+    background-color: $primary-color;
+    font-family: $font-stack;
+    
+    .nav-item {
+        padding: 1rem;
+        color: white;
+        
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+        
+        &.active {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+// 混合（Mixins）
+@mixin button-style($bg-color, $text-color: white) {
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+.btn-primary {
+    @include button-style($primary-color);
+}
+
+.btn-secondary {
+    @include button-style($secondary-color);
+}</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ CSS预处理器的优势？</h4>
+                        <div class="interview-answer">
+                            <p><strong>主要优势：</strong></p>
+                            <ul>
+                                <li><strong>变量</strong>：可重用的值定义</li>
+                                <li><strong>嵌套</strong>：符合HTML结构的CSS写法</li>
+                                <li><strong>混合</strong>：可重用的样式块</li>
+                                <li><strong>继承</strong>：样式继承机制</li>
+                                <li><strong>函数</strong>：颜色处理、数学运算</li>
+                                <li><strong>模块化</strong>：文件拆分和导入</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Container Queries -->
+        <section id="container-queries" class="chapter">
+            <h2>第14章：容器查询</h2>
+            
+            <div class="lesson">
+                <h3>14.1 容器查询基础</h3>
+                <p>容器查询允许组件根据其容器的大小而不是视口大小来应用样式。</p>
+                
+                <div class="code-example">
+                    <h4>容器查询示例：</h4>
+                    <pre><code>/* 定义容器 */
+.card-container {
+    container-type: inline-size;
+    container-name: card-container;
+}
+
+/* 基础卡片样式 */
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 当容器宽度小于400px时 */
+@container card-container (max-width: 400px) {
+    .card {
+        text-align: center;
+    }
+    
+    .card-image {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .card-content {
+        display: block;
+    }
+}
+
+/* 当容器宽度大于400px时 */
+@container card-container (min-width: 400px) {
+    .card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .card-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+    
+    .card-content {
+        flex: 1;
+    }
+}
+
+/* 响应式容器查询 */
+@container card-container (min-width: 600px) {
+    .card {
+        padding: 2rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+    
+    .card-description {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+}</code></pre>
+                </div>
+
+                <div class="interview-points">
+                    <div class="interview-item">
+                        <h4>❓ 容器查询vs媒体查询的区别？</h4>
+                        <div class="interview-answer">
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>特性</th>
+                                            <th>媒体查询</th>
+                                            <th>容器查询</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>查询对象</td>
+                                            <td>视口大小</td>
+                                            <td>容器大小</td>
+                                        </tr>
+                                        <tr>
+                                            <td>响应性</td>
+                                            <td>页面级别</td>
+                                            <td>组件级别</td>
+                                        </tr>
+                                        <tr>
+                                            <td>复用性</td>
+                                            <td>较低</td>
+                                            <td>非常高</td>
+                                        </tr>
+                                        <tr>
+                                            <td>应用场景</td>
+                                            <td>全局布局</td>
+                                            <td>组件设计</td>
+                                        </tr>
+                                        <tr>
+                                            <td>浏览器支持</td>
+                                            <td>优秀</td>
+                                            <td>现代浏览器</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 未来CSS特性 -->
+        <section id="future-css" class="chapter">
+            <h2>第19章：2025年CSS新特性</h2>
+            
+            <div class="lesson">
+                <h3>19.1 CSS嵌套</h3>
+                <p>原生CSS嵌套功能，无需预处理器即可使用嵌套语法。</p>
+                
+                <div class="code-example">
+                    <h4>原生CSS嵌套：</h4>
+                    <pre><code>/* 原生CSS嵌套语法 */
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    
+    /* 嵌套选择器 */
+    & .title {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 0.5rem;
+    }
+    
+    & .content {
+        color: #666;
+        line-height: 1.6;
+        
+        /* 深度嵌套 */
+        & p {
+            margin-bottom: 1rem;
+            
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    
+    /* 伪类和伪元素 */
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+    }
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, #3498db, #2ecc71);
+    }
+}
+
+/* 媒体查询嵌套 */
+.responsive-grid {
+    display: grid;
+    gap: 1rem;
+    
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="lesson">
+                <h3>19.2 CSS层叠层（@layer）</h3>
+                <p>CSS层叠层提供了更好的样式优先级控制。</p>
+                
+                <div class="code-example">
+                    <h4>层叠层示例：</h4>
+                    <pre><code>/* 定义层的顺序 */
+@layer reset, base, components, utilities;
+
+/* 重置样式层 */
+@layer reset {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+}
+
+/* 基础样式层 */
+@layer base {
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui;
+        line-height: 1.6;
+        color: #333;
+    }
+    
+    h1, h2, h3 {
+        margin-bottom: 1rem;
+    }
+}
+
+/* 组件样式层 */
+@layer components {
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .btn-primary {
+        background: #3498db;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background: #2980b9;
+    }
+}
+
+/* 工具类样式层 */
+@layer utilities {
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .hidden { display: none; }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- 综合项目 -->
+        <section id="projects" class="chapter">
+            <h2>第20章：综合项目</h2>
+            
+            <div class="project-list">
+                <div class="project-card">
+                    <h3>项目1：响应式导航栏</h3>
+                    <p>使用Flexbox创建完全响应式的导航栏，包含汉堡菜单</p>
+                    <div class="project-features">
+                        <span class="feature">Flexbox布局</span>
+                        <span class="feature">媒体查询</span>
+                        <span class="feature">CSS动画</span>
+                    </div>
+                    <button onclick="startProject('navbar')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目2：卡片布局系统</h3>
+                    <p>使用Grid布局创建灵活的卡片系统，支持不同尺寸</p>
+                    <div class="project-features">
+                        <span class="feature">CSS Grid</span>
+                        <span class="feature">悬停效果</span>
+                        <span class="feature">阴影和渐变</span>
+                    </div>
+                    <button onclick="startProject('cards')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目3：动画加载器</h3>
+                    <p>创建各种CSS动画加载器和过渡效果</p>
+                    <div class="project-features">
+                        <span class="feature">关键帧动画</span>
+                        <span class="feature">变换效果</span>
+                        <span class="feature">时间函数</span>
+                    </div>
+                    <button onclick="startProject('loaders')" class="btn-primary">开始项目</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>项目4：完整页面布局</h3>
+                    <p>结合所有学到的技术创建完整的响应式页面</p>
+                    <div class="project-features">
+                        <span class="feature">现代布局</span>
+                        <span class="feature">响应式设计</span>
+                        <span class="feature">用户体验</span>
+                    </div>
+                    <button onclick="startProject('layout')" class="btn-primary">开始项目</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 学习助手 -->
+    <div id="learning-assistant" class="assistant">
+        <button id="assistant-toggle" class="assistant-btn">🎨</button>
+        <div id="assistant-panel" class="assistant-panel">
+            <h3>CSS学习助手</h3>
+            <div id="assistant-tips">
+                <p>CSS是网页美化的关键！尝试修改代码示例来加深理解。</p>
+            </div>
+            <div class="assistant-progress">
+                <p>学习进度：<span id="chapter-progress">0/20</span></p>
+                <div class="progress-chapters">
+                    <span class="chapter-dot" data-chapter="1"></span>
+                    <span class="chapter-dot" data-chapter="2"></span>
+                    <span class="chapter-dot" data-chapter="3"></span>
+                    <span class="chapter-dot" data-chapter="4"></span>
+                    <span class="chapter-dot" data-chapter="5"></span>
+                    <span class="chapter-dot" data-chapter="6"></span>
+                    <span class="chapter-dot" data-chapter="7"></span>
+                    <span class="chapter-dot" data-chapter="8"></span>
+                    <span class="chapter-dot" data-chapter="9"></span>
+                    <span class="chapter-dot" data-chapter="10"></span>
+                    <span class="chapter-dot" data-chapter="11"></span>
+                    <span class="chapter-dot" data-chapter="12"></span>
+                    <span class="chapter-dot" data-chapter="13"></span>
+                    <span class="chapter-dot" data-chapter="14"></span>
+                    <span class="chapter-dot" data-chapter="15"></span>
+                    <span class="chapter-dot" data-chapter="16"></span>
+                    <span class="chapter-dot" data-chapter="17"></span>
+                    <span class="chapter-dot" data-chapter="18"></span>
+                    <span class="chapter-dot" data-chapter="19"></span>
+                    <span class="chapter-dot" data-chapter="20"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/learn.js"></script>
+    <script>
+        // CSS特定的功能
+        function startProject(projectType) {
+            const projects = {
+                'navbar': '响应式导航栏',
+                'cards': '卡片布局系统',
+                'loaders': '动画加载器',
+                'layout': '完整页面布局'
+            };
+            
+            alert(`即将开始 ${projects[projectType]} 项目！`);
+            // 这里可以跳转到具体的项目页面
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 保存原始代码
+            document.querySelectorAll('.code-editor').forEach(editor => {
+                editor.setAttribute('data-original', editor.value);
+            });
+            
+            // CSS特定的提示
+            const assistantTips = document.getElementById('assistant-tips');
+            const cssSpecificTips = [
+                '💡 使用浏览器开发者工具实时调试CSS',
+                '🎨 尝试组合不同的CSS属性创造独特效果',
+                '📱 始终考虑移动端的显示效果',
+                '⚡ 合理使用CSS动画提升用户体验',
+                '🔧 学会使用CSS变量让代码更易维护'
+            ];
+            
+            setInterval(() => {
+                if (assistantTips) {
+                    const randomTip = cssSpecificTips[Math.floor(Math.random() * cssSpecificTips.length)];
+                    assistantTips.innerHTML = `<p>${randomTip}</p>`;
+                }
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
