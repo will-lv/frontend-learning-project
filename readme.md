@@ -56,7 +56,7 @@
 ### 在线体验
 1. 克隆项目到本地
 ```bash
-git clone https://github.com/[你的用户名]/frontend-learning-project.git
+git clone https://github.com/will-lv/frontend-learning-project.git
 cd frontend-learning-project
 ```
 
