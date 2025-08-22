@@ -168,9 +168,6 @@ frontend-learning-project/
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
 
-## 🙏 致谢
-
-感谢所有为前端技术发展做出贡献的开发者们！
 
 ---
 
